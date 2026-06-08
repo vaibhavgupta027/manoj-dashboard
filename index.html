@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Manoj Tulsani — Directives Dashboard</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #0f1117; color: #e2e8f0; }
+
+  /* Header */
+  .header { background: linear-gradient(135deg, #1a1f2e, #252d3d); padding: 24px 40px; border-bottom: 1px solid #2d3748; display: flex; align-items: flex-start; justify-content: space-between; flex-wrap: wrap; gap: 14px; }
+  .header-left h1 { font-size: 20px; font-weight: 700; color: #f7fafc; }
+  .header-left .subtitle { color: #718096; font-size: 12px; margin-top: 4px; display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+  .last-updated { color: #a0aec0; }
+  .header-actions { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+  .sheet-link { display: inline-flex; align-items: center; gap-6px; gap: 6px; padding: 7px 14px; background: #1e3a5f; border: 1px solid #2c5282; border-radius: 8px; color: #90cdf4; font-size: 12px; font-weight: 600; text-decoration: none; transition: background 0.2s; }
+  .sheet-link:hover { background: #2a4a7f; }
+  .sheet-link-missing { padding: 7px 14px; background: #2d2d1a; border: 1px dashed #744210; border-radius: 8px; color: #ecc94b; font-size: 12px; cursor: default; }
+  .refresh-btn { padding: 7px 14px; background: #1a2a1a; border: 1px solid #276749; border-radius: 8px; color: #68d391; font-size: 12px; font-weight: 600; cursor: pointer; transition: background 0.2s; }
+  .refresh-btn:hover { background: #1e3a2a; }
+  .refresh-btn:disabled { opacity: 0.5; cursor: default; }
+
+  /* Stats */
+  .stats { display: flex; gap: 14px; padding: 20px 40px; flex-wrap: wrap; }
+  .stat { background: #1a1f2e; border: 1px solid #2d3748; border-radius: 10px; padding: 14px 20px; min-width: 120px; }
+  .stat .num { font-size: 26px; font-weight: 700; }
+  .stat .label { font-size: 11px; color: #718096; text-transform: uppercase; letter-spacing: 0.5px; margin-top: 2px; }
+  .stat.blue .num { color: #63b3ed; }
+  .stat.green .num { color: #48bb78; }
+  .stat.yellow .num { color: #ecc94b; }
+  .stat.orange .num { color: #f6ad55; }
+  .stat.red .num { color: #fc8181; }
+
+  /* Filters */
+  .filters { display: flex; gap: 8px; padding: 0 40px 20px; flex-wrap: wrap; align-items: center; }
+  .filter-btn { padding: 5px 13px; border-radius: 20px; border: 1px solid #2d3748; background: #1a1f2e; color: #a0aec0; font-size: 12px; cursor: pointer; transition: all 0.2s; }
+  .filter-btn.active, .filter-btn:hover { background: #2d3748; color: #f7fafc; border-color: #4a5568; }
+  .filter-label { font-size: 11px; color: #4a5568; margin-right: 4px; }
+
+  /* Sections */
+  .section { padding: 0 40px 36px; }
+  .section-title { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: #718096; margin-bottom: 12px; padding-bottom: 8px; border-bottom: 1px solid #2d3748; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(360px, 1fr)); gap: 12px; }
+
+  /* Cards */
+  .card { background: #1a1f2e; border: 1px solid #2d3748; border-radius: 12px; padding: 16px; position: relative; overflow: hidden; transition: border-color 0.2s, transform 0.15s; }
+  .card:hover { border-color: #4a5568; transform: translateY(-1px); }
+  .card::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 4px; }
+  .card.green::before { background: #48bb78; }
+  .card.yellow::before { background: #ecc94b; }
+  .card.red::before { background: #fc8181; }
+  .card.orange::before { background: #f6ad55; }
+  .card-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 9px; }
+  .card-title { font-size: 13px; font-weight: 600; color: #f7fafc; line-height: 1.4; flex: 1; margin-right: 10px; }
+  .badge { font-size: 10px; font-weight: 700; padding: 3px 8px; border-radius: 20px; white-space: nowrap; flex-shrink: 0; letter-spacing: 0.3px; }
+  .badge.green { background: #1c4532; color: #48bb78; }
+  .badge.yellow { background: #744210; color: #ecc94b; }
+  .badge.red { background: #742a2a; color: #fc8181; }
+  .badge.orange { background: #652b19; color: #f6ad55; }
+  .meta { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 8px; }
+  .meta-item { font-size: 11px; color: #718096; display: flex; align-items: center; gap: 4px; }
+  .deadline.urgent { color: #fc8181; font-weight: 600; }
+  .deadline.warning { color: #ecc94b; font-weight: 600; }
+  .deadline.ok { color: #48bb78; font-weight: 600; }
+  .owners { display: flex; flex-wrap: wrap; gap: 5px; margin-bottom: 9px; }
+  .owner-tag { font-size: 11px; background: #252d3d; color: #90cdf4; padding: 2px 7px; border-radius: 4px; border: 1px solid #2c5282; }
+  .progress-section { margin-top: 9px; }
+  .progress-label { font-size: 11px; color: #718096; margin-bottom: 5px; }
+  .progress-bar { background: #2d3748; border-radius: 4px; height: 5px; overflow: hidden; }
+  .progress-fill { height: 100%; border-radius: 4px; }
+  .progress-fill.green { background: #48bb78; }
+  .progress-fill.yellow { background: #ecc94b; }
+  .progress-fill.red { background: #fc8181; }
+  .progress-fill.orange { background: #f6ad55; }
+  .response-text { font-size: 12px; color: #a0aec0; line-height: 1.5; margin-top: 8px; padding: 7px 9px; background: #252d3d; border-radius: 6px; border-left: 3px solid #4a5568; }
+  .no-reply { font-size: 11px; color: #fc8181; font-style: italic; margin-top: 7px; }
+
+  /* Footer */
+  .footer { padding: 16px 40px 32px; color: #4a5568; font-size: 11px; border-top: 1px solid #2d3748; margin-top: 10px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; }
+
+  /* Loading / error */
+  .loading { display: flex; align-items: center; justify-content: center; height: 300px; color: #718096; font-size: 14px; }
+  .error-msg { color: #fc8181; text-align: center; padding: 40px; font-size: 14px; }
+
+  /* Hidden by filter */
+  .card.hidden { display: none; }
+  .section.all-hidden { display: none; }
+
+  @media (max-width: 600px) {
+    .header, .stats, .filters, .section, .footer { padding-left: 16px; padding-right: 16px; }
+    .grid { grid-template-columns: 1fr; }
+    .header { flex-direction: column; }
+  }
+</style>
+</head>
+<body>
+
+<div id="root">
+  <div class="loading">Loading dashboard…</div>
+</div>
+
+<script>
+const DATA_URL = './data.json';
+
+let allData = null;
+let activeFilter = 'all';
+
+const colorOrder = { red: 0, orange: 1, yellow: 2, green: 3 };
+const urgencyMap = { urgent: 'urgent', warning: 'warning', ok: 'ok' };
+
+function formatDate(isoStr) {
+  if (!isoStr) return 'Unknown';
+  const d = new Date(isoStr);
+  return d.toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric', hour: '2-digit', minute: '2-digit' });
+}
+
+function renderCard(item) {
+  const deadlineHtml = item.deadline
+    ? `<span class="meta-item">📅 <span class="deadline ${item.deadlineUrgency || ''}">${item.deadline}</span></span>`
+    : '';
+  const emailDateHtml = item.emailDate
+    ? `<span class="meta-item">📧 ${item.emailDate}</span>`
+    : '';
+  const ownersHtml = item.owners.map(o => `<span class="owner-tag">${o}</span>`).join('');
+  const responseHtml = item.response
+    ? `<div class="response-text">${item.response}</div>`
+    : '';
+  const noReplyHtml = item.noReplyWarning
+    ? `<div class="no-reply">⚠ ${item.noReplyWarning}</div>`
+    : '';
+
+  return `
+    <div class="card ${item.color}" data-color="${item.color}" data-id="${item.id}">
+      <div class="card-header">
+        <div class="card-title">${item.title}</div>
+        <span class="badge ${item.color}">${item.statusLabel}</span>
+      </div>
+      <div class="meta">${deadlineHtml}${emailDateHtml}</div>
+      <div class="owners">${ownersHtml}</div>
+      <div class="progress-section">
+        <div class="progress-label">${item.progressLabel}</div>
+        <div class="progress-bar"><div class="progress-fill ${item.color}" style="width:${item.progress}%"></div></div>
+      </div>
+      ${responseHtml}${noReplyHtml}
+    </div>`;
+}
+
+function renderSection(section) {
+  const cards = section.items.map(renderCard).join('');
+  return `
+    <div class="section" data-section-id="${section.id}">
+      <div class="section-title">${section.title}</div>
+      <div class="grid">${cards}</div>
+    </div>`;
+}
+
+function applyFilter(filter) {
+  activeFilter = filter;
+  document.querySelectorAll('.filter-btn').forEach(b => {
+    b.classList.toggle('active', b.dataset.filter === filter);
+  });
+  document.querySelectorAll('.card').forEach(card => {
+    const color = card.dataset.color;
+    const show = filter === 'all' || color === filter;
+    card.classList.toggle('hidden', !show);
+  });
+  document.querySelectorAll('.section').forEach(section => {
+    const visibleCards = section.querySelectorAll('.card:not(.hidden)');
+    section.classList.toggle('all-hidden', visibleCards.length === 0);
+  });
+}
+
+function renderSheetLink(url) {
+  if (url) {
+    return `<a class="sheet-link" href="${url}" target="_blank" rel="noopener">📊 Google Sheet</a>`;
+  }
+  return `<span class="sheet-link-missing" title="Add googleSheetUrl to data.json">📊 Sheet: not linked</span>`;
+}
+
+function renderDashboard(data) {
+  const s = data.stats;
+  const lastUpdated = formatDate(data.meta.lastUpdated);
+
+  const statsHtml = `
+    <div class="stats">
+      <div class="stat blue"><div class="num">${s.total}</div><div class="label">Total Directives</div></div>
+      <div class="stat green"><div class="num">${s.onTrack}</div><div class="label">On Track</div></div>
+      <div class="stat yellow"><div class="num">${s.inProgress}</div><div class="label">In Progress</div></div>
+      <div class="stat orange"><div class="num">${s.notedOnly}</div><div class="label">Only "Noted"</div></div>
+      <div class="stat red"><div class="num">${s.noResponse}</div><div class="label">No Response</div></div>
+    </div>`;
+
+  const filtersHtml = `
+    <div class="filters">
+      <span class="filter-label">Filter:</span>
+      <button class="filter-btn active" data-filter="all">All</button>
+      <button class="filter-btn" data-filter="red">🔴 At Risk</button>
+      <button class="filter-btn" data-filter="orange">🟠 Noted Only</button>
+      <button class="filter-btn" data-filter="yellow">🟡 In Progress</button>
+      <button class="filter-btn" data-filter="green">🟢 On Track</button>
+    </div>`;
+
+  const sectionsHtml = data.sections.map(renderSection).join('');
+
+  const html = `
+    <div class="header">
+      <div class="header-left">
+        <h1>Manoj Tulsani — Directives &amp; Progress</h1>
+        <div class="subtitle">
+          <span class="last-updated">Last updated: ${lastUpdated}</span>
+          <span>· ${data.meta.source}</span>
+        </div>
+      </div>
+      <div class="header-actions">
+        ${renderSheetLink(data.meta.googleSheetUrl)}
+        <button class="refresh-btn" onclick="refreshData()" id="refresh-btn">↻ Refresh</button>
+      </div>
+    </div>
+    ${statsHtml}
+    ${filtersHtml}
+    ${sectionsHtml}
+    <div class="footer">
+      <span>Rayna Tours PM Dashboard · Auto-refreshed daily via GitHub Actions</span>
+      <span>data.json · ${data.meta.source}</span>
+    </div>`;
+
+  document.getElementById('root').innerHTML = html;
+
+  document.querySelectorAll('.filter-btn').forEach(btn => {
+    btn.addEventListener('click', () => applyFilter(btn.dataset.filter));
+  });
+}
+
+async function refreshData() {
+  const btn = document.getElementById('refresh-btn');
+  if (btn) { btn.disabled = true; btn.textContent = '…'; }
+  try {
+    const res = await fetch(DATA_URL + '?t=' + Date.now());
+    if (!res.ok) throw new Error('HTTP ' + res.status);
+    allData = await res.json();
+    renderDashboard(allData);
+    applyFilter(activeFilter);
+  } catch (e) {
+    document.getElementById('root').innerHTML = `<div class="error-msg">Failed to load data.json<br><small>${e.message}</small></div>`;
+  }
+}
+
+refreshData();
+</script>
+
+</body>
+</html>
