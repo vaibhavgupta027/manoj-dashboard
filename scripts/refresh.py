@@ -181,7 +181,13 @@ def fetch_emails_from_manoj():
             break
 
     mail.logout()
-    emails.sort(key=lambda e: e["date"])
+    from email.utils import parsedate_to_datetime
+    def _parse_date(d):
+        try:
+            return parsedate_to_datetime(d).astimezone(timezone.utc)
+        except Exception:
+            return datetime.min.replace(tzinfo=timezone.utc)
+    emails.sort(key=lambda e: _parse_date(e["date"]))
     print(f"Total: {sum(1 for e in emails if e['type']=='DIRECTIVE')} directives + {sum(1 for e in emails if e['type']=='REPLY')} replies")
     return emails
 
@@ -223,7 +229,7 @@ def analyze_with_claude(emails):
         '- Extract EVERY distinct action directive — do NOT merge separate topics into one card\n'
         '- One email with "Two New Partnership Tracks" = 2 separate items. "Two India Items" = 2 items.\n'
         '- [REPLY] present for a thread = at minimum "IN PROGRESS" (yellow). No reply = "NO RESPONSE" (red).\n'
-        '- Aim for 35-50 items total across all sections.\n'
+        '- Extract ALL distinct action directives — do NOT cap the count. Coverage is more important than brevity.\n'
         '- Include subTasks (3-6 bullet points) and sheetLinks (empty [] if none) on every item.\n'
         '- For each item include "relatedSubjects": array of email subject strings this directive came from.\n'
         '- For each item include "lastReplyDate": "Mon DD" of the most recent [REPLY] on that thread, or null.\n'

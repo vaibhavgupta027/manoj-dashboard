@@ -159,7 +159,12 @@ async function fetchEmails() {
     await client.logout();
   }
 
-  return emails.sort((a, b) => new Date(a.date) - new Date(b.date));
+  emails.sort((a, b) => {
+    const da = a.date ? new Date(a.date).getTime() : 0;
+    const db = b.date ? new Date(b.date).getTime() : 0;
+    return da - db;
+  });
+  return emails;
 }
 
 // ── Claude analysis ─────────────────────────────────────────────────────────
@@ -183,7 +188,7 @@ RULES:
 - Extract EVERY distinct action directive — do NOT merge separate topics into one card
 - One email with "Two New Partnership Tracks" = 2 separate items. "Two India Items" = 2 items.
 - [REPLY] present for a thread = at minimum "IN PROGRESS" (yellow). No reply = "NO RESPONSE" (red).
-- Aim for 35–50 items total across all sections.
+- Extract ALL distinct action directives — do NOT cap the count. Coverage is more important than brevity.
 - Include subTasks (3–6 bullet points) and sheetLinks (empty [] if none) on every item.
 - For each item include "relatedSubjects": array of email subject strings that this directive came from.
 - For each item include "lastReplyDate": "Mon DD" of the most recent [REPLY] on the thread, or null.
