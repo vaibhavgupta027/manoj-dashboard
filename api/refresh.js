@@ -187,7 +187,14 @@ async function analyzeWithClaude(emails) {
     max_tokens: 64000,
     messages: [{
       role: 'user',
-      content: `You are a chief of staff. Analyse ALL emails from Manoj Tulsani (CEO, manoj@raynatours.com) to his team. [DIRECTIVE] emails are his original briefs. [REPLY] emails are team responses — use them to determine status and reply dates.
+      content: `You are a chief of staff. TODAY IS ${new Date().toLocaleDateString('en-US', {month:'long',day:'numeric',year:'numeric'})}. Analyse ALL emails from Manoj Tulsani (CEO, manoj@raynatours.com) to his team. [DIRECTIVE] emails are his original briefs. [REPLY] emails are team responses — use them to determine status and reply dates.
+
+DEADLINE ESCALATION RULES (strictly apply using today's date above):
+- deadline PAST and no completion confirmed → AT RISK (red), deadlineUrgency="urgent"
+- deadline TODAY and not confirmed done → AT RISK (red), deadlineUrgency="urgent"
+- deadline within 2 days → IN PROGRESS (yellow), deadlineUrgency="urgent"
+- deadline within 5 days → IN PROGRESS (yellow), deadlineUrgency="warning"
+- deadline >5 days away → deadlineUrgency="ok"
 
 RULES:
 - Extract EVERY distinct action directive — do NOT merge separate topics into one card

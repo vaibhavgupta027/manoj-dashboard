@@ -223,9 +223,18 @@ def analyze_with_claude(emails):
         for e in emails
     )[:180000]
 
+    today_str = datetime.now(timezone.utc).strftime("%B %d, %Y")  # e.g. "June 10, 2026"
+
     PROMPT_TEMPLATE = (
-        'You are a chief of staff. Analyse ALL emails from Manoj Tulsani (CEO, manoj@raynatours.com) to his team. '
+        f'You are a chief of staff. TODAY IS {today_str}. '
+        'Analyse ALL emails from Manoj Tulsani (CEO, manoj@raynatours.com) to his team. '
         '[DIRECTIVE] emails are his original briefs. [REPLY] emails are team responses — use them to determine status and reply dates.\n\n'
+        'DEADLINE ESCALATION RULES (strictly apply using today\'s date above):\n'
+        '- deadline PAST and no completion confirmed → AT RISK (red), deadlineUrgency="urgent"\n'
+        '- deadline TODAY and not confirmed done → AT RISK (red), deadlineUrgency="urgent"\n'
+        '- deadline within 2 days → IN PROGRESS (yellow), deadlineUrgency="urgent"\n'
+        '- deadline within 5 days → IN PROGRESS (yellow), deadlineUrgency="warning"\n'
+        '- deadline >5 days away → deadlineUrgency="ok"\n\n'
         'RULES:\n'
         '- Extract EVERY distinct action directive — do NOT merge separate topics into one card\n'
         '- One email with "Two New Partnership Tracks" = 2 separate items. "Two India Items" = 2 items.\n'
