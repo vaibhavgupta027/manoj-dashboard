@@ -184,7 +184,7 @@ async function analyzeWithClaude(emails) {
 
   const msg = await client.messages.create({
     model: 'claude-sonnet-4-6',
-    max_tokens: 16000,
+    max_tokens: 64000,
     messages: [{
       role: 'user',
       content: `You are a chief of staff. Analyse ALL emails from Manoj Tulsani (CEO, manoj@raynatours.com) to his team. [DIRECTIVE] emails are his original briefs. [REPLY] emails are team responses — use them to determine status and reply dates.

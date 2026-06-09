@@ -275,7 +275,7 @@ def analyze_with_claude(emails):
     response_text = ""
     with client.messages.stream(
         model="claude-sonnet-4-6",
-        max_tokens=24000,
+        max_tokens=64000,
         messages=[{"role": "user", "content": prompt}]
     ) as stream:
         for text in stream.text_stream:
@@ -296,14 +296,44 @@ def analyze_with_claude(emails):
     try:
         return json.loads(raw)
     except json.JSONDecodeError as e:
-        print(f"JSON parse error: {e}", file=sys.stderr)
-        # Try to find and report the problem area
-        lines = raw.split('\n')
-        err_line = e.lineno - 1
-        context = '\n'.join(lines[max(0, err_line-2):err_line+3])
-        print(f"Context around error:\n{context}", file=sys.stderr)
-        print("Full response saved to /tmp/claude_response.txt", file=sys.stderr)
-        raise
+        print(f"JSON parse error at char {e.pos} of {len(raw)}: {e.msg}", file=sys.stderr)
+        # Attempt to repair truncated JSON by closing unclosed brackets/braces
+        truncated = raw[:e.pos]
+        # Count unclosed structures and close them
+        stack = []
+        in_string = False
+        escape_next = False
+        for ch in truncated:
+            if escape_next:
+                escape_next = False
+                continue
+            if ch == '\\' and in_string:
+                escape_next = True
+                continue
+            if ch == '"':
+                in_string = not in_string
+                continue
+            if in_string:
+                continue
+            if ch in ('{', '['):
+                stack.append('}' if ch == '{' else ']')
+            elif ch in ('}', ']'):
+                if stack:
+                    stack.pop()
+        # Close any open strings, trailing commas, then close brackets
+        repaired = truncated.rstrip().rstrip(',')
+        repaired += ''.join(reversed(stack))
+        try:
+            result = json.loads(repaired)
+            print("Repaired truncated JSON successfully", file=sys.stderr)
+            return result
+        except json.JSONDecodeError:
+            lines = raw.split('\n')
+            err_line = e.lineno - 1
+            context = '\n'.join(lines[max(0, err_line-2):err_line+3])
+            print(f"Context around error:\n{context}", file=sys.stderr)
+            print("Full response saved to /tmp/claude_response.txt", file=sys.stderr)
+            raise e
 
 
 # ---------------------------------------------------------------------------
