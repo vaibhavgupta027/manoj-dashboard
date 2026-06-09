@@ -267,7 +267,7 @@ def analyze_with_claude(emails):
     print("Sending to Claude for analysis…")
     response_text = ""
     with client.messages.stream(
-        model="claude-opus-4-8",
+        model="claude-sonnet-4-6",
         max_tokens=24000,
         messages=[{"role": "user", "content": prompt}]
     ) as stream:

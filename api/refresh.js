@@ -173,7 +173,7 @@ async function analyzeWithClaude(emails) {
     .slice(0, 95000);
 
   const msg = await client.messages.create({
-    model: 'claude-opus-4-8',
+    model: 'claude-sonnet-4-6',
     max_tokens: 16000,
     messages: [{
       role: 'user',
