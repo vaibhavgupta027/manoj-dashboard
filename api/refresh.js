@@ -20,7 +20,7 @@ function githubRequest(method, path, body) {
       path,
       method,
       headers: {
-        Authorization: `Bearer ${process.env.GITHUB_PAT}`,
+        Authorization: `Bearer ${process.env.GH_PAT_FOR_REFRESH}`,
         'User-Agent': 'manoj-dashboard-refresh',
         'Content-Type': 'application/json',
         Accept: 'application/vnd.github+json',
