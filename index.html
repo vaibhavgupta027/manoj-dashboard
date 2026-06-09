@@ -280,54 +280,88 @@ button{font-family:inherit;cursor:pointer}
 }
 .drw-overlay.open{display:block}
 .drw{
-  position:fixed;top:0;right:0;bottom:0;width:min(520px,100vw);
+  position:fixed;top:0;right:0;bottom:0;width:min(600px,100vw);
   background:var(--surface);z-index:101;display:flex;flex-direction:column;
   transform:translateX(100%);transition:transform .25s ease;
   box-shadow:-4px 0 24px rgba(0,0,0,.12);
 }
 .drw.open{transform:translateX(0)}
 .drw-hdr{
-  padding:16px 20px;border-bottom:1px solid var(--border);
+  padding:14px 16px;border-bottom:1px solid var(--border);
   display:flex;align-items:flex-start;justify-content:space-between;gap:12px;
-  flex-shrink:0;
+  flex-shrink:0;background:var(--surface);
 }
-.drw-title{font-size:14px;font-weight:700;color:var(--text);line-height:1.4;flex:1}
+.drw-hdr-left{flex:1;min-width:0}
+.drw-title{font-size:13px;font-weight:700;color:var(--text);line-height:1.4}
+.drw-count{font-size:11px;color:var(--text3);margin-top:2px}
+.drw-actions{display:flex;gap:6px;flex-shrink:0;align-items:flex-start}
 .drw-close{
-  flex-shrink:0;width:28px;height:28px;border-radius:6px;
+  width:28px;height:28px;border-radius:6px;
   border:1px solid var(--border);background:var(--surface2);
   font-size:14px;line-height:28px;text-align:center;cursor:pointer;
-  color:var(--text2);margin-top:1px;
+  color:var(--text2);
 }
 .drw-close:hover{background:var(--border)}
 .drw-body{flex:1;overflow-y:auto;padding:0}
 .drw-empty{padding:40px 20px;color:var(--text3);font-size:13px;text-align:center}
-.email-card{
-  border-bottom:1px solid var(--border);padding:16px 20px;
-}
+
+/* Individual email in drawer */
+.email-card{border-bottom:2px solid var(--border);padding:0}
 .email-card:last-child{border-bottom:none}
-.email-meta{display:flex;align-items:center;gap:8px;margin-bottom:6px;flex-wrap:wrap}
+.email-card-hdr{
+  padding:12px 16px 10px;cursor:pointer;
+  display:flex;align-items:flex-start;gap:10px;
+  background:var(--surface);
+  transition:background .1s;
+}
+.email-card-hdr:hover{background:var(--surface2)}
+.email-card.collapsed .email-card-hdr{border-bottom:none}
+.email-card-meta{flex:1;min-width:0}
+.email-card-top{display:flex;align-items:center;gap:7px;margin-bottom:4px;flex-wrap:wrap}
 .email-type{
-  font-size:10px;font-weight:700;padding:2px 7px;border-radius:4px;
+  font-size:9px;font-weight:700;padding:2px 6px;border-radius:3px;
   text-transform:uppercase;letter-spacing:.5px;flex-shrink:0;
 }
 .email-type.directive{background:var(--blue-bg);color:var(--blue)}
 .email-type.reply{background:var(--green-dim);color:var(--green)}
-.email-date{font-size:11px;color:var(--text3);flex:1}
-.email-from{font-size:12px;font-weight:600;color:var(--text);margin-bottom:2px}
-.email-to{font-size:11px;color:var(--text3);margin-bottom:8px}
-.email-subject{font-size:12px;font-weight:600;color:var(--text2);margin-bottom:8px;font-style:italic}
-.email-body{
-  font-size:12px;color:var(--text2);line-height:1.6;
+.email-from-short{font-size:12px;font-weight:600;color:var(--text);flex:1;
+  overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.email-date-short{font-size:11px;color:var(--text3);flex-shrink:0}
+.email-subject-short{font-size:11px;color:var(--text2);
+  overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.email-preview{font-size:11px;color:var(--text3);
+  overflow:hidden;text-overflow:ellipsis;white-space:nowrap;margin-top:2px}
+.email-chevron{font-size:11px;color:var(--text3);flex-shrink:0;margin-top:2px;
+  transition:transform .15s}
+.email-card:not(.collapsed) .email-chevron{transform:rotate(90deg)}
+
+/* Expanded email body */
+.email-body-wrap{
+  padding:0 16px 16px;
+  display:block;
+}
+.email-card.collapsed .email-body-wrap{display:none}
+.email-fields{
+  font-size:11px;color:var(--text3);
+  border-bottom:1px solid var(--border);
+  padding-bottom:8px;margin-bottom:10px;
+  line-height:1.8;
+}
+.email-fields span{color:var(--text2)}
+.email-body-text{
+  font-size:12px;color:var(--text2);line-height:1.7;
   white-space:pre-wrap;word-break:break-word;
-  max-height:300px;overflow-y:auto;
-  background:var(--surface2);border-radius:6px;
-  padding:10px 12px;border:1px solid var(--border);
+  font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
 }
-.email-body-toggle{
-  font-size:11px;color:var(--blue);cursor:pointer;margin-top:6px;
-  display:inline-block;
+.email-copy-btn{
+  margin-top:10px;
+  display:inline-flex;align-items:center;gap:4px;
+  padding:4px 10px;height:26px;
+  background:var(--surface2);border:1px solid var(--border);
+  border-radius:5px;color:var(--text3);font-size:11px;
+  cursor:pointer;transition:background .15s;
 }
-.email-card .email-body.collapsed{max-height:80px}
+.email-copy-btn:hover{background:var(--border);color:var(--text2)}
 
 /* view-email btn on card */
 .btn-emails{
@@ -381,8 +415,13 @@ button{font-family:inherit;cursor:pointer}
 <div class="drw-overlay" id="drw-overlay" onclick="closeEmailDrawer()"></div>
 <div class="drw" id="email-drw">
   <div class="drw-hdr">
-    <div class="drw-title" id="drw-title">Emails</div>
-    <div class="drw-close" onclick="closeEmailDrawer()">✕</div>
+    <div class="drw-hdr-left">
+      <div class="drw-title" id="drw-title">Emails</div>
+      <div class="drw-count" id="drw-count"></div>
+    </div>
+    <div class="drw-actions">
+      <div class="drw-close" onclick="closeEmailDrawer()">✕</div>
+    </div>
   </div>
   <div class="drw-body" id="drw-body"></div>
 </div>
@@ -716,7 +755,6 @@ function openEmailDrawer(btn) {
   const subjects = btn.dataset.subjects.split('||').map(s => s.toLowerCase().trim());
   const emails = (allData?.emails || []);
 
-  // Match emails where subject contains any of the relatedSubjects (or vice versa)
   const matched = emails.filter(e => {
     const esub = (e.subject || '').toLowerCase();
     return subjects.some(s => esub.includes(s) || s.includes(esub.slice(0, 30)));
@@ -724,47 +762,71 @@ function openEmailDrawer(btn) {
 
   const title = btn.closest('.card').querySelector('.card-title').textContent;
   document.getElementById('drw-title').textContent = title;
+  document.getElementById('drw-count').textContent = matched.length
+    ? `${matched.length} email${matched.length > 1 ? 's' : ''} · click to expand`
+    : '';
 
   const body = document.getElementById('drw-body');
   if (!matched.length) {
-    body.innerHTML = '<div class="drw-empty">No matching emails found in the current dataset.<br><small>Emails are stored after the next daily refresh.</small></div>';
+    body.innerHTML = '<div class="drw-empty">No matching emails found.<br><small>Emails populate after the next refresh.</small></div>';
   } else {
     body.innerHTML = matched.map((e, i) => {
       const typeClass = e.type === 'DIRECTIVE' ? 'directive' : 'reply';
       const dateStr = e.date ? new Date(e.date).toLocaleString('en-GB', {
         day:'numeric', month:'short', year:'numeric', hour:'2-digit', minute:'2-digit'
       }) : '';
-      const toLine = e.to ? `<div class="email-to">To: ${e.to}${e.cc ? ' · CC: ' + e.cc : ''}</div>` : '';
+      const fromShort = (e.from || '').replace(/<[^>]+>/g,'').trim();
       const bodyEsc = (e.body || '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
-      const bodyId = `eb-${i}`;
+      const bodyPreview = (e.body || '').replace(/\s+/g,' ').trim().slice(0, 80);
+      const toLine = [e.to && `To: ${e.to}`, e.cc && `CC: ${e.cc}`].filter(Boolean).join(' · ');
+      const collapsed = i > 0 ? ' collapsed' : '';  // first email auto-expanded
       return `
-      <div class="email-card">
-        <div class="email-meta">
-          <span class="email-type ${typeClass}">${e.type}</span>
-          <span class="email-date">${dateStr}</span>
+      <div class="email-card${collapsed}" id="ec-${i}">
+        <div class="email-card-hdr" onclick="toggleEmail(${i})">
+          <div class="email-card-meta">
+            <div class="email-card-top">
+              <span class="email-type ${typeClass}">${e.type}</span>
+              <span class="email-from-short">${fromShort}</span>
+              <span class="email-date-short">${dateStr}</span>
+            </div>
+            <div class="email-subject-short">${e.subject || ''}</div>
+            ${i > 0 ? `<div class="email-preview">${bodyPreview}…</div>` : ''}
+          </div>
+          <span class="email-chevron">▶</span>
         </div>
-        <div class="email-from">${e.from || ''}</div>
-        ${toLine}
-        <div class="email-subject">${e.subject || ''}</div>
-        <div class="email-body collapsed" id="${bodyId}">${bodyEsc}</div>
-        <span class="email-body-toggle" onclick="toggleEmailBody('${bodyId}', this)">Show more</span>
+        <div class="email-body-wrap">
+          ${toLine ? `<div class="email-fields">${toLine}</div>` : ''}
+          <div class="email-body-text">${bodyEsc}</div>
+          <button class="email-copy-btn" onclick="copyEmail(${i}, this)">⎘ Copy</button>
+        </div>
       </div>`;
     }).join('');
   }
 
+  // Store matched for copy
+  document.getElementById('email-drw')._emails = matched;
   document.getElementById('drw-overlay').classList.add('open');
   document.getElementById('email-drw').classList.add('open');
+}
+
+function toggleEmail(i) {
+  document.getElementById(`ec-${i}`)?.classList.toggle('collapsed');
+}
+
+function copyEmail(i, btn) {
+  const emails = document.getElementById('email-drw')._emails || [];
+  const e = emails[i];
+  if (!e) return;
+  const text = `From: ${e.from}\nTo: ${e.to||''}\nCC: ${e.cc||''}\nDate: ${e.date}\nSubject: ${e.subject}\n\n${e.body}`;
+  navigator.clipboard.writeText(text).then(() => {
+    btn.textContent = '✓ Copied';
+    setTimeout(() => { btn.textContent = '⎘ Copy'; }, 1500);
+  });
 }
 
 function closeEmailDrawer() {
   document.getElementById('drw-overlay').classList.remove('open');
   document.getElementById('email-drw').classList.remove('open');
-}
-
-function toggleEmailBody(id, btn) {
-  const el = document.getElementById(id);
-  const collapsed = el.classList.toggle('collapsed');
-  btn.textContent = collapsed ? 'Show more' : 'Show less';
 }
 
 async function load() {

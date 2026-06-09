@@ -27,7 +27,7 @@ GMAIL_PASS = os.environ.get("GMAIL_PASS", "")
 ANTHROPIC_API_KEY = os.environ.get("ANTHROPIC_API_KEY", "")
 FROM_FILTER = "manoj@raynatours.com"
 DAYS_BACK_DIRECTIVE = 90
-DAYS_BACK_REPLY = 30
+DAYS_BACK_REPLY = 90
 DATA_JSON = os.path.join(os.path.dirname(__file__), "..", "data.json")
 
 
@@ -204,10 +204,17 @@ def analyze_with_claude(emails):
 
     client = anthropic.Anthropic(api_key=api_key)
 
+    def trim_body(body, max_chars):
+        """Strip quoted reply chains (lines starting with >) and trim to max_chars."""
+        lines = (body or '').splitlines()
+        clean = [l for l in lines if not l.strip().startswith('>')]
+        return '\n'.join(clean).strip()[:max_chars]
+
     emails_text = "\n\n---\n\n".join(
-        f"[{e['type']}] {e['date']} | FROM: {e['from']} | TO: {e.get('to','')} | CC: {e.get('cc','')} | SUBJECT: {e['subject']}\n\n{e['body']}"
+        f"[{e['type']}] {e['date']} | FROM: {e['from']} | TO: {e.get('to','')} | CC: {e.get('cc','')} | SUBJECT: {e['subject']}\n\n"
+        + trim_body(e['body'], 3000 if e['type'] == 'REPLY' else 8000)
         for e in emails
-    )[:95000]
+    )[:100000]
 
     PROMPT_TEMPLATE = (
         'You are a chief of staff. Analyse ALL emails from Manoj Tulsani (CEO, manoj@raynatours.com) to his team. '
@@ -258,13 +265,15 @@ def analyze_with_claude(emails):
     prompt = PROMPT_TEMPLATE.replace('{emails_text}', emails_text)
 
     print("Sending to Claude for analysis…")
-    message = client.messages.create(
+    response_text = ""
+    with client.messages.stream(
         model="claude-opus-4-8",
-        max_tokens=16000,
+        max_tokens=24000,
         messages=[{"role": "user", "content": prompt}]
-    )
-
-    response_text = message.content[0].text
+    ) as stream:
+        for text in stream.text_stream:
+            response_text += text
+    print(f"Claude response: {len(response_text)} chars")
 
     # Dump raw response for debugging
     with open("/tmp/claude_response.txt", "w") as f:

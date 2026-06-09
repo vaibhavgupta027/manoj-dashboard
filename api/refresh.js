@@ -78,7 +78,7 @@ async function fetchEmails() {
   const since90 = new Date();
   since90.setDate(since90.getDate() - 90);
   const since30 = new Date();
-  since30.setDate(since30.getDate() - 30);
+  since30.setDate(since30.getDate() - 90);
 
   // ── Pass 1: Manoj's directives ──
   const lock1 = await client.getMailboxLock('[Gmail]/All Mail');
