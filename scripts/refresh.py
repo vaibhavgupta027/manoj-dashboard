@@ -140,8 +140,7 @@ def fetch_emails_from_manoj():
         msg = email.message_from_bytes(raw)
         from_addr = msg.get("From", "").lower()
         if FROM_FILTER in from_addr:
-            continue  # already captured in pass 1
-        body = get_body(msg)
+            continue
         emails.append({
             "type": "REPLY",
             "subject": decode_str(msg.get("Subject", "")),
@@ -149,9 +148,36 @@ def fetch_emails_from_manoj():
             "from": msg.get("From", ""),
             "to": msg.get("To", ""),
             "cc": msg.get("Cc", ""),
-            "body": body[:8000],
+            "body": get_body(msg),  # full body
         })
-        if len(emails) >= 160:
+        if len(emails) >= 180:
+            break
+
+    # ── Pass 3: Direct replies TO manoj not caught by CC pass ──
+    _, data = mail.search(None, f'(TO "{FROM_FILTER}" SINCE "{since30}")')
+    ids = data[0].split()
+    print(f"[Pass 3] Found {len(ids)} replies with Manoj in TO field (last 30 days)")
+
+    for eid in ids:
+        if eid in seen_ids:
+            continue
+        seen_ids.add(eid)
+        _, msg_data = mail.fetch(eid, "(RFC822)")
+        raw = msg_data[0][1]
+        msg = email.message_from_bytes(raw)
+        from_addr = msg.get("From", "").lower()
+        if FROM_FILTER in from_addr:
+            continue
+        emails.append({
+            "type": "REPLY",
+            "subject": decode_str(msg.get("Subject", "")),
+            "date": msg.get("Date", ""),
+            "from": msg.get("From", ""),
+            "to": msg.get("To", ""),
+            "cc": msg.get("Cc", ""),
+            "body": get_body(msg),  # full body
+        })
+        if len(emails) >= 220:
             break
 
     mail.logout()
@@ -179,20 +205,22 @@ def analyze_with_claude(emails):
     client = anthropic.Anthropic(api_key=api_key)
 
     emails_text = "\n\n---\n\n".join(
-        f"[{e['type']}] {e['date']} | FROM: {e['from']} | SUBJECT: {e['subject']}\n\n{e['body']}"
+        f"[{e['type']}] {e['date']} | FROM: {e['from']} | TO: {e.get('to','')} | CC: {e.get('cc','')} | SUBJECT: {e['subject']}\n\n{e['body']}"
         for e in emails
-    )[:75000]
+    )[:95000]
 
     PROMPT_TEMPLATE = (
         'You are a chief of staff. Analyse ALL emails from Manoj Tulsani (CEO, manoj@raynatours.com) to his team. '
-        '[DIRECTIVE] emails are his original briefs. [REPLY] emails are team responses — use them to determine status.\n\n'
+        '[DIRECTIVE] emails are his original briefs. [REPLY] emails are team responses — use them to determine status and reply dates.\n\n'
         'RULES:\n'
         '- Extract EVERY distinct action directive — do NOT merge separate topics into one card\n'
         '- One email with "Two New Partnership Tracks" = 2 separate items. "Two India Items" = 2 items.\n'
         '- [REPLY] present for a thread = at minimum "IN PROGRESS" (yellow). No reply = "NO RESPONSE" (red).\n'
         '- Aim for 35-50 items total across all sections.\n'
         '- Include subTasks (3-6 bullet points) and sheetLinks (empty [] if none) on every item.\n'
-        '- For the "people" array: list EVERY person assigned ANY task, with ALL their tasks and exact deadlines.\n\n'
+        '- For each item include "relatedSubjects": array of email subject strings this directive came from.\n'
+        '- For each item include "lastReplyDate": "Mon DD" of the most recent [REPLY] on that thread, or null.\n'
+        '- For the "people" array: list EVERY person assigned ANY task, with ALL their tasks, assigned date, and exact deadlines.\n\n'
         'Return ONLY valid JSON - no prose, no markdown fences:\n'
         '{\n'
         '  "stats": { "total": N, "onTrack": N, "inProgress": N, "notedOnly": N, "noResponse": N },\n'
@@ -204,16 +232,19 @@ def analyze_with_claude(emails):
         '    "deadline": "string or null",\n'
         '    "deadlineUrgency": "urgent|warning|ok|null",\n'
         '    "emailDate": "Mon DD",\n'
+        '    "lastReplyDate": "Mon DD or null",\n'
         '    "owners": ["First name"],\n'
         '    "progress": 0,\n'
         '    "progressLabel": "one line on current state",\n'
         '    "response": "summary of team reply or null",\n'
         '    "noReplyWarning": "warning if no reply, else null",\n'
         '    "subTasks": ["action 1", "action 2"],\n'
-        '    "sheetLinks": []\n'
+        '    "sheetLinks": [],\n'
+        '    "relatedSubjects": ["exact email subject line"]\n'
         '  }]}],\n'
         '  "people": [{ "name": "First name", "tasks": [{\n'
         '    "task": "specific task description",\n'
+        '    "assignedDate": "Mon DD",\n'
         '    "deadline": "Jun DD or ASAP or TBD",\n'
         '    "deadlineUrgency": "urgent|warning|ok|null",\n'
         '    "color": "red|yellow|green|orange"\n'
@@ -299,7 +330,7 @@ def main():
             "from": e["from"],
             "to": e.get("to", ""),
             "cc": e.get("cc", ""),
-            "body": e["body"] if e["type"] == "DIRECTIVE" else e["body"][:8000],
+            "body": e["body"],  # full body stored
         }
         for e in emails
     ]

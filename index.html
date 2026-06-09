@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Manoj Dashboard — Rayna Tours</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%232b6cb0'/><text x='16' y='23' text-anchor='middle' fill='white' font-family='system-ui,sans-serif' font-size='20' font-weight='700'>M</text></svg>">
 <style>
 /* ── TOKENS (light mode) ─────────────────────────────── */
 :root {
@@ -263,6 +264,7 @@ button{font-family:inherit;cursor:pointer}
 .task-row.orange::before{background:var(--orange)}
 .task-row:last-child{border-bottom:none}
 .task-name{flex:1;font-size:12px;color:var(--text);line-height:1.5}
+.task-assigned{font-size:10px;color:var(--text3);font-weight:400}
 .task-dl{
   font-size:11px;font-weight:600;flex-shrink:0;
   white-space:nowrap;color:var(--text3);padding-top:1px;
@@ -463,6 +465,7 @@ function cardHtml(item, sectionId) {
   const dl = item.deadline
     ? `<span class="mi">📅 <span class="dl ${item.deadlineUrgency||''}">${item.deadline}</span></span>` : '';
   const ed = item.emailDate ? `<span class="mi">📧 ${item.emailDate}</span>` : '';
+  const rd = item.lastReplyDate ? `<span class="mi">↩ ${item.lastReplyDate}</span>` : '';
   const ownersHtml = item.owners.map(o =>
     `<span class="otag" data-ok="${ownerKey(o)}">${o}</span>`).join('');
   const resp = item.response ? `<div class="rtext">${item.response}</div>` : '';
@@ -493,7 +496,7 @@ function cardHtml(item, sectionId) {
       <div class="card-title">${item.title}</div>
       <span class="badge ${item.color}">${item.statusLabel}</span>
     </div>
-    <div class="meta">${dl}${ed}</div>
+    <div class="meta">${dl}${ed}${rd}</div>
     <div class="owners">${ownersHtml}</div>
     <div class="pbar-wrap">
       <div class="plabel">${item.progressLabel}</div>
@@ -692,7 +695,7 @@ function renderPeople(data) {
     ].join('');
     const taskRows = tasks.map(t => `
       <div class="task-row ${t.color||''}">
-        <div class="task-name">${t.task}</div>
+        <div class="task-name">${t.task}${t.assignedDate ? `<span class="task-assigned"> · assigned ${t.assignedDate}</span>` : ''}</div>
         <div class="task-dl ${t.deadlineUrgency||''}">${t.deadline||'—'}</div>
       </div>`).join('');
 
