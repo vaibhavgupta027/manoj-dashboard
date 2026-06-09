@@ -3,251 +3,783 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Manoj Tulsani — Directives Dashboard</title>
+<title>Manoj Dashboard — Rayna Tours</title>
 <style>
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #0f1117; color: #e2e8f0; }
+/* ── TOKENS (light mode) ─────────────────────────────── */
+:root {
+  --bg:#f7f9fc; --surface:#ffffff; --surface2:#f1f5f9;
+  --border:#e2e8f0; --border2:#cbd5e0;
+  --text:#1a202c; --text2:#4a5568; --text3:#718096;
+  --green:#276749; --green-bg:#c6f6d5; --green-dim:#e6ffed;
+  --yellow:#744210; --yellow-bg:#fefcbf; --yellow-dim:#fffff0;
+  --red:#c53030;   --red-bg:#fed7d7;   --red-dim:#fff5f5;
+  --orange:#c05621; --orange-bg:#feebc8; --orange-dim:#fffaf0;
+  --blue:#2b6cb0;   --blue-bg:#ebf8ff;
+  --purple:#6b46c1; --purple-bg:#faf5ff;
+  --p:16px;
+}
 
-  /* Header */
-  .header { background: linear-gradient(135deg, #1a1f2e, #252d3d); padding: 24px 40px; border-bottom: 1px solid #2d3748; display: flex; align-items: flex-start; justify-content: space-between; flex-wrap: wrap; gap: 14px; }
-  .header-left h1 { font-size: 20px; font-weight: 700; color: #f7fafc; }
-  .header-left .subtitle { color: #718096; font-size: 12px; margin-top: 4px; display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
-  .last-updated { color: #a0aec0; }
-  .header-actions { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
-  .sheet-link { display: inline-flex; align-items: center; gap-6px; gap: 6px; padding: 7px 14px; background: #1e3a5f; border: 1px solid #2c5282; border-radius: 8px; color: #90cdf4; font-size: 12px; font-weight: 600; text-decoration: none; transition: background 0.2s; }
-  .sheet-link:hover { background: #2a4a7f; }
-  .sheet-link-missing { padding: 7px 14px; background: #2d2d1a; border: 1px dashed #744210; border-radius: 8px; color: #ecc94b; font-size: 12px; cursor: default; }
-  .refresh-btn { padding: 7px 14px; background: #1a2a1a; border: 1px solid #276749; border-radius: 8px; color: #68d391; font-size: 12px; font-weight: 600; cursor: pointer; transition: background 0.2s; }
-  .refresh-btn:hover { background: #1e3a2a; }
-  .refresh-btn:disabled { opacity: 0.5; cursor: default; }
+/* ── BASE ────────────────────────────────────────────── */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+     background:var(--bg);color:var(--text);min-height:100vh}
+a{color:inherit;text-decoration:none}
+button{font-family:inherit;cursor:pointer}
 
-  /* Stats */
-  .stats { display: flex; gap: 14px; padding: 20px 40px; flex-wrap: wrap; }
-  .stat { background: #1a1f2e; border: 1px solid #2d3748; border-radius: 10px; padding: 14px 20px; min-width: 120px; }
-  .stat .num { font-size: 26px; font-weight: 700; }
-  .stat .label { font-size: 11px; color: #718096; text-transform: uppercase; letter-spacing: 0.5px; margin-top: 2px; }
-  .stat.blue .num { color: #63b3ed; }
-  .stat.green .num { color: #48bb78; }
-  .stat.yellow .num { color: #ecc94b; }
-  .stat.orange .num { color: #f6ad55; }
-  .stat.red .num { color: #fc8181; }
+/* ── HEADER ─────────────────────────────────────────── */
+.hdr{
+  background:linear-gradient(135deg,#ffffff,#f1f5f9);
+  padding:14px var(--p);
+  border-bottom:1px solid var(--border);
+}
+.hdr h1{font-size:16px;font-weight:700;color:var(--text);line-height:1.35}
+.hdr .sub{color:var(--text3);font-size:11px;margin-top:3px}
+.hdr-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+.btn{
+  display:inline-flex;align-items:center;gap:5px;
+  padding:0 14px;height:36px;border-radius:8px;
+  font-size:12px;font-weight:600;border:1px solid;
+  white-space:nowrap;transition:background .15s;
+}
+.btn-sheet{background:var(--blue-bg);border-color:#bee3f8;color:var(--blue)}
+.btn-sheet:hover{background:#bee3f8}
+.btn-sheet-empty{background:#fffff0;border:1px dashed var(--orange);color:var(--orange);cursor:default}
+.btn-refresh{background:#f0fff4;border-color:#68d391;color:var(--green)}
+.btn-refresh:hover{background:var(--green-bg)}
+.btn-refresh:disabled{opacity:.5;cursor:default}
 
-  /* Filters */
-  .filters { display: flex; gap: 8px; padding: 0 40px 20px; flex-wrap: wrap; align-items: center; }
-  .filter-btn { padding: 5px 13px; border-radius: 20px; border: 1px solid #2d3748; background: #1a1f2e; color: #a0aec0; font-size: 12px; cursor: pointer; transition: all 0.2s; }
-  .filter-btn.active, .filter-btn:hover { background: #2d3748; color: #f7fafc; border-color: #4a5568; }
-  .filter-label { font-size: 11px; color: #4a5568; margin-right: 4px; }
+/* ── STATS ───────────────────────────────────────────── */
+.stats{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  gap:8px;padding:12px var(--p);
+}
+.stat{
+  background:var(--surface);border:1px solid var(--border);
+  border-radius:10px;padding:10px 8px;text-align:center;
+  box-shadow:0 1px 3px rgba(0,0,0,.05);
+}
+.stat .n{font-size:22px;font-weight:700;line-height:1}
+.stat .l{font-size:9px;color:var(--text3);text-transform:uppercase;
+          letter-spacing:.5px;margin-top:3px;line-height:1.2}
+.stat.c-blue   .n{color:var(--blue)}
+.stat.c-green  .n{color:var(--green)}
+.stat.c-yellow .n{color:var(--yellow)}
+.stat.c-orange .n{color:var(--orange)}
+.stat.c-red    .n{color:var(--red)}
 
-  /* Sections */
-  .section { padding: 0 40px 36px; }
-  .section-title { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: #718096; margin-bottom: 12px; padding-bottom: 8px; border-bottom: 1px solid #2d3748; }
-  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(360px, 1fr)); gap: 12px; }
+/* ── FILTER PANEL ────────────────────────────────────── */
+.filters{padding:10px var(--p) 2px}
+.frow{margin-bottom:10px}
+.flabel{
+  font-size:10px;font-weight:700;text-transform:uppercase;
+  letter-spacing:.8px;color:var(--text3);margin-bottom:6px;
+  display:flex;align-items:center;gap:6px;
+}
+.badge-count{
+  display:inline-flex;align-items:center;justify-content:center;
+  background:var(--red);color:#fff;border-radius:50%;
+  width:15px;height:15px;font-size:9px;font-weight:700;
+}
+.chips{
+  display:flex;gap:6px;overflow-x:auto;padding-bottom:4px;
+  scrollbar-width:none;-webkit-overflow-scrolling:touch;
+}
+.chips::-webkit-scrollbar{display:none}
+.chip{
+  flex-shrink:0;padding:0 12px;height:32px;border-radius:20px;
+  border:1px solid var(--border);background:var(--surface);
+  color:var(--text2);font-size:12px;white-space:nowrap;
+  transition:all .15s;
+}
+.chip.on{background:var(--surface2);color:var(--text);border-color:var(--border2)}
+.chip:active{transform:scale(.96)}
+/* status tints */
+.chip[data-ft=status].on[data-v=red]   {background:var(--red-dim);border-color:var(--red);color:var(--red)}
+.chip[data-ft=status].on[data-v=orange]{background:var(--orange-dim);border-color:var(--orange);color:var(--orange)}
+.chip[data-ft=status].on[data-v=yellow]{background:var(--yellow-dim);border-color:var(--yellow);color:var(--yellow)}
+.chip[data-ft=status].on[data-v=green] {background:var(--green-dim);border-color:var(--green);color:var(--green)}
+/* deadline tint */
+.chip[data-ft=deadline].on{background:var(--blue-bg);border-color:#63b3ed;color:var(--blue)}
+/* owner tint */
+.chip[data-ft=owner].on{background:var(--blue-bg);border-color:#3182ce;color:var(--blue)}
+/* dept tint */
+.chip[data-ft=dept].on{background:var(--purple-bg);border-color:#9f7aea;color:var(--purple)}
 
-  /* Cards */
-  .card { background: #1a1f2e; border: 1px solid #2d3748; border-radius: 12px; padding: 16px; position: relative; overflow: hidden; transition: border-color 0.2s, transform 0.15s; }
-  .card:hover { border-color: #4a5568; transform: translateY(-1px); }
-  .card::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 4px; }
-  .card.green::before { background: #48bb78; }
-  .card.yellow::before { background: #ecc94b; }
-  .card.red::before { background: #fc8181; }
-  .card.orange::before { background: #f6ad55; }
-  .card-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 9px; }
-  .card-title { font-size: 13px; font-weight: 600; color: #f7fafc; line-height: 1.4; flex: 1; margin-right: 10px; }
-  .badge { font-size: 10px; font-weight: 700; padding: 3px 8px; border-radius: 20px; white-space: nowrap; flex-shrink: 0; letter-spacing: 0.3px; }
-  .badge.green { background: #1c4532; color: #48bb78; }
-  .badge.yellow { background: #744210; color: #ecc94b; }
-  .badge.red { background: #742a2a; color: #fc8181; }
-  .badge.orange { background: #652b19; color: #f6ad55; }
-  .meta { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 8px; }
-  .meta-item { font-size: 11px; color: #718096; display: flex; align-items: center; gap: 4px; }
-  .deadline.urgent { color: #fc8181; font-weight: 600; }
-  .deadline.warning { color: #ecc94b; font-weight: 600; }
-  .deadline.ok { color: #48bb78; font-weight: 600; }
-  .owners { display: flex; flex-wrap: wrap; gap: 5px; margin-bottom: 9px; }
-  .owner-tag { font-size: 11px; background: #252d3d; color: #90cdf4; padding: 2px 7px; border-radius: 4px; border: 1px solid #2c5282; }
-  .progress-section { margin-top: 9px; }
-  .progress-label { font-size: 11px; color: #718096; margin-bottom: 5px; }
-  .progress-bar { background: #2d3748; border-radius: 4px; height: 5px; overflow: hidden; }
-  .progress-fill { height: 100%; border-radius: 4px; }
-  .progress-fill.green { background: #48bb78; }
-  .progress-fill.yellow { background: #ecc94b; }
-  .progress-fill.red { background: #fc8181; }
-  .progress-fill.orange { background: #f6ad55; }
-  .response-text { font-size: 12px; color: #a0aec0; line-height: 1.5; margin-top: 8px; padding: 7px 9px; background: #252d3d; border-radius: 6px; border-left: 3px solid #4a5568; }
-  .no-reply { font-size: 11px; color: #fc8181; font-style: italic; margin-top: 7px; }
+/* ── RESULT COUNT + CLEAR ───────────────────────────── */
+.result-bar{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:4px var(--p) 10px;
+}
+.result-count{font-size:11px;color:var(--text3)}
+.clear-btn{
+  font-size:11px;color:var(--text3);background:none;border:none;
+  text-decoration:underline;padding:0;
+}
+.clear-btn:hover{color:var(--text2)}
 
-  /* Footer */
-  .footer { padding: 16px 40px 32px; color: #4a5568; font-size: 11px; border-top: 1px solid #2d3748; margin-top: 10px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; }
+/* ── SECTIONS ────────────────────────────────────────── */
+.section{padding:0 var(--p) 26px}
+.section-title{
+  font-size:10px;font-weight:700;text-transform:uppercase;
+  letter-spacing:1px;color:var(--text3);
+  padding:6px 0 8px;margin-bottom:10px;
+  border-bottom:1px solid var(--border);
+  position:sticky;top:0;background:var(--bg);z-index:2;
+}
+.grid{display:grid;grid-template-columns:1fr;gap:10px}
 
-  /* Loading / error */
-  .loading { display: flex; align-items: center; justify-content: center; height: 300px; color: #718096; font-size: 14px; }
-  .error-msg { color: #fc8181; text-align: center; padding: 40px; font-size: 14px; }
+/* ── CARD ────────────────────────────────────────────── */
+.card{
+  background:var(--surface);border:1px solid var(--border);
+  border-radius:12px;padding:14px 14px 12px 18px;
+  position:relative;overflow:hidden;
+  box-shadow:0 1px 3px rgba(0,0,0,.06);
+}
+.card::before{
+  content:'';position:absolute;left:0;top:0;bottom:0;
+  width:4px;border-radius:12px 0 0 12px;
+}
+.card.green ::before,.card.green::before {background:var(--green)}
+.card.yellow::before{background:var(--yellow)}
+.card.red::before   {background:var(--red)}
+.card.orange::before{background:var(--orange)}
 
-  /* Hidden by filter */
-  .card.hidden { display: none; }
-  .section.all-hidden { display: none; }
+.card-hdr{display:flex;justify-content:space-between;align-items:flex-start;gap:8px;margin-bottom:8px}
+.card-title{font-size:13px;font-weight:600;color:var(--text);line-height:1.4;flex:1}
+.badge{
+  font-size:10px;font-weight:700;padding:3px 8px;
+  border-radius:20px;white-space:nowrap;flex-shrink:0;letter-spacing:.3px;
+}
+.badge.green {background:var(--green-bg); color:var(--green)}
+.badge.yellow{background:var(--yellow-bg);color:var(--yellow)}
+.badge.red   {background:var(--red-bg);   color:var(--red)}
+.badge.orange{background:var(--orange-bg);color:var(--orange)}
 
-  @media (max-width: 600px) {
-    .header, .stats, .filters, .section, .footer { padding-left: 16px; padding-right: 16px; }
-    .grid { grid-template-columns: 1fr; }
-    .header { flex-direction: column; }
-  }
+.meta{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:8px}
+.mi{font-size:11px;color:var(--text3);display:flex;align-items:center;gap:3px}
+.dl.urgent {color:var(--red);   font-weight:600}
+.dl.warning{color:var(--yellow);font-weight:600}
+.dl.ok     {color:var(--green); font-weight:600}
+
+.owners{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:8px}
+.otag{
+  font-size:11px;background:var(--blue-bg);color:var(--blue);
+  padding:2px 7px;border-radius:4px;border:1px solid #bee3f8;
+  transition:background .15s,border-color .15s;
+}
+.otag.hl{background:#bee3f8;border-color:#3182ce;color:#1a365d}
+
+.pbar-wrap{margin-top:8px}
+.plabel{font-size:11px;color:var(--text3);margin-bottom:4px}
+.pbar{background:var(--border);border-radius:4px;height:5px;overflow:hidden}
+.pfill{height:100%;border-radius:4px}
+.pfill.green {background:var(--green)}
+.pfill.yellow{background:var(--yellow)}
+.pfill.red   {background:var(--red)}
+.pfill.orange{background:var(--orange)}
+
+.rtext{
+  font-size:12px;color:var(--text2);line-height:1.5;
+  margin-top:8px;padding:7px 9px;
+  background:var(--surface2);border-radius:6px;
+  border-left:3px solid var(--border2);
+}
+.noreply{font-size:11px;color:var(--red);font-style:italic;margin-top:7px}
+
+.card-sheets{display:flex;flex-wrap:wrap;gap:6px;margin-top:9px}
+.slink{
+  display:inline-flex;align-items:center;gap:4px;
+  padding:4px 10px;height:28px;
+  background:var(--blue-bg);border:1px solid #bee3f8;
+  border-radius:5px;color:var(--blue);font-size:11px;font-weight:600;
+}
+.slink:hover{background:#bee3f8}
+
+.subtasks{margin-top:9px}
+.st-toggle{
+  font-size:11px;color:var(--text3);cursor:pointer;
+  display:flex;align-items:center;gap:4px;
+  padding:5px 0;user-select:none;min-height:30px;
+}
+.st-toggle:active{color:var(--text2)}
+.st-list{margin-top:4px;display:none}
+.st-list.open{display:block}
+.st-item{
+  font-size:11px;color:var(--text2);
+  padding:4px 0 4px 12px;border-left:2px solid var(--border);
+  margin-bottom:4px;line-height:1.4;
+}
+
+/* ── HIDDEN ──────────────────────────────────────────── */
+.card.hidden{display:none}
+.section.all-hidden{display:none}
+
+/* ── VIEW TABS ───────────────────────────────────────── */
+.view-tabs{display:flex;padding:12px var(--p) 0;gap:0}
+.view-tab{
+  padding:0 18px;height:34px;font-size:12px;font-weight:600;
+  border:1px solid var(--border);background:var(--surface);
+  color:var(--text2);cursor:pointer;line-height:34px;
+  transition:background .15s;
+}
+.view-tab:first-child{border-radius:8px 0 0 8px}
+.view-tab:last-child{border-radius:0 8px 8px 0;border-left:none}
+.view-tab.on{background:var(--surface2);color:var(--text);border-color:var(--border2)}
+
+/* ── PERSON VIEW ─────────────────────────────────────── */
+.person-section{padding:0 var(--p) 20px}
+.person-header{
+  display:flex;align-items:center;gap:8px;flex-wrap:wrap;
+  padding:10px 0 8px;margin-bottom:6px;
+  border-bottom:2px solid var(--border);
+  position:sticky;top:0;background:var(--bg);z-index:2;
+}
+.person-avatar{
+  width:28px;height:28px;border-radius:50%;
+  background:var(--blue-bg);border:1px solid #bee3f8;
+  display:flex;align-items:center;justify-content:center;
+  font-size:11px;font-weight:700;color:var(--blue);flex-shrink:0;
+}
+.person-name{font-size:14px;font-weight:700;color:var(--text);flex:1}
+.person-meta{font-size:11px;color:var(--text3)}
+.p-badge{font-size:10px;font-weight:700;padding:2px 8px;border-radius:20px;white-space:nowrap}
+.p-badge.red   {background:var(--red-bg);   color:var(--red)}
+.p-badge.yellow{background:var(--yellow-bg);color:var(--yellow)}
+.p-badge.green {background:var(--green-bg); color:var(--green)}
+
+.task-row{
+  display:flex;align-items:flex-start;gap:10px;
+  padding:8px 0 8px 14px;border-bottom:1px solid var(--border);
+  position:relative;
+}
+.task-row::before{
+  content:'';position:absolute;left:2px;top:14px;
+  width:7px;height:7px;border-radius:50%;flex-shrink:0;
+}
+.task-row.red   ::before,.task-row.red::before   {background:var(--red)}
+.task-row.yellow::before{background:var(--yellow)}
+.task-row.green ::before,.task-row.green::before {background:var(--green)}
+.task-row.orange::before{background:var(--orange)}
+.task-row:last-child{border-bottom:none}
+.task-name{flex:1;font-size:12px;color:var(--text);line-height:1.5}
+.task-dl{
+  font-size:11px;font-weight:600;flex-shrink:0;
+  white-space:nowrap;color:var(--text3);padding-top:1px;
+}
+.task-dl.urgent {color:var(--red)}
+.task-dl.warning{color:var(--yellow)}
+.task-dl.ok     {color:var(--green)}
+.people-empty{padding:40px var(--p);color:var(--text3);font-size:13px;text-align:center}
+
+/* ── EMAIL DRAWER ────────────────────────────────────── */
+.drw-overlay{
+  display:none;position:fixed;inset:0;background:rgba(0,0,0,.35);z-index:100;
+}
+.drw-overlay.open{display:block}
+.drw{
+  position:fixed;top:0;right:0;bottom:0;width:min(520px,100vw);
+  background:var(--surface);z-index:101;display:flex;flex-direction:column;
+  transform:translateX(100%);transition:transform .25s ease;
+  box-shadow:-4px 0 24px rgba(0,0,0,.12);
+}
+.drw.open{transform:translateX(0)}
+.drw-hdr{
+  padding:16px 20px;border-bottom:1px solid var(--border);
+  display:flex;align-items:flex-start;justify-content:space-between;gap:12px;
+  flex-shrink:0;
+}
+.drw-title{font-size:14px;font-weight:700;color:var(--text);line-height:1.4;flex:1}
+.drw-close{
+  flex-shrink:0;width:28px;height:28px;border-radius:6px;
+  border:1px solid var(--border);background:var(--surface2);
+  font-size:14px;line-height:28px;text-align:center;cursor:pointer;
+  color:var(--text2);margin-top:1px;
+}
+.drw-close:hover{background:var(--border)}
+.drw-body{flex:1;overflow-y:auto;padding:0}
+.drw-empty{padding:40px 20px;color:var(--text3);font-size:13px;text-align:center}
+.email-card{
+  border-bottom:1px solid var(--border);padding:16px 20px;
+}
+.email-card:last-child{border-bottom:none}
+.email-meta{display:flex;align-items:center;gap:8px;margin-bottom:6px;flex-wrap:wrap}
+.email-type{
+  font-size:10px;font-weight:700;padding:2px 7px;border-radius:4px;
+  text-transform:uppercase;letter-spacing:.5px;flex-shrink:0;
+}
+.email-type.directive{background:var(--blue-bg);color:var(--blue)}
+.email-type.reply{background:var(--green-dim);color:var(--green)}
+.email-date{font-size:11px;color:var(--text3);flex:1}
+.email-from{font-size:12px;font-weight:600;color:var(--text);margin-bottom:2px}
+.email-to{font-size:11px;color:var(--text3);margin-bottom:8px}
+.email-subject{font-size:12px;font-weight:600;color:var(--text2);margin-bottom:8px;font-style:italic}
+.email-body{
+  font-size:12px;color:var(--text2);line-height:1.6;
+  white-space:pre-wrap;word-break:break-word;
+  max-height:300px;overflow-y:auto;
+  background:var(--surface2);border-radius:6px;
+  padding:10px 12px;border:1px solid var(--border);
+}
+.email-body-toggle{
+  font-size:11px;color:var(--blue);cursor:pointer;margin-top:6px;
+  display:inline-block;
+}
+.email-card .email-body.collapsed{max-height:80px}
+
+/* view-email btn on card */
+.btn-emails{
+  display:inline-flex;align-items:center;gap:4px;
+  padding:4px 10px;height:26px;margin-top:9px;
+  background:var(--surface2);border:1px solid var(--border);
+  border-radius:5px;color:var(--text3);font-size:11px;
+  cursor:pointer;transition:background .15s;
+}
+.btn-emails:hover{background:var(--border);color:var(--text2)}
+
+/* ── FOOTER ──────────────────────────────────────────── */
+.footer{
+  padding:16px var(--p) 32px;
+  color:var(--text3);font-size:11px;
+  border-top:1px solid var(--border);margin-top:8px;
+}
+
+/* ── STATES ──────────────────────────────────────────── */
+.loading{display:flex;align-items:center;justify-content:center;height:60vh;color:var(--text3);font-size:14px}
+.err{color:var(--red);text-align:center;padding:40px;font-size:14px}
+
+/* ── TABLET 640+ ─────────────────────────────────────── */
+@media(min-width:640px){
+  :root{--p:24px}
+  .hdr{display:flex;align-items:flex-start;justify-content:space-between;padding:20px var(--p)}
+  .hdr-actions{margin-top:0}
+  .stats{grid-template-columns:repeat(5,1fr);padding:16px var(--p)}
+  .stat .n{font-size:24px}
+  .stat .l{font-size:10px}
+  .grid{grid-template-columns:repeat(2,1fr)}
+}
+
+/* ── DESKTOP 1024+ ───────────────────────────────────── */
+@media(min-width:1024px){
+  :root{--p:40px}
+  .hdr h1{font-size:20px}
+  .stats{gap:14px;padding:18px var(--p)}
+  .stat{padding:14px 18px}
+  .stat .n{font-size:26px}
+  .stat .l{font-size:11px}
+  .grid{grid-template-columns:repeat(auto-fill,minmax(360px,1fr))}
+  .card:hover{border-color:var(--border2);transform:translateY(-1px);transition:border-color .2s,transform .15s}
+}
 </style>
 </head>
 <body>
+<div id="root"><div class="loading">Loading…</div></div>
 
-<div id="root">
-  <div class="loading">Loading dashboard…</div>
+<!-- Email side drawer -->
+<div class="drw-overlay" id="drw-overlay" onclick="closeEmailDrawer()"></div>
+<div class="drw" id="email-drw">
+  <div class="drw-hdr">
+    <div class="drw-title" id="drw-title">Emails</div>
+    <div class="drw-close" onclick="closeEmailDrawer()">✕</div>
+  </div>
+  <div class="drw-body" id="drw-body"></div>
 </div>
 
 <script>
 const DATA_URL = './data.json';
-
 let allData = null;
-let activeFilter = 'all';
+let VIEW = 'directives';
+const F = { status:'all', deadline:'all', owner:'all', dept:'all' };
 
-const colorOrder = { red: 0, orange: 1, yellow: 2, green: 3 };
-const urgencyMap = { urgent: 'urgent', warning: 'warning', ok: 'ok' };
+const _MO = {jan:0,feb:1,mar:2,apr:3,may:4,jun:5,jul:6,aug:7,sep:8,oct:9,nov:10,dec:11};
 
-function formatDate(isoStr) {
-  if (!isoStr) return 'Unknown';
-  const d = new Date(isoStr);
-  return d.toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric', hour: '2-digit', minute: '2-digit' });
-}
-
-function renderCard(item) {
-  const deadlineHtml = item.deadline
-    ? `<span class="meta-item">📅 <span class="deadline ${item.deadlineUrgency || ''}">${item.deadline}</span></span>`
-    : '';
-  const emailDateHtml = item.emailDate
-    ? `<span class="meta-item">📧 ${item.emailDate}</span>`
-    : '';
-  const ownersHtml = item.owners.map(o => `<span class="owner-tag">${o}</span>`).join('');
-  const responseHtml = item.response
-    ? `<div class="response-text">${item.response}</div>`
-    : '';
-  const noReplyHtml = item.noReplyWarning
-    ? `<div class="no-reply">⚠ ${item.noReplyWarning}</div>`
-    : '';
-
-  return `
-    <div class="card ${item.color}" data-color="${item.color}" data-id="${item.id}">
-      <div class="card-header">
-        <div class="card-title">${item.title}</div>
-        <span class="badge ${item.color}">${item.statusLabel}</span>
-      </div>
-      <div class="meta">${deadlineHtml}${emailDateHtml}</div>
-      <div class="owners">${ownersHtml}</div>
-      <div class="progress-section">
-        <div class="progress-label">${item.progressLabel}</div>
-        <div class="progress-bar"><div class="progress-fill ${item.color}" style="width:${item.progress}%"></div></div>
-      </div>
-      ${responseHtml}${noReplyHtml}
-    </div>`;
-}
-
-function renderSection(section) {
-  const cards = section.items.map(renderCard).join('');
-  return `
-    <div class="section" data-section-id="${section.id}">
-      <div class="section-title">${section.title}</div>
-      <div class="grid">${cards}</div>
-    </div>`;
-}
-
-function applyFilter(filter) {
-  activeFilter = filter;
-  document.querySelectorAll('.filter-btn').forEach(b => {
-    b.classList.toggle('active', b.dataset.filter === filter);
-  });
-  document.querySelectorAll('.card').forEach(card => {
-    const color = card.dataset.color;
-    const show = filter === 'all' || color === filter;
-    card.classList.toggle('hidden', !show);
-  });
-  document.querySelectorAll('.section').forEach(section => {
-    const visibleCards = section.querySelectorAll('.card:not(.hidden)');
-    section.classList.toggle('all-hidden', visibleCards.length === 0);
-  });
-}
-
-function renderSheetLink(url) {
-  if (url) {
-    return `<a class="sheet-link" href="${url}" target="_blank" rel="noopener">📊 Google Sheet</a>`;
+function deadlineDateKey(item) {
+  if (!item.deadline) return 'none';
+  const m = item.deadline.match(/\b(jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec)[a-z]*\.?\s*(\d{1,2})\b/i);
+  if (m) {
+    const mo = _MO[m[1].toLowerCase().slice(0,3)];
+    const dy = parseInt(m[2]);
+    return new Date(2026, mo, dy).toLocaleDateString('en-GB', {day:'numeric', month:'short'});
   }
-  return `<span class="sheet-link-missing" title="Add googleSheetUrl to data.json">📊 Sheet: not linked</span>`;
+  return item.deadlineUrgency || 'other';
 }
 
-function renderDashboard(data) {
+function extractDeadlineDates(data) {
+  const seen = new Map();
+  data.sections.forEach(s => s.items.forEach(item => {
+    const key = deadlineDateKey(item);
+    if (key === 'none' || seen.has(key)) return;
+    let label, sort;
+    if (/\d/.test(key)) {
+      const parts = key.split(' ');
+      const mo = _MO[parts[1].toLowerCase().slice(0,3)] ?? 0;
+      sort = mo * 100 + parseInt(parts[0]);
+      label = key;
+    } else {
+      const U = {urgent:9901,warning:9902,ok:9903,other:9904};
+      sort = U[key] ?? 9905;
+      label = key === 'urgent' ? '🔴 Urgent' : key === 'warning' ? '🟡 Soon' : '🟢 Later';
+    }
+    seen.set(key, { label, sort });
+  }));
+  return [...seen.entries()]
+    .sort((a,b) => a[1].sort - b[1].sort)
+    .map(([key, {label}]) => ({ key, label }));
+}
+
+function isDept(sec) {
+  const id = sec.id.toLowerCase();
+  return !id.includes('critical') && !id.includes('acknowledged') && !id.includes('closed');
+}
+
+function fmt(iso) {
+  if (!iso) return '—';
+  return new Date(iso).toLocaleString('en-GB',{day:'numeric',month:'short',year:'numeric',hour:'2-digit',minute:'2-digit'});
+}
+
+function extractOwners(data) {
+  const seen = new Set(), out = [];
+  data.sections.forEach(s => s.items.forEach(item =>
+    item.owners.forEach(o => {
+      const k = o.replace(/\s*\([^)]*\)/g,'').trim();
+      if (k && !seen.has(k) && k !== 'All Team' && k !== 'All Leadership') {
+        seen.add(k); out.push(k);
+      }
+    })
+  ));
+  return out.sort((a,b) => a.localeCompare(b));
+}
+
+function ownerKey(o) { return o.replace(/\s*\([^)]*\)/g,'').trim(); }
+
+function deptLabel(title) {
+  return title
+    .replace(/^[^a-zA-Z]+/, '')
+    .replace(/\s*[—–].+$/, '')
+    .trim();
+}
+
+function cardHtml(item, sectionId) {
+  const dl = item.deadline
+    ? `<span class="mi">📅 <span class="dl ${item.deadlineUrgency||''}">${item.deadline}</span></span>` : '';
+  const ed = item.emailDate ? `<span class="mi">📧 ${item.emailDate}</span>` : '';
+  const ownersHtml = item.owners.map(o =>
+    `<span class="otag" data-ok="${ownerKey(o)}">${o}</span>`).join('');
+  const resp = item.response ? `<div class="rtext">${item.response}</div>` : '';
+  const noRep = item.noReplyWarning ? `<div class="noreply">⚠ ${item.noReplyWarning}</div>` : '';
+  const sheets = (item.sheetLinks||[]).length
+    ? `<div class="card-sheets">${item.sheetLinks.map(s =>
+        `<a class="slink" href="${s.url}" target="_blank" rel="noopener">📊 ${s.label}</a>`
+      ).join('')}</div>` : '';
+  const subs = (item.subTasks||[]).length
+    ? `<div class="subtasks">
+        <div class="st-toggle">▶ ${item.subTasks.length} sub-tasks</div>
+        <div class="st-list">${item.subTasks.map(t =>
+          `<div class="st-item">${t}</div>`).join('')}</div>
+      </div>` : '';
+
+  const relSubjects = (item.relatedSubjects||[]);
+  const emailsAttr = relSubjects.length
+    ? `data-subjects="${relSubjects.map(s => s.replace(/"/g,'&quot;')).join('||')}"`
+    : `data-subjects="${item.title.replace(/"/g,'&quot;')}"`;
+  const emailBtn = `<button class="btn-emails" ${emailsAttr} onclick="openEmailDrawer(this)">✉ View Emails</button>`;
+
+  return `<div class="card ${item.color}"
+    data-color="${item.color}"
+    data-dd="${deadlineDateKey(item)}"
+    data-owners="${item.owners.map(ownerKey).join(',')}"
+    data-dept="${sectionId}">
+    <div class="card-hdr">
+      <div class="card-title">${item.title}</div>
+      <span class="badge ${item.color}">${item.statusLabel}</span>
+    </div>
+    <div class="meta">${dl}${ed}</div>
+    <div class="owners">${ownersHtml}</div>
+    <div class="pbar-wrap">
+      <div class="plabel">${item.progressLabel}</div>
+      <div class="pbar"><div class="pfill ${item.color}" style="width:${item.progress}%"></div></div>
+    </div>
+    ${resp}${noRep}${sheets}${subs}${emailBtn}
+  </div>`;
+}
+
+function applyFilters() {
+  let vis = 0;
+  document.querySelectorAll('.card').forEach(c => {
+    const ok =
+      (F.status   === 'all' || c.dataset.color === F.status) &&
+      (F.deadline === 'all' || c.dataset.dd    === F.deadline) &&
+      (F.owner    === 'all' || c.dataset.owners.split(',').includes(F.owner)) &&
+      (F.dept     === 'all' || c.dataset.dept  === F.dept);
+    c.classList.toggle('hidden', !ok);
+    if (ok) vis++;
+  });
+  document.querySelectorAll('.section').forEach(s =>
+    s.classList.toggle('all-hidden',
+      s.querySelectorAll('.card:not(.hidden)').length === 0));
+
+  document.querySelectorAll('.otag').forEach(t =>
+    t.classList.toggle('hl', F.owner !== 'all' && t.dataset.ok === F.owner));
+
+  const tot = document.querySelectorAll('.card').length;
+  const el = document.getElementById('rc');
+  if (el) el.textContent = vis === tot ? `${tot} directives` : `${vis} of ${tot} directives shown`;
+
+  const activeCount = [F.status, F.deadline, F.owner, F.dept].filter(v => v !== 'all').length;
+  const cb = document.getElementById('clr');
+  if (cb) cb.style.display = activeCount ? '' : 'none';
+}
+
+function setF(type, val) {
+  F[type] = val;
+  document.querySelectorAll(`.chip[data-ft="${type}"]`).forEach(c =>
+    c.classList.toggle('on', c.dataset.v === val));
+  applyFilters();
+}
+
+function render(data) {
   const s = data.stats;
-  const lastUpdated = formatDate(data.meta.lastUpdated);
+  const owners = extractOwners(data);
 
-  const statsHtml = `
-    <div class="stats">
-      <div class="stat blue"><div class="num">${s.total}</div><div class="label">Total Directives</div></div>
-      <div class="stat green"><div class="num">${s.onTrack}</div><div class="label">On Track</div></div>
-      <div class="stat yellow"><div class="num">${s.inProgress}</div><div class="label">In Progress</div></div>
-      <div class="stat orange"><div class="num">${s.notedOnly}</div><div class="label">Only "Noted"</div></div>
-      <div class="stat red"><div class="num">${s.noResponse}</div><div class="label">No Response</div></div>
-    </div>`;
+  const sheetBtn = data.meta.googleSheetUrl
+    ? `<a class="btn btn-sheet" href="${data.meta.googleSheetUrl}" target="_blank" rel="noopener">📊 Sheet</a>`
+    : `<span class="btn btn-sheet-empty">📊 Sheet: not linked</span>`;
 
-  const filtersHtml = `
-    <div class="filters">
-      <span class="filter-label">Filter:</span>
-      <button class="filter-btn active" data-filter="all">All</button>
-      <button class="filter-btn" data-filter="red">🔴 At Risk</button>
-      <button class="filter-btn" data-filter="orange">🟠 Noted Only</button>
-      <button class="filter-btn" data-filter="yellow">🟡 In Progress</button>
-      <button class="filter-btn" data-filter="green">🟢 On Track</button>
-    </div>`;
+  const ownerChips = owners.map(o =>
+    `<button class="chip" data-ft="owner" data-v="${o}">${o}</button>`).join('');
 
-  const sectionsHtml = data.sections.map(renderSection).join('');
+  const deptChips = data.sections
+    .filter(isDept)
+    .map(sec => `<button class="chip" data-ft="dept" data-v="${sec.id}">${deptLabel(sec.title)}</button>`).join('');
 
-  const html = `
-    <div class="header">
-      <div class="header-left">
+  const dlDates = extractDeadlineDates(data);
+  const deadlineChips = dlDates.map(d =>
+    `<button class="chip" data-ft="deadline" data-v="${d.key}">${d.label}</button>`).join('');
+
+  document.getElementById('root').innerHTML = `
+    <div class="hdr">
+      <div>
         <h1>Manoj Tulsani — Directives &amp; Progress</h1>
-        <div class="subtitle">
-          <span class="last-updated">Last updated: ${lastUpdated}</span>
-          <span>· ${data.meta.source}</span>
-        </div>
+        <div class="sub">Updated: ${fmt(data.meta.lastUpdated)} · ${data.meta.source}</div>
       </div>
-      <div class="header-actions">
-        ${renderSheetLink(data.meta.googleSheetUrl)}
-        <button class="refresh-btn" onclick="refreshData()" id="refresh-btn">↻ Refresh</button>
+      <div class="hdr-actions">
+        ${sheetBtn}
+        <button class="btn btn-refresh" id="rfbtn">↻ Refresh</button>
       </div>
     </div>
-    ${statsHtml}
-    ${filtersHtml}
-    ${sectionsHtml}
-    <div class="footer">
-      <span>Rayna Tours PM Dashboard · Auto-refreshed daily via GitHub Actions</span>
-      <span>data.json · ${data.meta.source}</span>
-    </div>`;
 
-  document.getElementById('root').innerHTML = html;
+    <div class="stats">
+      <div class="stat c-blue">  <div class="n">${s.total}</div>   <div class="l">Total</div></div>
+      <div class="stat c-green"> <div class="n">${s.onTrack}</div>  <div class="l">On Track</div></div>
+      <div class="stat c-yellow"><div class="n">${s.inProgress}</div><div class="l">In Progress</div></div>
+      <div class="stat c-orange"><div class="n">${s.notedOnly}</div> <div class="l">Noted Only</div></div>
+      <div class="stat c-red">   <div class="n">${s.noResponse}</div><div class="l">No Response</div></div>
+    </div>
 
-  document.querySelectorAll('.filter-btn').forEach(btn => {
-    btn.addEventListener('click', () => applyFilter(btn.dataset.filter));
+    <div class="view-tabs">
+      <button class="view-tab ${VIEW==='directives'?'on':''}" id="view-tab-d" onclick="switchView('directives')">📋 By Directive</button>
+      <button class="view-tab ${VIEW==='people'?'on':''}"     id="view-tab-p" onclick="switchView('people')">👤 By Person</button>
+    </div>
+
+    <div id="directives-view" style="display:${VIEW==='directives'?'':'none'}">
+      <div class="filters">
+        <div class="frow">
+          <div class="flabel">Status</div>
+          <div class="chips">
+            <button class="chip on" data-ft="status" data-v="all">All</button>
+            <button class="chip" data-ft="status" data-v="red">🔴 At Risk</button>
+            <button class="chip" data-ft="status" data-v="orange">🟠 Noted Only</button>
+            <button class="chip" data-ft="status" data-v="yellow">🟡 In Progress</button>
+            <button class="chip" data-ft="status" data-v="green">🟢 On Track</button>
+          </div>
+        </div>
+        <div class="frow">
+          <div class="flabel">Deadline</div>
+          <div class="chips">
+            <button class="chip on" data-ft="deadline" data-v="all">All</button>
+            ${deadlineChips}
+            <button class="chip" data-ft="deadline" data-v="none">— No Deadline</button>
+          </div>
+        </div>
+        <div class="frow">
+          <div class="flabel">Department</div>
+          <div class="chips">
+            <button class="chip on" data-ft="dept" data-v="all">All Depts</button>
+            ${deptChips}
+          </div>
+        </div>
+        <div class="frow">
+          <div class="flabel">Person</div>
+          <div class="chips">
+            <button class="chip on" data-ft="owner" data-v="all">All People</button>
+            ${ownerChips}
+          </div>
+        </div>
+      </div>
+      <div class="result-bar">
+        <span class="result-count" id="rc">${s.total} directives</span>
+        <button class="clear-btn" id="clr" style="display:none" onclick="clearF()">Clear filters</button>
+      </div>
+      ${data.sections.map(sec => `
+        <div class="section" data-sid="${sec.id}">
+          <div class="section-title">${sec.title}</div>
+          <div class="grid">${sec.items.map(i => cardHtml(i, sec.id)).join('')}</div>
+        </div>`).join('')}
+    </div>
+
+    <div id="people-view" style="display:${VIEW==='people'?'':'none'}">
+      ${renderPeople(data)}
+    </div>
+
+    <div class="footer">Rayna Tours PM · Auto-refreshed daily · ${data.meta.source}</div>`;
+
+  // Event delegation for chips
+  document.querySelectorAll('.chip').forEach(chip => {
+    chip.addEventListener('click', () => setF(chip.dataset.ft, chip.dataset.v));
   });
+
+  // Sub-task toggles
+  document.querySelectorAll('.st-toggle').forEach(el => {
+    el.addEventListener('click', () => {
+      const list = el.nextElementSibling;
+      const open = list.classList.toggle('open');
+      el.textContent = (open ? '▼ ' : '▶ ') + el.textContent.slice(2);
+    });
+  });
+
+  // Refresh button
+  document.getElementById('rfbtn').addEventListener('click', load);
 }
 
-async function refreshData() {
-  const btn = document.getElementById('refresh-btn');
+function clearF() {
+  ['status','deadline','owner','dept'].forEach(t => setF(t,'all'));
+}
+
+function switchView(v) {
+  VIEW = v;
+  document.getElementById('view-tab-d').classList.toggle('on', v === 'directives');
+  document.getElementById('view-tab-p').classList.toggle('on', v === 'people');
+  document.getElementById('directives-view').style.display = v === 'directives' ? '' : 'none';
+  document.getElementById('people-view').style.display    = v === 'people'     ? '' : 'none';
+}
+
+function initials(name) {
+  return name.split(' ').map(w => w[0]).join('').slice(0,2).toUpperCase();
+}
+
+function renderPeople(data) {
+  const people = (data.people || []).filter(p => p.tasks && p.tasks.length);
+  if (!people.length) return '<div class="people-empty">No per-person data yet — will appear after next refresh.</div>';
+
+  const sorted = [...people].sort((a, b) => {
+    const aRed = a.tasks.filter(t => t.color === 'red').length;
+    const bRed = b.tasks.filter(t => t.color === 'red').length;
+    return bRed - aRed || b.tasks.length - a.tasks.length;
+  });
+
+  return sorted.map(person => {
+    const tasks = [...person.tasks].sort((a, b) => {
+      const o = {urgent:0, warning:1, ok:2};
+      return (o[a.deadlineUrgency]??3) - (o[b.deadlineUrgency]??3);
+    });
+    const redCount    = tasks.filter(t => t.color === 'red').length;
+    const yellowCount = tasks.filter(t => t.color === 'yellow').length;
+    const greenCount  = tasks.filter(t => t.color === 'green').length;
+    const badges = [
+      redCount    ? `<span class="p-badge red">${redCount} overdue</span>` : '',
+      yellowCount ? `<span class="p-badge yellow">${yellowCount} in progress</span>` : '',
+      greenCount  ? `<span class="p-badge green">${greenCount} done</span>` : '',
+    ].join('');
+    const taskRows = tasks.map(t => `
+      <div class="task-row ${t.color||''}">
+        <div class="task-name">${t.task}</div>
+        <div class="task-dl ${t.deadlineUrgency||''}">${t.deadline||'—'}</div>
+      </div>`).join('');
+
+    return `
+    <div class="person-section">
+      <div class="person-header">
+        <div class="person-avatar">${initials(person.name)}</div>
+        <div class="person-name">${person.name}</div>
+        <span class="person-meta">${tasks.length} task${tasks.length!==1?'s':''}</span>
+        ${badges}
+      </div>
+      <div class="person-tasks">${taskRows}</div>
+    </div>`;
+  }).join('');
+}
+
+function openEmailDrawer(btn) {
+  const subjects = btn.dataset.subjects.split('||').map(s => s.toLowerCase().trim());
+  const emails = (allData?.emails || []);
+
+  // Match emails where subject contains any of the relatedSubjects (or vice versa)
+  const matched = emails.filter(e => {
+    const esub = (e.subject || '').toLowerCase();
+    return subjects.some(s => esub.includes(s) || s.includes(esub.slice(0, 30)));
+  });
+
+  const title = btn.closest('.card').querySelector('.card-title').textContent;
+  document.getElementById('drw-title').textContent = title;
+
+  const body = document.getElementById('drw-body');
+  if (!matched.length) {
+    body.innerHTML = '<div class="drw-empty">No matching emails found in the current dataset.<br><small>Emails are stored after the next daily refresh.</small></div>';
+  } else {
+    body.innerHTML = matched.map((e, i) => {
+      const typeClass = e.type === 'DIRECTIVE' ? 'directive' : 'reply';
+      const dateStr = e.date ? new Date(e.date).toLocaleString('en-GB', {
+        day:'numeric', month:'short', year:'numeric', hour:'2-digit', minute:'2-digit'
+      }) : '';
+      const toLine = e.to ? `<div class="email-to">To: ${e.to}${e.cc ? ' · CC: ' + e.cc : ''}</div>` : '';
+      const bodyEsc = (e.body || '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+      const bodyId = `eb-${i}`;
+      return `
+      <div class="email-card">
+        <div class="email-meta">
+          <span class="email-type ${typeClass}">${e.type}</span>
+          <span class="email-date">${dateStr}</span>
+        </div>
+        <div class="email-from">${e.from || ''}</div>
+        ${toLine}
+        <div class="email-subject">${e.subject || ''}</div>
+        <div class="email-body collapsed" id="${bodyId}">${bodyEsc}</div>
+        <span class="email-body-toggle" onclick="toggleEmailBody('${bodyId}', this)">Show more</span>
+      </div>`;
+    }).join('');
+  }
+
+  document.getElementById('drw-overlay').classList.add('open');
+  document.getElementById('email-drw').classList.add('open');
+}
+
+function closeEmailDrawer() {
+  document.getElementById('drw-overlay').classList.remove('open');
+  document.getElementById('email-drw').classList.remove('open');
+}
+
+function toggleEmailBody(id, btn) {
+  const el = document.getElementById(id);
+  const collapsed = el.classList.toggle('collapsed');
+  btn.textContent = collapsed ? 'Show more' : 'Show less';
+}
+
+async function load() {
+  const btn = document.getElementById('rfbtn');
   if (btn) { btn.disabled = true; btn.textContent = '…'; }
   try {
     const res = await fetch(DATA_URL + '?t=' + Date.now());
     if (!res.ok) throw new Error('HTTP ' + res.status);
     allData = await res.json();
-    renderDashboard(allData);
-    applyFilter(activeFilter);
-  } catch (e) {
-    document.getElementById('root').innerHTML = `<div class="error-msg">Failed to load data.json<br><small>${e.message}</small></div>`;
+    render(allData);
+    applyFilters();
+  } catch(e) {
+    document.getElementById('root').innerHTML =
+      `<div class="err">Failed to load data.json<br><small>${e.message}</small></div>`;
   }
 }
 
-refreshData();
+load();
 </script>
-
 </body>
 </html>

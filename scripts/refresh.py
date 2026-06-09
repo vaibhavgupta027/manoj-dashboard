@@ -26,7 +26,8 @@ GMAIL_USER = os.environ.get("GMAIL_USER", "")
 GMAIL_PASS = os.environ.get("GMAIL_PASS", "")
 ANTHROPIC_API_KEY = os.environ.get("ANTHROPIC_API_KEY", "")
 FROM_FILTER = "manoj@raynatours.com"
-DAYS_BACK = 60
+DAYS_BACK_DIRECTIVE = 90
+DAYS_BACK_REPLY = 30
 DATA_JSON = os.path.join(os.path.dirname(__file__), "..", "data.json")
 
 
@@ -80,10 +81,12 @@ def get_body(msg):
             body = msg.get_payload(decode=True).decode("utf-8", errors="replace")
         except Exception:
             pass
-    return body[:4000]  # Truncate to avoid token overload
+    return body  # full body for directives; caller truncates replies
 
 
 def fetch_emails_from_manoj():
+    from datetime import timedelta
+
     user = os.environ.get("GMAIL_USER", "")
     pwd = os.environ.get("GMAIL_PASS", "")
     if not user or not pwd:
@@ -93,29 +96,67 @@ def fetch_emails_from_manoj():
     print(f"Connecting to IMAP as {user}…")
     mail = imaplib.IMAP4_SSL(IMAP_HOST, IMAP_PORT)
     mail.login(user, pwd)
-    mail.select("inbox")
 
-    from_date = (datetime.now() - __import__("timedelta", fromlist=["timedelta"]).__class__(days=DAYS_BACK)).strftime("%d-%b-%Y")
-
-    # Use timedelta properly
-    from datetime import timedelta
-    since_date = (datetime.now() - timedelta(days=DAYS_BACK)).strftime("%d-%b-%Y")
-
-    _, data = mail.search(None, f'(FROM "{FROM_FILTER}" SINCE "{since_date}")')
-    ids = data[0].split()
-    print(f"Found {len(ids)} emails from {FROM_FILTER} in last {DAYS_BACK} days.")
+    since90 = (datetime.now() - timedelta(days=DAYS_BACK_DIRECTIVE)).strftime("%d-%b-%Y")
+    since30 = (datetime.now() - timedelta(days=DAYS_BACK_REPLY)).strftime("%d-%b-%Y")
 
     emails = []
-    for eid in ids[-80:]:  # Cap at 80 most recent
+    seen_ids = set()
+
+    # ── Pass 1: Manoj's directives — search All Mail (includes archived) ──
+    mail.select('"[Gmail]/All Mail"')
+    _, data = mail.search(None, f'(FROM "{FROM_FILTER}" SINCE "{since90}")')
+    ids = data[0].split()
+    print(f"[Pass 1] Found {len(ids)} directives from {FROM_FILTER} in All Mail (last 90 days)")
+
+    for eid in ids[-100:]:  # most recent 100
+        if eid in seen_ids:
+            continue
+        seen_ids.add(eid)
         _, msg_data = mail.fetch(eid, "(RFC822)")
         raw = msg_data[0][1]
         msg = email.message_from_bytes(raw)
-        subject = decode_str(msg.get("Subject", ""))
-        date_str = msg.get("Date", "")
+        emails.append({
+            "type": "DIRECTIVE",
+            "subject": decode_str(msg.get("Subject", "")),
+            "date": msg.get("Date", ""),
+            "from": msg.get("From", ""),
+            "to": msg.get("To", ""),
+            "cc": msg.get("Cc", ""),
+            "body": get_body(msg),
+        })
+
+    # ── Pass 2: Team replies where Manoj is CC'd ──
+    _, data = mail.search(None, f'(CC "{FROM_FILTER}" SINCE "{since30}")')
+    ids = data[0].split()
+    print(f"[Pass 2] Found {len(ids)} replies with Manoj CC'd in All Mail (last 30 days)")
+
+    for eid in ids:
+        if eid in seen_ids:
+            continue
+        seen_ids.add(eid)
+        _, msg_data = mail.fetch(eid, "(RFC822)")
+        raw = msg_data[0][1]
+        msg = email.message_from_bytes(raw)
+        from_addr = msg.get("From", "").lower()
+        if FROM_FILTER in from_addr:
+            continue  # already captured in pass 1
         body = get_body(msg)
-        emails.append({"subject": subject, "date": date_str, "body": body})
+        emails.append({
+            "type": "REPLY",
+            "subject": decode_str(msg.get("Subject", "")),
+            "date": msg.get("Date", ""),
+            "from": msg.get("From", ""),
+            "to": msg.get("To", ""),
+            "cc": msg.get("Cc", ""),
+            "body": body[:8000],
+        })
+        if len(emails) >= 160:
+            break
 
     mail.logout()
+    emails.sort(key=lambda e: e["date"])
+    print(f"Total: {sum(1 for e in emails if e['type']=='DIRECTIVE')} directives + {sum(1 for e in emails if e['type']=='REPLY')} replies")
     return emails
 
 
@@ -138,78 +179,84 @@ def analyze_with_claude(emails):
     client = anthropic.Anthropic(api_key=api_key)
 
     emails_text = "\n\n---\n\n".join(
-        f"DATE: {e['date']}\nSUBJECT: {e['subject']}\n\n{e['body']}"
+        f"[{e['type']}] {e['date']} | FROM: {e['from']} | SUBJECT: {e['subject']}\n\n{e['body']}"
         for e in emails
+    )[:75000]
+
+    PROMPT_TEMPLATE = (
+        'You are a chief of staff. Analyse ALL emails from Manoj Tulsani (CEO, manoj@raynatours.com) to his team. '
+        '[DIRECTIVE] emails are his original briefs. [REPLY] emails are team responses — use them to determine status.\n\n'
+        'RULES:\n'
+        '- Extract EVERY distinct action directive — do NOT merge separate topics into one card\n'
+        '- One email with "Two New Partnership Tracks" = 2 separate items. "Two India Items" = 2 items.\n'
+        '- [REPLY] present for a thread = at minimum "IN PROGRESS" (yellow). No reply = "NO RESPONSE" (red).\n'
+        '- Aim for 35-50 items total across all sections.\n'
+        '- Include subTasks (3-6 bullet points) and sheetLinks (empty [] if none) on every item.\n'
+        '- For the "people" array: list EVERY person assigned ANY task, with ALL their tasks and exact deadlines.\n\n'
+        'Return ONLY valid JSON - no prose, no markdown fences:\n'
+        '{\n'
+        '  "stats": { "total": N, "onTrack": N, "inProgress": N, "notedOnly": N, "noResponse": N },\n'
+        '  "sections": [{ "id": "slug", "title": "emoji + section name", "items": [{\n'
+        '    "id": "kebab-slug",\n'
+        '    "title": "specific directive title",\n'
+        '    "statusLabel": "AT RISK|IN PROGRESS|ON TRACK|NO RESPONSE|ONLY NOTED|ACKNOWLEDGED|COMPLETED",\n'
+        '    "color": "red|yellow|green|orange",\n'
+        '    "deadline": "string or null",\n'
+        '    "deadlineUrgency": "urgent|warning|ok|null",\n'
+        '    "emailDate": "Mon DD",\n'
+        '    "owners": ["First name"],\n'
+        '    "progress": 0,\n'
+        '    "progressLabel": "one line on current state",\n'
+        '    "response": "summary of team reply or null",\n'
+        '    "noReplyWarning": "warning if no reply, else null",\n'
+        '    "subTasks": ["action 1", "action 2"],\n'
+        '    "sheetLinks": []\n'
+        '  }]}],\n'
+        '  "people": [{ "name": "First name", "tasks": [{\n'
+        '    "task": "specific task description",\n'
+        '    "deadline": "Jun DD or ASAP or TBD",\n'
+        '    "deadlineUrgency": "urgent|warning|ok|null",\n'
+        '    "color": "red|yellow|green|orange"\n'
+        '  }]}]\n'
+        '}\n\n'
+        'Color: red=no response/at risk, orange=noted only, yellow=in progress, green=on track/done.\n'
+        'Section IDs (use exactly): critical, tech-product, marketing-partnerships, pr-brand-content, operations-pricing, acknowledged-closed.\n'
+        'People: include Vaibhav, Asad, Aparna, Manish, Gaurav, Deepak, Malik, Anket, Azhar, Rishi, Nihad, Pari, Rajkumar, Ranjan, Alok, Senthil, Anwar and any others with tasks.\n\n'
+        'Emails:\n{emails_text}'
     )
-
-    prompt = f"""You are analysing emails sent by Manoj Tulsani (CEO of Rayna Tours, manoj@raynatours.com) to his team.
-
-Extract all ACTION DIRECTIVES and TASKS from these emails. For each directive, identify:
-- The specific task or directive
-- Who is assigned (owners)
-- Deadline if mentioned
-- Evidence of response from the team (any replies visible in the email thread)
-
-Return a JSON object with this exact structure:
-{{
-  "stats": {{
-    "total": <number>,
-    "onTrack": <number>,
-    "inProgress": <number>,
-    "notedOnly": <number>,
-    "noResponse": <number>
-  }},
-  "sections": [
-    {{
-      "id": "<slug>",
-      "title": "<emoji + section name>",
-      "items": [
-        {{
-          "id": "<kebab-slug>",
-          "title": "<directive title>",
-          "statusLabel": "<AT RISK|IN PROGRESS|ON TRACK|NO RESPONSE|ONLY NOTED|ACKNOWLEDGED|COMPLETED>",
-          "color": "<red|yellow|green|orange>",
-          "deadline": "<deadline string or null>",
-          "deadlineUrgency": "<urgent|warning|ok|null>",
-          "emailDate": "<date like 'Jun 7'>",
-          "owners": ["<name>"],
-          "progress": <0-100>,
-          "progressLabel": "<short progress note>",
-          "response": "<summary of team reply or null>",
-          "noReplyWarning": "<warning string if no response, else null>"
-        }}
-      ]
-    }}
-  ]
-}}
-
-Color rules:
-- red: no response, at risk, missed deadline
-- orange: only noted/acknowledged with no action
-- yellow: in progress, partial response
-- green: completed, on track, strong response
-
-Group into sections: Critical (urgent deadlines), Tech & Product, Marketing & Partnerships, PR/Brand/Content, Operations & Pricing, Acknowledged/Closed.
-
-Emails:
-{emails_text[:30000]}"""
+    prompt = PROMPT_TEMPLATE.replace('{emails_text}', emails_text)
 
     print("Sending to Claude for analysis…")
     message = client.messages.create(
         model="claude-opus-4-8",
-        max_tokens=8000,
+        max_tokens=16000,
         messages=[{"role": "user", "content": prompt}]
     )
 
     response_text = message.content[0].text
-    # Extract JSON from response
+
+    # Dump raw response for debugging
+    with open("/tmp/claude_response.txt", "w") as f:
+        f.write(response_text)
+
     match = re.search(r'\{[\s\S]*\}', response_text)
     if not match:
         print("ERROR: No JSON found in Claude response", file=sys.stderr)
         print(response_text[:500])
         sys.exit(1)
 
-    return json.loads(match.group())
+    raw = match.group()
+    try:
+        return json.loads(raw)
+    except json.JSONDecodeError as e:
+        print(f"JSON parse error: {e}", file=sys.stderr)
+        # Try to find and report the problem area
+        lines = raw.split('\n')
+        err_line = e.lineno - 1
+        context = '\n'.join(lines[max(0, err_line-2):err_line+3])
+        print(f"Context around error:\n{context}", file=sys.stderr)
+        print("Full response saved to /tmp/claude_response.txt", file=sys.stderr)
+        raise
 
 
 # ---------------------------------------------------------------------------
@@ -244,14 +291,29 @@ def main():
         except Exception:
             pass
 
+    emails_for_store = [
+        {
+            "type": e["type"],
+            "subject": e["subject"],
+            "date": e["date"],
+            "from": e["from"],
+            "to": e.get("to", ""),
+            "cc": e.get("cc", ""),
+            "body": e["body"] if e["type"] == "DIRECTIVE" else e["body"][:8000],
+        }
+        for e in emails
+    ]
+
     output = {
         "meta": {
             "lastUpdated": datetime.now(timezone.utc).isoformat(),
-            "source": f"Gmail · from:{FROM_FILTER}",
+            "source": f"Gmail · {sum(1 for e in emails if e.get('type')=='DIRECTIVE')} directives + {sum(1 for e in emails if e.get('type')=='REPLY')} replies",
             "googleSheetUrl": existing_sheet_url
         },
         "stats": analyzed.get("stats", {}),
-        "sections": analyzed.get("sections", [])
+        "sections": analyzed.get("sections", []),
+        "people": analyzed.get("people", []),
+        "emails": emails_for_store,
     }
 
     with open(data_path, "w") as f:
