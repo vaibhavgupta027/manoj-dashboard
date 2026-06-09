@@ -159,10 +159,11 @@ async function fetchEmails() {
     await client.logout();
   }
 
+  // Newest-first so truncation always cuts off oldest emails, never the most recent
   emails.sort((a, b) => {
     const da = a.date ? new Date(a.date).getTime() : 0;
     const db = b.date ? new Date(b.date).getTime() : 0;
-    return da - db;
+    return db - da;
   });
   return emails;
 }
@@ -173,9 +174,13 @@ async function analyzeWithClaude(emails) {
   const client = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY });
 
   const emailsText = emails
-    .map(e => `[${e.type}] ${e.date} | FROM: ${e.from} | TO: ${e.to} | CC: ${e.cc} | SUBJECT: ${e.subject}\n\n${e.body}`)
+    .map(e => {
+      const maxBody = e.type === 'REPLY' ? 1500 : 4000;
+      const body = (e.body || '').split('\n').filter(l => !l.trim().startsWith('>')).join('\n').trim().slice(0, maxBody);
+      return `[${e.type}] ${e.date} | FROM: ${e.from} | TO: ${e.to} | CC: ${e.cc} | SUBJECT: ${e.subject}\n\n${body}`;
+    })
     .join('\n\n---\n\n')
-    .slice(0, 95000);
+    .slice(0, 180000);
 
   const msg = await client.messages.create({
     model: 'claude-sonnet-4-6',

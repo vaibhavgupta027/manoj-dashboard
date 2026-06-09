@@ -187,7 +187,8 @@ def fetch_emails_from_manoj():
             return parsedate_to_datetime(d).astimezone(timezone.utc)
         except Exception:
             return datetime.min.replace(tzinfo=timezone.utc)
-    emails.sort(key=lambda e: _parse_date(e["date"]))
+    # Newest-first so truncation always cuts off oldest emails, never the most recent
+    emails.sort(key=lambda e: _parse_date(e["date"]), reverse=True)
     print(f"Total: {sum(1 for e in emails if e['type']=='DIRECTIVE')} directives + {sum(1 for e in emails if e['type']=='REPLY')} replies")
     return emails
 
@@ -218,9 +219,9 @@ def analyze_with_claude(emails):
 
     emails_text = "\n\n---\n\n".join(
         f"[{e['type']}] {e['date']} | FROM: {e['from']} | TO: {e.get('to','')} | CC: {e.get('cc','')} | SUBJECT: {e['subject']}\n\n"
-        + trim_body(e['body'], 3000 if e['type'] == 'REPLY' else 8000)
+        + trim_body(e['body'], 1500 if e['type'] == 'REPLY' else 4000)
         for e in emails
-    )[:100000]
+    )[:180000]
 
     PROMPT_TEMPLATE = (
         'You are a chief of staff. Analyse ALL emails from Manoj Tulsani (CEO, manoj@raynatours.com) to his team. '
