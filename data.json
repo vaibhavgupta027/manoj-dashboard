@@ -1,27 +1,27 @@
 {
   "meta": {
-    "lastUpdated": "2026-06-26T06:49:04.080049+00:00",
-    "source": "Gmail \u00b7 66 directives + 141 replies",
+    "lastUpdated": "2026-06-26T17:02:30.093158+00:00",
+    "source": "Gmail \u00b7 66 directives + 142 replies",
     "googleSheetUrl": ""
   },
   "stats": {
-    "total": 42,
+    "total": 48,
     "onTrack": 4,
-    "inProgress": 22,
-    "notedOnly": 2,
-    "noResponse": 14
+    "inProgress": 28,
+    "notedOnly": 3,
+    "noResponse": 13
   },
   "sections": [
     {
       "id": "critical",
-      "title": "\ud83d\udd34 Critical / At Risk",
+      "title": "\ud83d\udd34 Critical \u2014 App, Payments & Integrations",
       "items": [
         {
           "id": "app-go-live-uae",
-          "title": "Mobile App UAE Go-Live \u2014 Finalize Date & Unblock All Blockers",
+          "title": "Mobile App UAE Go-Live \u2014 QA, PCI Fix & Launch",
           "statusLabel": "AT RISK",
           "color": "red",
-          "deadline": "Jun 25 (original), now overdue",
+          "deadline": "Jun 26",
           "deadlineUrgency": "urgent",
           "emailDate": "Jun 10",
           "lastReplyDate": "Jun 19",
@@ -29,32 +29,33 @@
             "Gaurav",
             "Anwar"
           ],
-          "progress": 35,
-          "progressLabel": "QA agency (TestingXperts) finalized & MSA/SOW sent to Senthil for signature; PCI fix, visa selector, and store readiness still open",
-          "response": "Gaurav provided full Go/No-Go briefing (NO GO Jun 10). Realistic window late July\u2013mid August. TestingXperts selected at $11,500, MSA/SOW sent to Senthil for signature Jun 19. PCI tokenisation, visa date selector, double-charge protection still open.",
+          "progress": 40,
+          "progressLabel": "MSA/SOW signed with TestingXperts ($11,500); QA engagement underway. App not yet live \u2014 PCI, visa selector, double-charge protection still open.",
+          "response": "Gaurav confirmed NO GO for Jun 10. Realistic window late July\u2013mid August. TestingXperts MSA/SOW finalised Jun 19, start date Jun 22 targeting Jun 25 launch. Senthil asked to sign documents.",
           "noReplyWarning": null,
           "subTasks": [
-            "Senthil to sign MSA & SOW with TestingXperts immediately",
             "Resolve PCI exposure \u2014 move card collection to hosted/tokenised flow",
             "Fix visa travel-date selector",
-            "Add dropped-connection & double-charge protection",
-            "Confirm Network Int'l covers mobile in-app payments (Finance/Ops)",
-            "Confirm Google Play account is organisation not personal (Release/Eng)"
+            "Add dropped-connection and double-charge protection",
+            "Fix non-tappable policy links and store-readiness stubs",
+            "Confirm Network Int'l agreement covers mobile in-app payments",
+            "Confirm Google Play account is organisation not personal"
           ],
           "sheetLinks": [],
           "relatedSubjects": [
             "App Go-Live \u2014 Come and Meet Me | Gaurav + Anwar",
-            "RE: Please check if this is ok to go or u suggest some changes",
-            "App Launch \u2014 Revised Deadlines | Action Required",
+            "Re: App Launch \u2014 Revised Deadlines | Action Required",
+            "Re: RE: Please check if this is ok to go or u suggest some changes",
+            "Mobile App \u2014 UAE Launch: Go/No-Go & Recommended Plan (action needed this week)",
             "Action Required \u2014 Please Sign MSA & SOW | TestingXperts QA Engagement"
           ]
         },
         {
           "id": "bank-cc-bin-integrations",
-          "title": "Bank CC BIN Integrations \u2014 Tabby, ADCB, Shukran, Corporate Affiliates, App Sign-In",
+          "title": "Bank CC BIN Integrations \u2014 Tabby, ADCB, Shukran, 4 Signed Banks",
           "statusLabel": "AT RISK",
           "color": "red",
-          "deadline": "ASAP \u2014 banks actively following up",
+          "deadline": "ASAP",
           "deadlineUrgency": "urgent",
           "emailDate": "Jun 16",
           "lastReplyDate": "Jun 22",
@@ -63,29 +64,31 @@
             "Gaurav",
             "Azhar"
           ],
-          "progress": 15,
-          "progressLabel": "Azhar chased twice with no concrete dates; Vaibhav says Gaurav will share Tabby testing links 'this week' (week of Jun 22) \u2014 no other items confirmed",
-          "response": "Azhar sent three escalating chasers (Jun 16, Jun 18, Jun 22). Vaibhav replied Jun 22 saying Gaurav will share testing links this week. No timeline given for ADCB, Shukran, CC BIN, Corporate Affiliates, or App sign-in fix.",
+          "progress": 20,
+          "progressLabel": "Azhar has chased three times. Vaibhav confirmed Gaurav will share Tabby testing links this week (Jun 22). ADCB, Shukran and CC BIN status still unclear.",
+          "response": "Azhar flagged on Jun 16, 18, 22 with no complete resolution. Vaibhav replied Jun 22 saying Gaurav will share testing links this week.",
           "noReplyWarning": null,
           "subTasks": [
-            "Gaurav to share Tabby testing URL this week",
-            "Provide development status update for ADCB Touchpoints",
-            "Provide update on Shukran integration",
-            "Share current status of CC BIN integration for four signed bank partners",
-            "Provide Corporate Affiliates update",
+            "Share Tabby testing URL with Azhar (Gaurav \u2014 this week)",
+            "Provide ADCB Touchpoints development status update",
+            "Provide Shukran integration status update",
+            "Confirm CC BIN integration status for all four signed banks",
+            "Update Corporate Affiliates status",
             "Fix Rayna App sign-in issue"
           ],
           "sheetLinks": [],
           "relatedSubjects": [
-            "Deliverable Timelines Required: Bank CC BIN Integrations & Pending Items"
+            "Deliverable Timelines Required: Bank CC BIN Integrations & Pending Items",
+            "RE: Deliverable Timelines Required: Bank CC BIN Integrations & Pending Items",
+            "Re: Deliverable Timelines Required: Bank CC BIN Integrations & Pending Items"
           ]
         },
         {
-          "id": "reservation-ai-platform-anwar-assessment",
-          "title": "Reservation AI Platform \u2014 Anwar Independent CTO Assessment",
+          "id": "reservation-ai-platform-independent-assessment",
+          "title": "Reservation AI Platform \u2014 Anwar Independent Assessment (Delivery vs Payment)",
           "statusLabel": "AT RISK",
           "color": "red",
-          "deadline": "Jun 12 (Thursday after directive)",
+          "deadline": "Jun 12",
           "deadlineUrgency": "urgent",
           "emailDate": "Jun 09",
           "lastReplyDate": null,
@@ -93,16 +96,16 @@
             "Anwar"
           ],
           "progress": 0,
-          "progressLabel": "No response received from Anwar to CEO's detailed 6-point assessment request",
+          "progressLabel": "Manoj asked Anwar for written independent CTO assessment by Thursday Jun 12. No reply found in thread.",
           "response": null,
-          "noReplyWarning": "NO REPLY from Anwar \u2014 deadline was Jun 12, now 14 days overdue. CTO assessment on AI platform payment release is completely blocked.",
+          "noReplyWarning": "\u26a0\ufe0f No response from Anwar. Deadline Jun 12 is past \u2014 assessment overdue.",
           "subTasks": [
-            "Assess whether build-side delays are fairly attributed vs Rayna-side gaps",
-            "Identify owner and completion date for catalog data (217 no search enrichment, 143 no price, 449 no R-Points)",
-            "Confirm who will be assigned as product lead, business-rules owner, and UAT booking agents",
-            "State realistic live-and-tested dates for booking, visa, and payment flows",
-            "Provide data pipeline automation plan for scaling to 137 cities",
-            "Give honest payment release recommendation to Manoj"
+            "Assess whether vendor report accurately attributes delays to Rayna-side inputs",
+            "Clarify ownership of catalog data (217 tours no search enrichment, 143 no price, 449 no R-Points)",
+            "Identify who will be product lead, business-rules owner, and UAT booking agents",
+            "Confirm realistic live-and-tested dates for booking, visa and payment flows",
+            "Provide plan for automating data pipeline at scale (137 cities)",
+            "Give honest recommendation on whether next milestone payment is justified"
           ],
           "sheetLinks": [],
           "relatedSubjects": [
@@ -110,96 +113,83 @@
           ]
         },
         {
-          "id": "my-bookings-tasks-decision",
-          "title": "My Bookings \u2014 5 On-Hold Tasks: Resume or Close Decision Required",
+          "id": "my-bookings-on-hold-decision",
+          "title": "My Bookings Feature \u2014 5 On-Hold Tasks Require Decision",
           "statusLabel": "AT RISK",
           "color": "red",
-          "deadline": "ASAP \u2014 flagged Jun 18",
+          "deadline": "ASAP",
           "deadlineUrgency": "urgent",
           "emailDate": "Jun 18",
           "lastReplyDate": null,
           "owners": [
-            "Adnan",
-            "Vaibhav"
+            "Vaibhav",
+            "Adnan"
           ],
           "progress": 0,
-          "progressLabel": "5 tasks on hold with no decision; Vaibhav flagged to Adnan and Manoj \u2014 no response from either",
+          "progressLabel": "Vaibhav flagged 5 on-hold tasks (My Bookings info, Driver details, Pick-up location, Date change, Passenger cart) to Adnan and Manoj. No decision reply found.",
           "response": null,
-          "noReplyWarning": "NO REPLY from Adnan or Manoj \u2014 decision on resuming or closing My Bookings tasks is pending and blocking dev team.",
+          "noReplyWarning": "\u26a0\ufe0f No response from Adnan or Manoj on whether to resume or close these tasks.",
           "subTasks": [
-            "Decide: resume or close 'My bookings \u2014 information for users' (Urgent, ClickUp 86d1zvc0u)",
-            "Decide: resume or close 'Driver details in my bookings' (ClickUp 86d20wbmr)",
-            "Decide: resume or close 'Update pick-up location' (ClickUp 86d20wbqd)",
-            "Decide: resume or close 'Date change in my bookings' (ClickUp 86d20wbr2)",
-            "Decide: resume or close 'Passenger cart' (Urgent, ClickUp 86d2n1wbx)",
-            "Confirm timeline to resume if approved"
+            "Decide on My Bookings \u2014 information for users (urgent, on hold)",
+            "Decide on Driver details in My Bookings",
+            "Decide on Update pick-up location",
+            "Decide on Date change in My Bookings",
+            "Decide on Passenger cart (urgent, on hold)",
+            "Confirm timeline to resume or formally close each task"
           ],
-          "sheetLinks": [],
+          "sheetLinks": [
+            "https://app.clickup.com/t/86d1zvc0u",
+            "https://app.clickup.com/t/86d20wbmr",
+            "https://app.clickup.com/t/86d20wbqd",
+            "https://app.clickup.com/t/86d20wbr2",
+            "https://app.clickup.com/t/86d2n1wbx"
+          ],
           "relatedSubjects": [
             "My Bookings tasks \u2014 on hold, need a decision"
           ]
         },
         {
-          "id": "rajkumar-competitive-pricing-report",
-          "title": "Rajkumar \u2014 Competitive Pricing Report Top 20 Products",
+          "id": "antino-payment-overdue",
+          "title": "Antino Technologies \u2014 AED 119,112 Outstanding Invoices",
           "statusLabel": "AT RISK",
           "color": "red",
-          "deadline": "Jun 08",
+          "deadline": "ASAP",
           "deadlineUrgency": "urgent",
-          "emailDate": "Jun 08",
+          "emailDate": "Jun 09",
           "lastReplyDate": null,
           "owners": [
-            "Rajkumar"
+            "Vaibhav",
+            "Gaurav"
           ],
           "progress": 0,
-          "progressLabel": "Deadline was Jun 8 \u2014 18 days overdue. No report submitted and no extension requested.",
+          "progressLabel": "Vaibhav forwarded overdue invoices (Feb\u2013Apr 2026, AED 119,112) to Bhushan/Tarzan/Prateek. No reply confirming payment action.",
           "response": null,
-          "noReplyWarning": "NO REPLY from Rajkumar \u2014 report is 18 days past due with zero communication.",
+          "noReplyWarning": "\u26a0\ufe0f No confirmation from finance team. Invoices overdue since March 2026.",
           "subTasks": [
-            "Submit competitive pricing comparison for top 20 products",
-            "Cover Dubai, UAE, Saudi, and Global markets",
-            "If unable to deliver, formally request extension with new date and reason",
-            "Share findings with Alok for content/pricing alignment"
+            "Confirm payment status of Feb invoice AED 28,310 (due Mar 7)",
+            "Confirm payment status of Mar invoice AED 35,232 (due Apr 3)",
+            "Confirm payment status of Apr invoice AED 17,616 (due Apr 23)",
+            "Confirm payment status of Apr invoice AED 37,954 (due May 4)",
+            "Bhushan/Tarzan/Prateek to revert with payment timeline",
+            "Clear total AED 119,112 outstanding balance"
           ],
           "sheetLinks": [],
           "relatedSubjects": [
-            "Deadline Ownership \u2014 Action Required Today | Rajkumar, Alok, Ranjan"
+            "Fwd: April Invoice - 24ANT-0053 from Antino Technologies CO. L.L.C"
           ]
-        },
+        }
+      ]
+    },
+    {
+      "id": "tech-product",
+      "title": "\u2699\ufe0f Tech & Product",
+      "items": [
         {
-          "id": "ranjan-inder-thakral-settlement",
-          "title": "Ranjan \u2014 Inder Thakral F&F Settlement Response to Pari",
+          "id": "block3-email-campaigns-ws1",
+          "title": "Block 3 WS1 \u2014 Email Campaigns AI Go-Live",
           "statusLabel": "AT RISK",
           "color": "red",
-          "deadline": "Jun 08 (urgent)",
-          "deadlineUrgency": "urgent",
-          "emailDate": "Jun 08",
-          "lastReplyDate": "Jun 11",
-          "owners": [
-            "Ranjan"
-          ],
-          "progress": 10,
-          "progressLabel": "Ranjan replied Jun 11 only on India B2C \u2014 no specific response to Inder Thakral settlement. Pari still awaiting inputs from India office as of Jun 10.",
-          "response": "Pari requested until Friday Jun 13 to compile status, citing pending details from India office. Ranjan's Jun 11 reply was on B2C topic only \u2014 no direct acknowledgment of settlement case.",
-          "noReplyWarning": "Ranjan has not directly addressed the Inder Thakral case \u2014 employee has been waiting 8+ months, has escalated to Maharashtra Labour Commissioner and MOHRE.",
-          "subTasks": [
-            "Ranjan to provide all required inputs to Pari for Inder Thakral F&F settlement",
-            "Pari to compile complete status report and share with Manoj",
-            "If settlement is being withheld, provide written explanation of reason and amount",
-            "Resolve case to avoid further regulatory escalation"
-          ],
-          "sheetLinks": [],
-          "relatedSubjects": [
-            "Deadline Ownership \u2014 Action Required Today | Rajkumar, Alok, Ranjan",
-            "Employee Communication Policy \u2014 No Email Should Go Unanswered"
-          ]
-        },
-        {
-          "id": "block3-email-campaigns-ws1-golive",
-          "title": "Block 3 WS1 \u2014 Email Campaigns Go-Live",
-          "statusLabel": "AT RISK",
-          "color": "red",
-          "deadline": "Jun 26\u201327",
+          "deadline": "Jun 27",
           "deadlineUrgency": "urgent",
           "emailDate": "Jun 08",
           "lastReplyDate": "Jun 17",
@@ -208,85 +198,21 @@
             "Vaibhav"
           ],
           "progress": 60,
-          "progressLabel": "Malik confirmed target Jun 26\u201327; existing email infrastructure ready; AI capabilities and segments/journeys being layered in \u2014 TODAY is the deadline",
-          "response": "Malik replied Jun 17 confirming email target 26\u201327 June. WhatsApp & SMS to follow by Jun 30. Email infrastructure ready; AI layer in progress.",
+          "progressLabel": "Malik confirmed email infrastructure ready, AI capabilities and journeys being layered in. Target Jun 26\u201327. TODAY is Jun 26 \u2014 no completion confirmation received.",
+          "response": "Malik replied Jun 17: email campaigns target Jun 26\u201327, WhatsApp/SMS target Jun 30.",
           "noReplyWarning": null,
           "subTasks": [
-            "Complete AI capability layer on top of existing email infrastructure",
-            "Finalize all segments and journeys in platform",
-            "Test end-to-end email sends before go-live",
-            "Confirm go-live today Jun 26 or update with revised date",
-            "Prepare WhatsApp & SMS for Jun 30 target"
+            "Complete AI capability layering on existing email infrastructure",
+            "Build and activate segments and journeys",
+            "Confirm email campaigns fully live by Jun 27",
+            "Ensure all 14 omnichannel segments are configured",
+            "Test end-to-end send/track/report loop",
+            "Update master sheet with live status"
           ],
           "sheetLinks": [],
           "relatedSubjects": [
-            "Block 3 \u2014 Complete Scope | Three Workstreams + Affiliate Social Feature | Vaibhav + Malik",
-            "Block 3 \u2014 WS1 & WS3 Go-Live Timelines \u2013 Updated Deadlines"
-          ]
-        },
-        {
-          "id": "design-pendencies-asad-blocking-dev",
-          "title": "Design Pendencies \u2014 Asad Action Required (Blocking Development)",
-          "statusLabel": "AT RISK",
-          "color": "red",
-          "deadline": "ASAP \u2014 flagged Jun 19",
-          "deadlineUrgency": "urgent",
-          "emailDate": "Jun 19",
-          "lastReplyDate": null,
-          "owners": [
-            "Asad"
-          ],
-          "progress": 5,
-          "progressLabel": "Vaibhav flagged 5 design blockers to Asad \u2014 Google Pay branding unresolved 28+ days, no Figma screens for Driver Details, Holidays email task unanswered",
-          "response": null,
-          "noReplyWarning": "NO REPLY from Asad \u2014 multiple dev tasks blocked. Google Pay compliance resubmission blocked 28+ days.",
-          "subTasks": [
-            "Clarify correct design/flow for New Design Changes in Figma (ClickUp 86d1ncff1)",
-            "Share Figma screens for Driver Details in My Bookings (ClickUp 86d20wbmr)",
-            "Update Holidays email task in ClickUp (86d2n1ud9) \u2014 multiple follow-ups unanswered",
-            "Follow up with Bhavik on Google Pay Mark & Button branding errors (ClickUp 86d2ujhcv) \u2014 blocking Google compliance",
-            "Follow up with Bhavik on Holidays & Cruises New Detail Page design"
-          ],
-          "sheetLinks": [],
-          "relatedSubjects": [
-            "Design Pendency \u2014 Action Required"
-          ]
-        }
-      ]
-    },
-    {
-      "id": "tech-product",
-      "title": "\ud83d\udcbb Tech & Product",
-      "items": [
-        {
-          "id": "block3-social-media-automation-ws3",
-          "title": "Block 3 WS3 \u2014 Social Media Automation Go-Live",
-          "statusLabel": "IN PROGRESS",
-          "color": "yellow",
-          "deadline": "Jun 30",
-          "deadlineUrgency": "urgent",
-          "emailDate": "Jun 08",
-          "lastReplyDate": "Jun 17",
-          "owners": [
-            "Malik",
-            "Vaibhav"
-          ],
-          "progress": 40,
-          "progressLabel": "Week 1 incremental testing of existing codebase underway; Week 2 template buildout and integration planned; target Jun 30",
-          "response": "Malik confirmed Jun 30 target. Week 1 testing codebase stability; Week 2 template buildout and integration. On track per Malik's Jun 17 update.",
-          "noReplyWarning": null,
-          "subTasks": [
-            "Complete Week 1 codebase testing and stabilization",
-            "Execute Week 2 template buildout and integration",
-            "Sort PostForMe.dev configuration (Anket to assist Gaurav)",
-            "Complete product feed to affiliate templates pipeline",
-            "Add OpenAI description/hashtag generation for posts",
-            "Test affiliate UTM link tracking end to end"
-          ],
-          "sheetLinks": [],
-          "relatedSubjects": [
-            "Block 3 \u2014 Complete Scope | Three Workstreams + Affiliate Social Feature | Vaibhav + Malik",
-            "Block 3 \u2014 WS1 & WS3 Go-Live Timelines \u2013 Updated Deadlines"
+            "Re: Block 3 \u2014 WS1 & WS3 Go-Live Timelines \u2013 Updated Deadlines",
+            "Block 3 \u2014 Complete Scope | Three Workstreams + Affiliate Social Feature | Vaibhav + Malik"
           ]
         },
         {
@@ -302,28 +228,66 @@
             "Malik",
             "Vaibhav"
           ],
-          "progress": 30,
-          "progressLabel": "Additional testing required; target Jun 30 following email go-live",
-          "response": "Malik confirmed WhatsApp & SMS target Jun 30, following email. Additional testing required before these channels go live.",
+          "progress": 40,
+          "progressLabel": "Requires additional testing after email goes live. Target Jun 30.",
+          "response": "Malik confirmed WhatsApp and SMS require additional testing, target Jun 30.",
           "noReplyWarning": null,
           "subTasks": [
             "Complete additional testing for WhatsApp channel",
             "Complete additional testing for SMS channel",
-            "Integrate with existing segmentation and journey logic",
-            "Verify compliance and opt-out mechanisms",
-            "Go live by Jun 30"
+            "Integrate with AI capabilities and segment journeys",
+            "Validate delivery rates and opt-out compliance",
+            "Go live by Jun 30",
+            "Update master tracking sheet"
           ],
           "sheetLinks": [],
           "relatedSubjects": [
-            "Block 3 \u2014 WS1 & WS3 Go-Live Timelines \u2013 Updated Deadlines"
+            "Re: Block 3 \u2014 WS1 & WS3 Go-Live Timelines \u2013 Updated Deadlines",
+            "Block 3 \u2014 Complete Scope | Three Workstreams + Affiliate Social Feature | Vaibhav + Malik"
           ]
         },
         {
-          "id": "affiliate-social-autoposting-ws2",
-          "title": "Block 3 WS2 \u2014 Affiliate Social Auto-Posting Feature",
+          "id": "block3-social-media-automation-ws3",
+          "title": "Block 3 WS3 \u2014 Social Media Automation Go-Live",
           "statusLabel": "IN PROGRESS",
           "color": "yellow",
-          "deadline": "Aug 24 (Sep launch buffer)",
+          "deadline": "Jun 30",
+          "deadlineUrgency": "urgent",
+          "emailDate": "Jun 08",
+          "lastReplyDate": "Jun 17",
+          "owners": [
+            "Malik",
+            "Anket",
+            "Vaibhav"
+          ],
+          "progress": 45,
+          "progressLabel": "Week 1 incremental testing and codebase stabilisation underway; Week 2 template buildout and integration. Target Jun 30.",
+          "response": "Malik confirmed WS3 on track for Jun 30. Vaibhav flagged PostForMe.dev configuration pending \u2014 Anket to help Gaurav.",
+          "noReplyWarning": null,
+          "subTasks": [
+            "Complete incremental testing and codebase stabilisation (Week 1)",
+            "Build out templates and complete integrations (Week 2)",
+            "Configure PostForMe.dev with Anket's help",
+            "Connect product feed to affiliate social templates",
+            "Add AI description/hashtag generation via OpenAI",
+            "Go live by Jun 30"
+          ],
+          "sheetLinks": [
+            "https://app.clickup.com/t/86d2wmrnp",
+            "https://app.clickup.com/t/86d1x0xv4"
+          ],
+          "relatedSubjects": [
+            "Re: Block 3 \u2014 WS1 & WS3 Go-Live Timelines \u2013 Updated Deadlines",
+            "Re: Block 3 \u2014 Complete Scope | Three Workstreams + Affiliate Social Feature | Vaibhav + Malik",
+            "Block 3 \u2014 Complete Scope | Three Workstreams + Affiliate Social Feature | Vaibhav + Malik"
+          ]
+        },
+        {
+          "id": "block3-affiliate-social-autoposting",
+          "title": "Block 3 \u2014 Affiliate Social Auto-Posting Feature (AI Layer)",
+          "statusLabel": "IN PROGRESS",
+          "color": "yellow",
+          "deadline": "Aug 24",
           "deadlineUrgency": "ok",
           "emailDate": "Jun 08",
           "lastReplyDate": "Jun 11",
@@ -333,30 +297,30 @@
             "Anket"
           ],
           "progress": 50,
-          "progressLabel": "~50% built \u2014 account connection, token storage, scheduling, publishing, analytics exist; AI content engine, brand compliance, autonomous scheduler must be built",
-          "response": "Gaurav provided detailed plan Jun 9: half-built already (connect, token vault, schedule, analytics, commission tracking). Needs 4 devs at 100% + 1 QA + full month DevOps from Jun 16\u2013Aug 24. Vaibhav pushed back on Jul/Aug timeline \u2014 end of June only acceptable per Manoj.",
+          "progressLabel": "Gaurav confirmed ~50% built (account connect, token vault, scheduling, analytics exist). Remaining: AI content engine, brand compliance layer, autonomous scheduler. Needs 4 devs + QA for 10 weeks.",
+          "response": "Gaurav shared detailed plan Jun 9. Vaibhav pushed back on Jul/Aug timeline, insisting end of June. Gaurav plan shows aggressive target ~Jul 25 (IG+FB with human approvals). Full autopilot by Sep.",
           "noReplyWarning": null,
           "subTasks": [
-            "Resolve PostForMe.dev configuration (Anket to assist)",
-            "Build AI content engine for brand-safe personalised posts",
-            "Build audience profiling and niche matching",
-            "Build autonomous 'posts-forever' scheduler",
-            "Build brand-compliance admin panel with kill-switch",
-            "Sync product feed to affiliate templates (Service > Country > City)"
+            "Build AI content engine (no AI code today)",
+            "Implement audience profiling and niche matching",
+            "Build autonomous posts-forever scheduler",
+            "Add brand-compliance admin and kill-switch",
+            "Implement product-feed sync and consent ledger",
+            "Create production path and test coverage"
           ],
           "sheetLinks": [],
           "relatedSubjects": [
-            "Block 3 \u2014 Complete Scope | Three Workstreams + Affiliate Social Feature | Vaibhav + Malik",
-            "Re: Block 3 \u2014 Complete Scope | Three Workstreams + Affiliate Social Feature | Vaibhav + Malik"
+            "Re: Block 3 \u2014 Complete Scope | Three Workstreams + Affiliate Social Feature | Vaibhav + Malik",
+            "Block 3 \u2014 Complete Scope | Three Workstreams + Affiliate Social Feature | Vaibhav + Malik"
           ]
         },
         {
           "id": "hotel-reservation-ai-agent",
-          "title": "Hotel Reservation AI Agent \u2014 Scope & Build",
+          "title": "Hotel Reservation AI Agent \u2014 Scope, Build & Timeline",
           "statusLabel": "IN PROGRESS",
           "color": "yellow",
-          "deadline": "TBD \u2014 timeline by mid-next week (from Jun 12)",
-          "deadlineUrgency": "urgent",
+          "deadline": "TBD",
+          "deadlineUrgency": "null",
           "emailDate": "Jun 10",
           "lastReplyDate": "Jun 12",
           "owners": [
@@ -365,16 +329,16 @@
             "Senthil"
           ],
           "progress": 20,
-          "progressLabel": "Scoping meeting held Jun 10; Rumy working on unified FIT/GIT/online dashboard; timeline promised by mid-next week (was Jun 17) \u2014 no timeline received yet",
-          "response": "Rumy confirmed working on project, aligning rules, developing unified dashboard. Timeline to be provided mid-next week. Senthil summarized: Rumy + Adnan to automate hotel operations via agents.",
+          "progressLabel": "Scoping meeting held Jun 10. Rumy working on unified dashboard (FIT/GIT/online), identifying resource-heavy areas. Timeline promised by mid-next-week (of Jun 12). Has not tried latest Claude Fable model yet.",
+          "response": "Rumy confirmed working on project, aligning rules, will provide timeline by mid-next-week. Replied Jun 12 to Manoj's Claude Fable question: 'Not yet, will try and keep you appraised.'",
           "noReplyWarning": null,
           "subTasks": [
-            "Rumy to provide firm timeline for hotel operations automation via agents",
-            "Define scope: FIT, GIT, and online bookings unified dashboard",
-            "Identify key areas consuming significant human resources",
-            "Align with Adnan on automation rules and workflow",
-            "Explore Claude Fable (latest version) for contract reading capability",
-            "Confirm dependency on hotel integration completion on raynatours.com"
+            "Define end-to-end hotel reservation agent scope",
+            "Rumy to provide formal build timeline",
+            "Test latest Claude Fable model for hotel operations automation",
+            "Align with Adnan on automation of hotel operations",
+            "Identify key resource-heavy areas for automation",
+            "Connect agent to booking confirmations and escalation paths"
           ],
           "sheetLinks": [],
           "relatedSubjects": [
@@ -388,24 +352,24 @@
           "statusLabel": "IN PROGRESS",
           "color": "yellow",
           "deadline": "TBD",
-          "deadlineUrgency": "urgent",
+          "deadlineUrgency": "null",
           "emailDate": "Jun 10",
           "lastReplyDate": "Jun 12",
           "owners": [
             "Manish",
             "Senthil"
           ],
-          "progress": 10,
-          "progressLabel": "Manish tasked to explore new method of automating hotel contracting; scoping meeting held Jun 10; no timeline yet",
-          "response": "Senthil summarized meeting: Manish to explore new method of automating hotel contracting and come back with results. No timeline provided yet.",
+          "progress": 15,
+          "progressLabel": "Scoping meeting held Jun 10. Manish tasked to explore new method of automating hotel contracting and return with results. No timeline confirmed yet.",
+          "response": "Senthil summarised meeting: Manish to explore new contracting automation method and come back with results.",
           "noReplyWarning": null,
           "subTasks": [
-            "Manish to explore new method of automating hotel contracting",
-            "Test Claude function calling for reading unstructured contract documents",
+            "Manish to explore AI-based hotel contract automation method",
+            "Leverage Claude function calling for unstructured contract documents",
             "Define fields to extract: rates, terms, payment conditions, validity dates",
-            "Assess feasibility of writing directly to supplier database",
-            "Come back with results and proposed build timeline",
-            "Confirm if latest Claude Fable version has been tested"
+            "Build data write path into supplier master database",
+            "Return results and proposed build plan to Senthil",
+            "Confirm timeline and go-live date"
           ],
           "sheetLinks": [],
           "relatedSubjects": [
@@ -414,58 +378,115 @@
           ]
         },
         {
-          "id": "reservation-ai-ux-flow-asad",
+          "id": "reservation-agent-ux-flow",
           "title": "Reservation Agent \u2014 End-to-End UX Flow (Mobile + Desktop)",
-          "statusLabel": "IN PROGRESS",
-          "color": "yellow",
-          "deadline": "Jun 16 (Monday after directive)",
-          "deadlineUrgency": "urgent",
-          "emailDate": "Jun 14",
-          "lastReplyDate": "Jun 10",
-          "owners": [
-            "Asad"
-          ],
-          "progress": 40,
-          "progressLabel": "Asad was working on chatbot research and 6-service smart workflows (submitted Jun 10); Manoj confirmed Asad working on end-to-end UX flow due Monday Jun 16 \u2014 no completion confirmation received",
-          "response": "Asad submitted comprehensive AI chatbot research and 6-service workflow architecture on Jun 10. Manoj's Jun 14 directive states Asad 'will finish by Monday.' No Monday completion confirmation in thread.",
-          "noReplyWarning": null,
-          "subTasks": [
-            "Complete full mobile and desktop customer journey across all services",
-            "Cover discovery, booking, cancellations, My Bookings, and general customer questions",
-            "Deliver UX flow document by committed Monday deadline",
-            "Coordinate with Gaurav on front-end implementation",
-            "Align with brand guidelines for giveaway front-end design"
-          ],
-          "sheetLinks": [],
-          "relatedSubjects": [
-            "Updates \u2014 Reservation flow, Follow-up Agent, Giveaway, Event Tech, Transfer Module",
-            "Rayna Tours AI Chatbot \u2014 Complete Research Findings & 6-Service Smart Workflows"
-          ]
-        },
-        {
-          "id": "follow-up-ai-agent-build",
-          "title": "Follow-Up AI Agent \u2014 Company-Wide Task Follow-Up System",
-          "statusLabel": "NO RESPONSE",
+          "statusLabel": "AT RISK",
           "color": "red",
-          "deadline": "TBD",
+          "deadline": "Jun 16",
           "deadlineUrgency": "urgent",
           "emailDate": "Jun 14",
           "lastReplyDate": null,
           "owners": [
-            "Senthil",
-            "Vaibhav"
+            "Asad"
+          ],
+          "progress": 30,
+          "progressLabel": "Manoj stated Asad was already working on this and would finish by Monday Jun 16. No completion confirmation found in replies.",
+          "response": null,
+          "noReplyWarning": "\u26a0\ufe0f No reply confirming completion. Deadline Jun 16 is past.",
+          "subTasks": [
+            "Complete full mobile UX flow \u2014 discovery, booking, cancellations",
+            "Complete full desktop UX flow across all services",
+            "Cover My Bookings and general customer questions",
+            "Deliver by Monday Jun 16 as directed",
+            "Share with Senthil for follow-up",
+            "Align with Vaibhav on development handoff"
+          ],
+          "sheetLinks": [],
+          "relatedSubjects": [
+            "Updates \u2014 Reservation flow, Follow-up Agent, Giveaway, Event Tech, Transfer Module"
+          ]
+        },
+        {
+          "id": "follow-up-agent-design",
+          "title": "Follow-Up Agent \u2014 Company-Wide Task Follow-Up System Design",
+          "statusLabel": "NO RESPONSE",
+          "color": "red",
+          "deadline": "TBD",
+          "deadlineUrgency": "null",
+          "emailDate": "Jun 14",
+          "lastReplyDate": null,
+          "owners": [
+            "Senthil"
           ],
           "progress": 0,
-          "progressLabel": "New initiative announced by Manoj Jun 14 \u2014 no response or scoping initiated",
+          "progressLabel": "Manoj briefed Senthil on a single company-wide follow-up agent. No scoping response or timeline found.",
           "response": null,
-          "noReplyWarning": "NO REPLY \u2014 Follow-up agent scoping has not been acknowledged or actioned since Jun 14 directive.",
+          "noReplyWarning": "\u26a0\ufe0f No response from Senthil on scoping or timeline for this agent.",
           "subTasks": [
-            "Define scope: one central agent taking any task from anyone and following up until complete",
-            "Cover supplier, reservation, contracting, KYC, payment, document follow-ups",
-            "Design escalation logic: when to stop chasing and escalate to human",
-            "Define escalation channels (email, WhatsApp, Teams)",
-            "Scope integration with existing task management",
-            "Assign build owner and timeline"
+            "Design central follow-up agent scope (supplier, reservation, contracting, KYC, payment, document follow-ups)",
+            "Define escalation logic \u2014 when to stop chasing and escalate to human",
+            "Define escalation channel (email, WhatsApp, Teams)",
+            "Integrate with existing task management infrastructure",
+            "Agree build timeline with Vaibhav",
+            "Add to master task sheet"
+          ],
+          "sheetLinks": [],
+          "relatedSubjects": [
+            "Updates \u2014 Reservation flow, Follow-up Agent, Giveaway, Event Tech, Transfer Module"
+          ]
+        },
+        {
+          "id": "event-technology-coca-cola-dtcm-api",
+          "title": "Event Technology \u2014 Coca-Cola Arena + DTCM API Live This Month",
+          "statusLabel": "AT RISK",
+          "color": "red",
+          "deadline": "Jun 30",
+          "deadlineUrgency": "urgent",
+          "emailDate": "Jun 14",
+          "lastReplyDate": null,
+          "owners": [
+            "Adnan"
+          ],
+          "progress": 0,
+          "progressLabel": "Manoj directed Coca-Cola Arena and DTCM API to be fully tested and live within June. Follow-up assigned to Adnan. No response or progress update found.",
+          "response": null,
+          "noReplyWarning": "\u26a0\ufe0f No response from Adnan confirming progress on event technology APIs.",
+          "subTasks": [
+            "Test Coca-Cola Arena API integration end to end",
+            "Test DTCM API integration end to end",
+            "Confirm both APIs live before end of June",
+            "Adnan to provide status update to Senthil",
+            "Flag any blockers immediately",
+            "Update master sheet with go-live confirmation"
+          ],
+          "sheetLinks": [],
+          "relatedSubjects": [
+            "Updates \u2014 Reservation flow, Follow-up Agent, Giveaway, Event Tech, Transfer Module"
+          ]
+        },
+        {
+          "id": "transfer-module-ahmed",
+          "title": "Transfer Module \u2014 End-to-End Solution (Ahmed Starting)",
+          "statusLabel": "NO RESPONSE",
+          "color": "red",
+          "deadline": "TBD",
+          "deadlineUrgency": "null",
+          "emailDate": "Jun 14",
+          "lastReplyDate": null,
+          "owners": [
+            "Senthil"
+          ],
+          "progress": 0,
+          "progressLabel": "Manoj noted Ahmed starts Monday on Transfer Module. No confirmation or timeline shared.",
+          "response": null,
+          "noReplyWarning": "\u26a0\ufe0f No confirmation that Ahmed has started or that scope and timeline have been defined.",
+          "subTasks": [
+            "Confirm Ahmed has started on Transfer Module",
+            "Define end-to-end scope for transfer module",
+            "Agree build timeline",
+            "Integrate with existing booking and reservation infrastructure",
+            "Add to master task sheet",
+            "Provide weekly progress updates"
           ],
           "sheetLinks": [],
           "relatedSubjects": [
@@ -478,7 +499,7 @@
           "statusLabel": "NO RESPONSE",
           "color": "red",
           "deadline": "TBD",
-          "deadlineUrgency": "urgent",
+          "deadlineUrgency": "null",
           "emailDate": "Jun 14",
           "lastReplyDate": null,
           "owners": [
@@ -486,16 +507,16 @@
             "Asad"
           ],
           "progress": 0,
-          "progressLabel": "Announced Jun 14 \u2014 no development or design response received",
+          "progressLabel": "Manoj briefed giveaway campaign to collect customer data into segmentation database. Dev with Vaibhav, front-end design with Asad. No timeline or progress reply found.",
           "response": null,
-          "noReplyWarning": "NO REPLY \u2014 Giveaway engine not acknowledged by Vaibhav (dev) or Asad (front-end design) since Jun 14.",
+          "noReplyWarning": "\u26a0\ufe0f No response from Vaibhav or Asad on giveaway engine scope or timeline.",
           "subTasks": [
-            "Vaibhav to scope and develop back-end giveaway participate-to-win system",
+            "Vaibhav to scope and build giveaway backend (participate-to-win, rules engine)",
             "Asad to design front-end per approved UI/UX and brand guidelines",
-            "Build customer data capture flowing into database segmentation",
-            "Define rules engine for giveaway eligibility",
-            "Integrate with marketing automation segments",
-            "Plan voucher/gift fulfillment flow"
+            "Ensure all participant data flows into segmentation database",
+            "Design voucher and prize fulfilment process",
+            "Integrate with email/WhatsApp marketing journeys",
+            "Agree go-live date"
           ],
           "sheetLinks": [],
           "relatedSubjects": [
@@ -503,114 +524,29 @@
           ]
         },
         {
-          "id": "event-technology-coca-cola-dtcm-api",
-          "title": "Event Technology \u2014 Coca-Cola Arena & DTCM API Live This Month",
-          "statusLabel": "NO RESPONSE",
-          "color": "red",
-          "deadline": "Jun 30",
-          "deadlineUrgency": "urgent",
-          "emailDate": "Jun 14",
-          "lastReplyDate": null,
-          "owners": [
-            "Adnan"
-          ],
-          "progress": 0,
-          "progressLabel": "Manoj directed Coca-Cola Arena and DTCM APIs to be fully tested and live within June \u2014 no response from Adnan",
-          "response": null,
-          "noReplyWarning": "NO REPLY from Adnan \u2014 Coca-Cola Arena and DTCM API go-live target is end of June with zero response.",
-          "subTasks": [
-            "Adnan to confirm current status of Coca-Cola Arena API integration",
-            "Adnan to confirm current status of DTCM API integration",
-            "Complete full testing of both APIs",
-            "Go live before end of June",
-            "Report readiness status to Senthil/Manoj"
-          ],
-          "sheetLinks": [],
-          "relatedSubjects": [
-            "Updates \u2014 Reservation flow, Follow-up Agent, Giveaway, Event Tech, Transfer Module"
-          ]
-        },
-        {
-          "id": "transfer-module-ahmed",
-          "title": "Transfer Module \u2014 End-to-End Solution (Ahmed)",
-          "statusLabel": "NO RESPONSE",
-          "color": "red",
-          "deadline": "TBD \u2014 Ahmed starts Monday Jun 16",
-          "deadlineUrgency": "urgent",
-          "emailDate": "Jun 14",
-          "lastReplyDate": null,
-          "owners": [
-            "Senthil"
-          ],
-          "progress": 0,
-          "progressLabel": "Announced Jun 14 with Ahmed starting Monday \u2014 no status update on scope or progress",
-          "response": null,
-          "noReplyWarning": "NO REPLY \u2014 Transfer module initiative has not been acknowledged or updated since Jun 14 directive.",
-          "subTasks": [
-            "Confirm Ahmed has started and is onboarded",
-            "Define end-to-end transfer module scope",
-            "Integrate transfer into booking flow",
-            "Set delivery milestones and timeline",
-            "Report progress to Senthil/Manoj"
-          ],
-          "sheetLinks": [],
-          "relatedSubjects": [
-            "Updates \u2014 Reservation flow, Follow-up Agent, Giveaway, Event Tech, Transfer Module"
-          ]
-        },
-        {
-          "id": "booking-flow-abd-experiment",
-          "title": "Booking Flow A/B/D Experiment \u2014 Traffic Split Fix & Results",
+          "id": "performance-marketing-automation-inhouse-claude",
+          "title": "Performance Marketing Automation \u2014 In-House Claude AI Test (Meta + Google)",
           "statusLabel": "IN PROGRESS",
           "color": "yellow",
-          "deadline": "Ongoing monitoring",
-          "deadlineUrgency": "ok",
-          "emailDate": "Jun 09",
-          "lastReplyDate": "Jun 10",
-          "owners": [
-            "Gaurav",
-            "Vaibhav"
-          ],
-          "progress": 80,
-          "progressLabel": "Fix deployed Jun 10 and verified by Soumya; B and D now receiving meaningful traffic trending toward 33/33/33; fresh data collection window needed before product decisions",
-          "response": "Gaurav confirmed fix live in production Jun 10. Soumya verified. Flows B and D now receiving meaningful traffic. Fresh data-collection window needed before any product decisions.",
-          "noReplyWarning": null,
-          "subTasks": [
-            "Monitor traffic split convergence toward 33/33/33",
-            "Allow sufficient fresh data collection window for B and D",
-            "Analyze conversion data once statistically significant",
-            "Make product decisions based on clean experiment data",
-            "Report findings to Manoj/Vaibhav"
-          ],
-          "sheetLinks": [],
-          "relatedSubjects": [
-            "Booking Flow A/B/D Experiment \u2014 Critical Traffic Split Issue"
-          ]
-        },
-        {
-          "id": "performance-marketing-automation-build",
-          "title": "Performance Marketing Automation \u2014 In-House Claude Build vs DeltaX/Smartly",
-          "statusLabel": "IN PROGRESS",
-          "color": "yellow",
-          "deadline": "End of week Jun 13 (combined report)",
-          "deadlineUrgency": "urgent",
+          "deadline": "TBD",
+          "deadlineUrgency": "null",
           "emailDate": "Jun 09",
           "lastReplyDate": "Jun 10",
           "owners": [
             "Anket",
             "Malik"
           ],
-          "progress": 45,
-          "progressLabel": "Madgicx rejected; Anket completed DeltaX/Smartly.io evaluation; Malik submitted 19-24 day in-house build roadmap; Claude AI test results still pending",
-          "response": "Anket submitted detailed tool evaluation Jun 9 (Madgicx rejected \u2014 Meta only, no Google). Malik submitted phased build plan Jun 10 (19\u201324 working days total). Manoj directed: test Claude in-house route first, keep DeltaX/Smartly as backup, combined report due end of week.",
+          "progress": 35,
+          "progressLabel": "Anket completed tool evaluation, Madgicx rejected (Meta-only). In-house Claude test prioritised. Malik provided 19\u201324 day build roadmap. Combined report due end of week.",
+          "response": "Anket replied Jun 9 with full evaluation. Malik replied Jun 10 with phase-wise roadmap. Manoj directed: test Claude in-house first, keep DeltaX/Smartly.io as backup, combined report due end of week.",
           "noReplyWarning": null,
           "subTasks": [
-            "Anket to test Meta and Google Ads automation directly via Claude AI",
-            "Report Claude test results: what worked, what did not",
-            "Finalize DeltaX vs Smartly.io comparison with pricing and go-live dates",
-            "Malik to confirm feasibility assessment and timeline for in-house build",
-            "Submit combined report to Manoj: build in-house or buy third-party bridge",
-            "Decision needed: can in-house solution be ready for September launch?"
+            "Test Meta and Google Ads automation directly via Claude AI (Anket \u2014 priority)",
+            "Document what Claude automation can and cannot do for campaign creation, geo-targeting, budget control",
+            "Compare DeltaX vs Smartly.io on pricing, capabilities, go-live dates",
+            "Malik to assess in-house build feasibility and timeline for September launch",
+            "Deliver combined report: Claude test results + third-party comparison + in-house plan",
+            "Manoj to make final build vs buy decision based on combined report"
           ],
           "sheetLinks": [],
           "relatedSubjects": [
@@ -619,59 +555,129 @@
           ]
         },
         {
-          "id": "seo-technical-tasks-aparna",
-          "title": "SEO Technical Tasks \u2014 Title Auto-Update, 404 Fixes, Schema, Thin Content, Internal Linking",
+          "id": "booking-flow-ab-experiment",
+          "title": "Booking Flow A/B/D Experiment \u2014 Traffic Split Fix",
           "statusLabel": "IN PROGRESS",
           "color": "yellow",
-          "deadline": "Ongoing \u2014 title automation by Wed Jun 25 (per Aparna)",
+          "deadline": "Jun 10",
           "deadlineUrgency": "urgent",
-          "emailDate": "Jun 19",
-          "lastReplyDate": "Jun 19",
+          "emailDate": "Jun 09",
+          "lastReplyDate": "Jun 10",
           "owners": [
-            "Aparna",
-            "Alok"
+            "Gaurav",
+            "Vaibhav"
           ],
-          "progress": 35,
-          "progressLabel": "Aparna confirmed tasks underway; title auto-update Excel version planned by Wed (Jun 25, now past); 404 fixes with Sandstorm; old .aspx URL list shared; FAQ automation to discuss with Alok",
-          "response": "Aparna replied Jun 19 acknowledging all SEO tasks. Title/description automation Excel version planned by Wednesday. 404 fixes: Sandstorm + dev team handling implementation. .aspx redirect list shared. AEO/AI visibility 30-day roadmap also shared.",
+          "progress": 85,
+          "progressLabel": "Root cause identified (eligibility gate requiring transfer + time_slot). Fix deployed to production Jun 10. Flows B and D now receiving traffic trending toward 33/33/33. Fresh data collection window required.",
+          "response": "Gaurav confirmed fix live on production Jun 10, Soumya verified. Split trending toward expected distribution. Next step: allow fresh data collection window before product decisions.",
           "noReplyWarning": null,
           "subTasks": [
-            "Build Title & Description auto-update tool (Excel/Claude version first, then with Alok)",
-            "Complete 404 fix analysis and coordinate Sandstorm implementation",
-            "Fix image alt attributes and URL structure (improper image naming)",
-            "Oversee schema markup implementation by agency",
-            "Add travel guide content to thin country/category pages",
-            "Implement old .aspx URL redirects (list shared with tech)"
+            "Confirm fix is stable on production (done Jun 10)",
+            "Allow fresh data collection window for Flows B and D",
+            "Monitor split distribution and flag any anomalies",
+            "Once sufficient data collected, analyse conversion rates across A/B/D",
+            "Make product decision on booking flow based on statistically significant results",
+            "Close ClickUp task when experiment is conclusive"
+          ],
+          "sheetLinks": [
+            "https://app.clickup.com/t/9016502052/86d39gtfb"
+          ],
+          "relatedSubjects": [
+            "Booking Flow A/B/D Experiment \u2014 Critical Traffic Split Issue",
+            "Re: Booking Flow A/B/D Experiment \u2014 Critical Traffic Split Issue"
+          ]
+        },
+        {
+          "id": "design-pendency-asad-clickup",
+          "title": "Design Pendencies \u2014 Asad Action Required on Multiple Blocked Tasks",
+          "statusLabel": "AT RISK",
+          "color": "red",
+          "deadline": "ASAP",
+          "deadlineUrgency": "urgent",
+          "emailDate": "Jun 19",
+          "lastReplyDate": null,
+          "owners": [
+            "Asad"
+          ],
+          "progress": 10,
+          "progressLabel": "Vaibhav flagged multiple design tasks blocking development: unclear Figma screen, missing Driver Details screens, unanswered Holidays email task, Google Pay compliance (28+ days overdue), Holidays & Cruises new detail page.",
+          "response": null,
+          "noReplyWarning": "\u26a0\ufe0f No reply from Asad. Google Pay branding error has been pending 28+ days and is blocking Google compliance resubmission.",
+          "subTasks": [
+            "Clarify correct Figma screen/flow for New Design Changes task for Gaurav",
+            "Share Figma screens for Driver Details in My Bookings (dev waiting)",
+            "Update Holidays email task in ClickUp \u2014 multiple follow-ups unanswered",
+            "Resolve Google Pay Mark & Button branding errors (blocking Google compliance \u2014 28+ days overdue)",
+            "Follow up with Bhavik on Holidays & Cruises New Detail Page",
+            "Clear all ClickUp-tagged comments and respond to each"
+          ],
+          "sheetLinks": [
+            "https://app.clickup.com/t/86d1ncff1",
+            "https://app.clickup.com/t/86d20wbmr",
+            "https://app.clickup.com/t/86d2n1ud9",
+            "https://app.clickup.com/t/86d2ujhcv"
+          ],
+          "relatedSubjects": [
+            "Design Pendency \u2014 Action Required"
+          ]
+        },
+        {
+          "id": "ai-model-selection-cost-discipline",
+          "title": "AI Model Selection \u2014 Cost Discipline for API Calls Across All Teams",
+          "statusLabel": "IN PROGRESS",
+          "color": "yellow",
+          "deadline": "ASAP",
+          "deadlineUrgency": "urgent",
+          "emailDate": "Jun 26",
+          "lastReplyDate": "Jun 26",
+          "owners": [
+            "Senthil",
+            "Vaibhav",
+            "Alok",
+            "Gaurav",
+            "Manish"
+          ],
+          "progress": 20,
+          "progressLabel": "Senthil issued detailed guidance Jun 26 on model tier selection to reduce API costs 60\u201380%. Teams to audit current model usage and switch to purpose-fit models.",
+          "response": "Senthil issued the directive himself as a team-wide guidance email on Jun 26.",
+          "noReplyWarning": null,
+          "subTasks": [
+            "Each team to audit current LLM model usage across all features and workflows",
+            "Replace frontier models with lighter purpose-fit models for templates, classification, routing (use Claude Haiku 4.5 or GLM-5.2)",
+            "Reserve Claude Sonnet/Opus only for complex reasoning and agentic tasks",
+            "Document model selection decisions per use-case in a shared reference",
+            "Implement routing logic in multi-LLM orchestration layer",
+            "Monitor API cost per outcome monthly and report to Senthil"
           ],
           "sheetLinks": [],
           "relatedSubjects": [
-            "SEO & PR Action Items \u2013 Summary from Our Discussion",
-            "Re: SEO & PR Action Items \u2013 Summary from Our Discussion"
+            "Action Required: Selecting the Right AI Model for API Calls"
           ]
         },
         {
           "id": "master-task-sheet-maintenance",
-          "title": "Master Task Sheet \u2014 Senthil + Vaibhav Keep Updated",
+          "title": "Master Task Sheet \u2014 Senthil & Vaibhav to Keep Updated",
           "statusLabel": "IN PROGRESS",
           "color": "yellow",
           "deadline": "Ongoing",
-          "deadlineUrgency": "ok",
+          "deadlineUrgency": "null",
           "emailDate": "Jun 12",
-          "lastReplyDate": "Jun 19",
+          "lastReplyDate": null,
           "owners": [
             "Senthil",
             "Vaibhav"
           ],
-          "progress": 40,
-          "progressLabel": "Sheet established; Vaibhav and Senthil active on follow-ups but sheet update cadence not formally confirmed",
-          "response": "No direct reply to master sheet directive but Senthil and Vaibhav continue to coordinate on tasks. Sheet link: docs.google.com/spreadsheets/d/1JTHdqDmqqDPFupqKXmy8mLheAiSn-xb3WooU0y9aU1A",
-          "noReplyWarning": null,
+          "progress": 30,
+          "progressLabel": "Manoj consolidated all directives into one master sheet. Senthil is owner, Vaibhav co-owner. Sheet to be kept live with status, revised deadlines and remarks.",
+          "response": null,
+          "noReplyWarning": "\u26a0\ufe0f No explicit reply confirming sheet maintenance cadence has been established.",
           "subTasks": [
-            "Senthil to own master sheet and follow up with all named owners",
-            "Vaibhav to co-own and follow up on all tech/marketing tasks",
-            "Update Revised Deadline, Status, Remark, Updated By, Date columns when deadlines move",
-            "No deadline extension without a remark",
-            "Keep sheet as single source of truth for Manoj"
+            "Senthil and Vaibhav to follow up with every named task owner",
+            "Update Status, Revised Deadline, Remark, Updated By and Date columns only",
+            "Never move a deadline without a remark",
+            "Review sheet at least weekly and ensure no silent overdue tasks",
+            "Escalate to Manoj only when decision or approval is needed",
+            "Keep sheet as single source of truth for all active directives"
           ],
           "sheetLinks": [
             "https://docs.google.com/spreadsheets/d/1JTHdqDmqqDPFupqKXmy8mLheAiSn-xb3WooU0y9aU1A/edit"
@@ -681,11 +687,11 @@
           ]
         },
         {
-          "id": "headout-api-bokun-competition-data",
-          "title": "Competition API Access \u2014 Headout via Deepak + Bokun Exploration",
+          "id": "competition-api-headout-bokun",
+          "title": "Competition API Access \u2014 Headout via Deepak + Bokun Evaluation",
           "statusLabel": "IN PROGRESS",
           "color": "yellow",
-          "deadline": "ASAP \u2014 report by Jun 10 (passed)",
+          "deadline": "ASAP",
           "deadlineUrgency": "urgent",
           "emailDate": "Jun 10",
           "lastReplyDate": "Jun 10",
@@ -694,15 +700,16 @@
             "Deepak"
           ],
           "progress": 50,
-          "progressLabel": "Deepak registered on Bokun and signed form for API access Jun 10; Alok asked Deepak for Headout contacts; no API access confirmed yet",
-          "response": "Deepak confirmed Bokun registration and signed form for API access Jun 10. Alok requested Headout contact details from Deepak for direct outreach using Rayna's relationship.",
+          "progressLabel": "Deepak registered on Bokun and signed API access form Jun 10. Alok to follow up directly with Headout using Deepak's reference. Bokun evaluation result pending.",
+          "response": "Deepak confirmed Bokun registration and API access form signed Jun 10. Alok asked Deepak for Headout contact details Jun 9.",
           "noReplyWarning": null,
           "subTasks": [
             "Deepak to share Headout contact details with Alok immediately",
-            "Alok to reach out to Headout directly using Deepak's reference",
-            "Explore Bokun feeds \u2014 confirm if Headout, Viator, GetYourGuide, Klook data available",
-            "Report back: can Bokun provide pricing and catalog data across all four platforms?",
-            "Avoid building individual API integrations until Bokun assessment complete"
+            "Alok to approach Headout directly using Deepak's reference (not formal application)",
+            "Alok to evaluate Bokun \u2014 can it provide pricing/catalog data from Headout, Viator, GetYourGuide, Klook?",
+            "Report back to Manoj: Bokun yes/no decision",
+            "If Bokun works, avoid building individual API integrations per platform",
+            "Update master sheet with API access status"
           ],
           "sheetLinks": [],
           "relatedSubjects": [
@@ -711,97 +718,127 @@
           ]
         },
         {
-          "id": "antino-invoice-payment",
-          "title": "Antino Technologies \u2014 AED 119,112 Overdue Invoices",
-          "statusLabel": "AT RISK",
-          "color": "red",
-          "deadline": "ASAP \u2014 invoices overdue since Mar 2026",
-          "deadlineUrgency": "urgent",
-          "emailDate": "Jun 09",
-          "lastReplyDate": null,
+          "id": "116-city-content-deadline",
+          "title": "116\u2013140 City Product Content \u2014 Build Pipeline & Deadlines",
+          "statusLabel": "IN PROGRESS",
+          "color": "yellow",
+          "deadline": "Aug 31",
+          "deadlineUrgency": "ok",
+          "emailDate": "Jun 10",
+          "lastReplyDate": "Jun 10",
           "owners": [
-            "Bhushan",
-            "Tarzan",
-            "Prateek"
+            "Alok"
           ],
-          "progress": 0,
-          "progressLabel": "Vaibhav escalated to Bhushan/Tarzan/Prateek \u2014 total AED 119,112 outstanding across Feb, Mar, Apr invoices. No response.",
-          "response": null,
-          "noReplyWarning": "NO REPLY from finance \u2014 invoices Feb\u2013Apr overdue, AED 119,112 outstanding, vendor following up urgently.",
+          "progress": 25,
+          "progressLabel": "London (500+ products) and Cairo complete. Admin Portal connection from Anwar's team expected this week (Jun 10). London live target third week of June. High-priority cities (35 of 140) being scraped. Full timeline working backward from Aug 31.",
+          "response": "Alok provided comprehensive status Jun 10: London and Cairo done, pipeline proven, high-priority city scraping started. London live target third week of June pending portal connection.",
+          "noReplyWarning": null,
           "subTasks": [
-            "Review all outstanding Antino invoices (Feb: AED 28,310; Mar: AED 35,232; Apr: AED 17,616 + additional)",
-            "Confirm payment status and initiation dates",
-            "Process outstanding AED 119,112 payment",
-            "Notify Vaibhav and Antino once processed",
-            "Establish regular invoice payment process to avoid recurrence"
+            "Receive Admin Portal payload connection from Anwar's team",
+            "Verify London data mapping correctly across IT, supplier module, website",
+            "Push London live (target third week of June \u2014 milestone city)",
+            "Continue scraping and building 35 high-priority cities first, then medium, then rest",
+            "Connect GlobalTix API for applicable cities (Alok to confirm coverage with Anwar)",
+            "Submit complete content and blog/destination guide timeline to Manoj"
           ],
           "sheetLinks": [],
           "relatedSubjects": [
-            "Fwd: April Invoice - 24ANT-0053 from Antino Technologies CO. L.L.C"
+            "RE: Two Action Items \u2014 Competition API Access + 116 City Content Deadline | Deepak + Alok",
+            "Re: Two Action Items \u2014 Competition API Access + 116 City Content Deadline | Deepak + Alok"
           ]
         },
         {
-          "id": "ai-multi-llm-architecture-decision",
-          "title": "AI Architecture \u2014 Multi-LLM Orchestration Framework Decision",
+          "id": "seo-technical-tasks",
+          "title": "SEO Technical Tasks \u2014 Title Automation, 404 Fixes, Schema, Internal Linking",
           "statusLabel": "IN PROGRESS",
           "color": "yellow",
           "deadline": "TBD",
-          "deadlineUrgency": "ok",
-          "emailDate": "Jun 11",
-          "lastReplyDate": "Jun 16",
+          "deadlineUrgency": "null",
+          "emailDate": "Jun 19",
+          "lastReplyDate": "Jun 19",
           "owners": [
-            "Senthil",
-            "Vaibhav",
-            "Alok"
+            "Aparna",
+            "Alok",
+            "Vaibhav"
           ],
           "progress": 30,
-          "progressLabel": "MoM shared Jun 11 with full agent roster and architecture decisions; Senthil shared AI agent governance framework Jun 16; no formal build timeline yet",
-          "response": "Vaibhav shared full MoM on AI/Agentic Infrastructure Jun 11: multi-LLM orchestration, agent roster (Gatekeeper, Operations Head, Transport Manager etc.), LangChain framework. Senthil shared governance considerations Jun 16.",
+          "progressLabel": "Aparna confirmed old .aspx URL list shared, FAQ automation to be discussed with Alok, Title/Description Excel automation in progress (target Wednesday Jun 25), 404 fix analysis underway, schema handled by agency.",
+          "response": "Aparna replied Jun 19 with detailed status on all SEO action items. Title/description automation version 1 targeted for Wednesday Jun 25.",
           "noReplyWarning": null,
           "subTasks": [
-            "Finalize multi-LLM orchestration layer design (LangChain or equivalent)",
-            "Define agent roster roles and escalation paths",
-            "Establish model routing rules: free/open-source for bulk tasks, premium for intelligence tasks",
-            "Build private knowledge base and learning loop",
-            "Define tokenomics governance to control cost at scale",
-            "Assign build owner and phase timeline"
+            "Aparna to build Title & Description auto-update automation (Excel/Claude, target Jun 25)",
+            "Coordinate with Alok on FAQ automation implementation",
+            "Fix image alt attributes and URL structure (improper image names)",
+            "Oversee schema markup implementation by Sandstorm agency",
+            "Add read-more content to thin country/category pages",
+            "Fix duplicate content pages and implement old .aspx URL redirects"
           ],
           "sheetLinks": [],
           "relatedSubjects": [
-            "MoM \u2014 Rayna AI & Agentic Infrastructure Discussion",
-            "AI Agents: Key considerations"
+            "SEO & PR Action Items \u2013 Summary from Our Discussion",
+            "Re: SEO & PR Action Items \u2013 Summary from Our Discussion"
+          ]
+        },
+        {
+          "id": "automated-email-template-bug",
+          "title": "Automated Email Template Bug \u2014 Liquid/Jinja Render Errors in Live Emails",
+          "statusLabel": "AT RISK",
+          "color": "red",
+          "deadline": "ASAP",
+          "deadlineUrgency": "urgent",
+          "emailDate": "Jun 22",
+          "lastReplyDate": "Jun 22",
+          "owners": [
+            "Vaibhav",
+            "Malik"
+          ],
+          "progress": 10,
+          "progressLabel": "Vaibhav forwarded live email to Manoj showing unrendered Liquid template tags ({% case %}, {% if %}, {% endif %}) and wrong name 'SAURAV' instead of personalised name. Indicates live template rendering failure.",
+          "response": "Vaibhav forwarded the broken email as evidence. No fix confirmation found.",
+          "noReplyWarning": "\u26a0\ufe0f Template rendering bug is live in production emails. Urgent fix required.",
+          "subTasks": [
+            "Identify root cause of Liquid/Jinja template tags not rendering in live emails",
+            "Fix personalisation variable \u2014 'SAURAV' hardcoded instead of dynamic name",
+            "Fix {% case service_type %}, {% if rec1_badge %} and all conditional blocks",
+            "Test email rendering across all active journey templates",
+            "Deploy fix to production immediately",
+            "Audit all other active email campaigns for similar rendering failures"
+          ],
+          "sheetLinks": [],
+          "relatedSubjects": [
+            "Fwd: Still exploring Pattaya?"
           ]
         }
       ]
     },
     {
       "id": "marketing-partnerships",
-      "title": "\ud83e\udd1d Marketing & Partnerships",
+      "title": "\ud83e\udd1d Marketing, Partnerships & Affiliate",
       "items": [
         {
-          "id": "radio-partnerships-vaibhav",
+          "id": "radio-partnership-track",
           "title": "Radio Partnerships \u2014 UAE, India, Saudi (Barter Campaigns)",
           "statusLabel": "IN PROGRESS",
           "color": "yellow",
-          "deadline": "Ongoing \u2014 ARN meeting was Jun 16",
-          "deadlineUrgency": "ok",
+          "deadline": "TBD",
+          "deadlineUrgency": "null",
           "emailDate": "Jun 08",
-          "lastReplyDate": "Jun 22",
+          "lastReplyDate": "Jun 11",
           "owners": [
             "Vaibhav",
             "Azhar"
           ],
-          "progress": 40,
-          "progressLabel": "ARN meeting confirmed Jun 16 at Rayna office with senior team; Azhar also engaging 89.1 FM, Kadak FM, Mirchi FM; outcome of ARN meeting not yet reported",
-          "response": "Azhar confirmed ARN meeting Jun 16 with Sidharth Vohra, Mini Mathur, Maryam Khan. ARN also sent email (Jun 11) for annual discussion. Parallel outreach to 89.1 FM, Kadak FM, Mirchi FM started. India and Saudi radio not yet initiated.",
+          "progress": 35,
+          "progressLabel": "ARN meeting confirmed Jun 16 at Rayna office. Azhar also approached 89.1 FM, Kadak FM, Mirchi FM. Vaibhav owns decisions; Azhar to share all ARN contacts with Vaibhav.",
+          "response": "Azhar confirmed ARN meeting Jun 16 (Sidharth Vohra, Mini Mathur, Maryam Khan). ARN reply email also received Jun 11 from ARN side. Azhar has contacted multiple stations.",
           "noReplyWarning": null,
           "subTasks": [
-            "Report outcome of Jun 16 ARN meeting to Manoj",
-            "Design complete end-to-end voucher system (generation, QR codes, redemption, tracking, database capture)",
-            "Expand outreach to India radio: Radio Mirchi, Red FM, Big FM (Mumbai, Pune, Delhi, Chandigarh)",
-            "Expand outreach to Saudi radio: MBC FM, Rotana FM, SBC Radio",
-            "Prepare campaign menu with recommendations for Manoj",
-            "Vaibhav to make all final decisions on timing and activation"
+            "Azhar to share all ARN contacts and details with Vaibhav",
+            "Vaibhav to lead ARN meeting Jun 16 and all subsequent radio partnership decisions",
+            "Approach Virgin Radio Dubai, Dubai 92, City 1016, Hum FM, Radio 4 in UAE",
+            "Approach Radio Mirchi, Red FM, Big FM across Mumbai, Pune, Delhi, Chandigarh in India",
+            "Approach MBC FM, Rotana FM, SBC Radio in Saudi",
+            "Design end-to-end voucher system: generation, QR codes, redemption, tracking, database capture"
           ],
           "sheetLinks": [],
           "relatedSubjects": [
@@ -817,23 +854,23 @@
           "statusLabel": "NO RESPONSE",
           "color": "red",
           "deadline": "TBD",
-          "deadlineUrgency": "urgent",
+          "deadlineUrgency": "null",
           "emailDate": "Jun 08",
           "lastReplyDate": null,
           "owners": [
             "Vaibhav"
           ],
           "progress": 0,
-          "progressLabel": "Manoj defined full model Jun 8 \u2014 no response or action from Vaibhav on app partnerships track",
+          "progressLabel": "Manoj briefed detailed app partnership model (subscribe/renew to win holiday). Vaibhav is owner. No response or action update found.",
           "response": null,
-          "noReplyWarning": "NO REPLY from Vaibhav \u2014 trending app partnership track (Spotify, Careem, Zomato, Noon, CRED) has not been acknowledged or actioned.",
+          "noReplyWarning": "\u26a0\ufe0f No response from Vaibhav on app partnership track despite being named owner.",
           "subTasks": [
-            "Approach Spotify, Anghami, Careem, Zomato, Noon, CRED with subscription giveaway proposition",
-            "Design the complete loop: app announces, users subscribe, data flows to Rayna, winner announced jointly",
-            "Ensure every participant's name, email, and dream destination captured into Rayna database",
-            "Design winner announcement as joint PR/social media moment",
-            "Prepare proposal deck for app partner meetings",
-            "Report back to Manoj with campaign menu and recommendations"
+            "Approach Spotify, Anghami, Careem, Zomato, Noon, CRED with holiday-prize partnership proposal",
+            "Design campaign mechanic: subscribe/renew to enter, winner announced jointly",
+            "Collect name, email, dream destination from all participants into Rayna database",
+            "Structure participant lead nurturing into CRM journeys",
+            "Build proposal deck and present to Manoj for approval before any commitment",
+            "Track all app partnership outreach and responses"
           ],
           "sheetLinks": [],
           "relatedSubjects": [
@@ -841,93 +878,156 @@
           ]
         },
         {
-          "id": "affiliate-programme-nihad-step1",
-          "title": "Affiliate Programme \u2014 Tech Verification + Master Explainer Video (Step 1)",
+          "id": "affiliate-program-nihad-step1",
+          "title": "Affiliate Program \u2014 Nihad Tech Verification + Master Explainer Video",
           "statusLabel": "IN PROGRESS",
           "color": "yellow",
-          "deadline": "ASAP \u2014 Step 1 before any influencer outreach",
-          "deadlineUrgency": "urgent",
-          "emailDate": "Jun 10",
+          "deadline": "TBD",
+          "deadlineUrgency": "null",
+          "emailDate": "Jun 09",
           "lastReplyDate": "Jun 10",
           "owners": [
-            "Nihad"
+            "Nihad",
+            "Vaibhav"
           ],
           "progress": 30,
-          "progressLabel": "Nihad aligned and committed to Step 1; demo/status walkthrough with Vaibhav lined up; tech verification in progress before any influencer outreach",
-          "response": "Nihad confirmed full alignment Jun 10 \u2014 taking tech ownership, demo walkthrough with Vaibhav arranged, script timeline adjusted. Barter-only approach agreed. No cash without Manoj/Senthil approval.",
+          "progressLabel": "Nihad aligned on phased approach. Step 1: verify affiliate tech end-to-end (registration, UTM, QR, tracking, payouts). Demo with Vaibhav lined up. Script/master video timeline shifted pending tech verification.",
+          "response": "Nihad confirmed alignment on Jun 9. Jun 10 reply confirmed tech ownership and that demo with Vaibhav is lined up. Tech must be flawless before any influencer outreach.",
           "noReplyWarning": null,
           "subTasks": [
-            "Personally verify affiliate program works end-to-end: registration, UTM links, QR codes, discount codes, content library, commission tracking, payouts",
-            "Conduct demo and status walkthrough with Vaibhav",
-            "Create master explainer video: how to earn, how to register, how system works, real earning potential",
-            "Post master video to Rayna's own followers first as test",
-            "Confirm tech is flawless before any influencer outreach begins",
-            "Report Step 1 completion to Manoj"
+            "Nihad to personally verify affiliate program works end-to-end: registration, UTM links, QR codes, discount codes, commission tracking, payouts",
+            "Complete demo and status walkthrough with Vaibhav",
+            "Create master explainer video: how to make money, how to register, real earning potential",
+            "Nihad posts master video to Rayna's own followers first",
+            "Ensure affiliate landing page carries all trust signals (25M guests, Trustpilot, trust badges, 15-year story)",
+            "Do not move to influencer outreach until tech is confirmed flawless"
           ],
           "sheetLinks": [],
           "relatedSubjects": [
             "Re: Affiliate Acquisition Strategy \u2014 Full Alignment + Direction",
             "Re: Affiliate Acquisition Strategy",
-            "Affiliate Acquisition Strategy"
+            "Re: Affiliate Acquisition Strategy"
           ]
         },
         {
-          "id": "corporate-roadshows-azhar",
-          "title": "Corporate Roadshows \u2014 UAE, Saudi, India (Azhar as Head of Partnerships)",
+          "id": "rewards-programme-partnerships",
+          "title": "Rewards Programme Partnerships \u2014 ADCB Touchpoints, Shukran, Etihad Guest etc.",
           "statusLabel": "IN PROGRESS",
           "color": "yellow",
-          "deadline": "Ongoing",
-          "deadlineUrgency": "ok",
+          "deadline": "TBD",
+          "deadlineUrgency": "null",
           "emailDate": "Jun 07",
           "lastReplyDate": "Jun 15",
           "owners": [
             "Azhar"
           ],
-          "progress": 55,
-          "progressLabel": "Roadshows active \u2014 May series completed (Network Int'l, Magnati, HP, ADIB). June: RTA HQ Jun 16-17, Landmark Group Jun 18. Ishra coordinating with Asad on updated materials.",
-          "response": "Azhar confirmed roadshows on track Jun 15. JD shared with Pari. Team has Google Sheet access. Ishra coordinating with Asad on pop-up stand materials update. Monthly campaign calendar approach for daily forwarding.",
+          "progress": 35,
+          "progressLabel": "Azhar confirmed on track. Meetings with corporates and reward partners started. Google Sheet access approved. Daily/weekly updates to begin from following week.",
+          "response": "Azhar replied Jun 15: on track, meetings started, Google Sheet in place, structured updates to begin.",
           "noReplyWarning": null,
           "subTasks": [
-            "Update all pop-up stand materials with full Rayna product portfolio (Ishra + Asad)",
-            "Prepare separate affiliate proposals for commission and non-commission organizations",
-            "Build structured monthly campaign calendar for each corporate partner",
-            "Collect HR/procurement contacts from each roadshow for future campaign sharing",
-            "Expand roadshow model to Saudi Arabia and India",
-            "Update Google Sheet tracker daily/weekly with progress"
+            "Continue meeting with reward programme partners (ADCB Touchpoints, Shukran, Etihad Guest, etc.)",
+            "Update partnership tracker Google Sheet daily/weekly",
+            "Prepare separate affiliate proposals for commission and non-commission organisations",
+            "Report meeting status, follow-ups and next actions through tracker",
+            "Expand to Saudi Arabia and India reward programmes",
+            "Confirm commercial terms and integration requirements for each partner"
           ],
           "sheetLinks": [],
           "relatedSubjects": [
-            "You Are Now Head of Partnerships \u2014 UAE, Saudi Arabia & India | Azhar",
-            "Corporate Partnership Strategy \u2014 Complete Updated Brief | Azhar"
+            "Re: Rewards Programme Partnerships \u2014 Complete Brief + Tracking Sheet | Azhar"
           ]
         },
         {
-          "id": "rewards-programme-partnerships",
-          "title": "Rewards Programme Partnerships \u2014 ADCB Touchpoints, Shukran, Etihad etc.",
+          "id": "corporate-roadshows-head-of-partnerships",
+          "title": "Corporate Roadshows \u2014 Azhar as Head of Partnerships UAE, Saudi, India",
           "statusLabel": "IN PROGRESS",
           "color": "yellow",
-          "deadline": "Ongoing \u2014 tracker updates weekly",
-          "deadlineUrgency": "ok",
+          "deadline": "TBD",
+          "deadlineUrgency": "null",
           "emailDate": "Jun 07",
           "lastReplyDate": "Jun 15",
           "owners": [
             "Azhar"
           ],
           "progress": 40,
-          "progressLabel": "Azhar confirmed on track Jun 15 \u2014 meetings with corporates/reward partners started, Google Sheet access approved, daily/weekly updates promised from next week",
-          "response": "Azhar confirmed on track. Already meeting with corporates and reward partners. Google Sheet access approved and in place. Daily and weekly updates on partnership progress to follow.",
+          "progressLabel": "Azhar confirmed role, JD shared with Pari for hiring support team. Roadshows completed in May/June (Network Int'l, ADIB, HP, RTA, Landmark Group). Ishra coordinating with Asad on pop-up materials.",
+          "response": "Azhar replied Jun 15 with full roadshow schedule and immediate next steps. Updated marketing materials with complete product portfolio in progress.",
           "noReplyWarning": null,
           "subTasks": [
-            "Continue meetings with reward programme partners",
-            "Update partnership tracker daily/weekly",
-            "Secure ADCB Touchpoints partnership agreement",
-            "Progress Shukran partnership",
-            "Identify and approach additional reward programmes (Etihad Guest, Emirates Skywards, Marriott Bonvoy)",
-            "Expand model to Saudi Arabia and India markets"
+            "Update all pop-up stand materials with complete Rayna product portfolio (Ishra + Asad)",
+            "Prepare separate affiliate proposals for commission and non-commission organisations",
+            "Stake out HR/procurement contacts at every roadshow for future campaign sharing",
+            "Build structured monthly campaign calendar for each corporate partner",
+            "Replicate roadshow model across Saudi Arabia and India",
+            "One-on-one stakeholder alignment meetings with all copied team members"
           ],
           "sheetLinks": [],
           "relatedSubjects": [
-            "Rewards Programme Partnerships \u2014 Complete Brief + Tracking Sheet | Azhar"
+            "Re: You Are Now Head of Partnerships \u2014 UAE, Saudi Arabia & India | Azhar",
+            "Re: Corporate Partnership Strategy \u2014 Complete Updated Brief | Azhar"
+          ]
+        },
+        {
+          "id": "tourism-board-outreach-137-cities",
+          "title": "Tourism Board Outreach \u2014 All 137 Cities (Senthil + Deepak Co-Own)",
+          "statusLabel": "IN PROGRESS",
+          "color": "yellow",
+          "deadline": "TBD",
+          "deadlineUrgency": "null",
+          "emailDate": "Jun 07",
+          "lastReplyDate": "Jun 09",
+          "owners": [
+            "Senthil",
+            "Deepak",
+            "Ranjan"
+          ],
+          "progress": 20,
+          "progressLabel": "Deepak acknowledged co-ownership. Senthil confirmed first wave of 20 cities by traffic/readiness. Alignment call being set up. Ranjan to own India city-level follow-ups.",
+          "response": "Senthil replied Jun 9 with starting framework: first 20 cities by Rayna traffic. Deepak acknowledged and requested sheet access. Ranjan assigned India follow-ups.",
+          "noReplyWarning": null,
+          "subTasks": [
+            "Senthil to lead senior-level conversations with tourism board directors and marketing heads",
+            "Deepak to co-own with destination knowledge and senior relationships",
+            "First wave: identify top 20 cities by Rayna traffic and product readiness",
+            "Senthil to share priority city list and outreach template before alignment call",
+            "Ranjan to own India city-specific follow-ups under Senthil/Deepak coordination",
+            "Ask from each board: content, co-marketing collateral, co-investment where possible"
+          ],
+          "sheetLinks": [],
+          "relatedSubjects": [
+            "Re: Tourism Board Outreach \u2014 All 137 Cities | Senthil + Deepak Co-Own"
+          ]
+        },
+        {
+          "id": "omnichannel-winback-segments",
+          "title": "Omnichannel Win-Back Strategy \u2014 14 Segments + 17 Journeys Build",
+          "statusLabel": "IN PROGRESS",
+          "color": "yellow",
+          "deadline": "TBD",
+          "deadlineUrgency": "null",
+          "emailDate": "Jun 09",
+          "lastReplyDate": null,
+          "owners": [
+            "Vaibhav",
+            "Malik",
+            "Anket"
+          ],
+          "progress": 25,
+          "progressLabel": "Vaibhav shared full omnichannel win-back strategy with 14 segments and 17 journeys to Manoj. No confirmation of build start or timeline.",
+          "response": null,
+          "noReplyWarning": "\u26a0\ufe0f No explicit response from Manoj or build team confirming activation timeline.",
+          "subTasks": [
+            "Build 14 behavioural and booking-status segments in the platform",
+            "Configure all 17 journey automations across email, WhatsApp, SMS",
+            "Implement service \u00d7 destination content branching",
+            "Set up coupon rules and seasonal campaign triggers",
+            "Align with Block 3 WS1 email infrastructure for journey delivery",
+            "Track content production against content tracker document"
+          ],
+          "sheetLinks": [],
+          "relatedSubjects": [
+            "Rayna Tours \u2014 Omnichannel Win-Back Strategy: Segments to Create"
           ]
         },
         {
@@ -935,7 +1035,7 @@
           "title": "India B2C Activation \u2014 Maharashtra + North India Written Plan",
           "statusLabel": "IN PROGRESS",
           "color": "yellow",
-          "deadline": "Jun 16 (Senthil's plan), end of week Jun 13 (Ranjan's proposal)",
+          "deadline": "Jun 16",
           "deadlineUrgency": "urgent",
           "emailDate": "Jun 03",
           "lastReplyDate": "Jun 11",
@@ -944,112 +1044,22 @@
             "Ranjan",
             "Rajkumar"
           ],
-          "progress": 25,
-          "progressLabel": "Senthil planned to submit written activation plan by Jun 16 \u2014 not yet received. Ranjan replied Jun 11 promising proposal by end of that week \u2014 not yet received.",
-          "response": "Senthil outlined 2-week plan (Jun 9): align with Ranjan/Rajkumar this week, written activation plan by Jun 16. Ranjan replied Jun 11: proposal by end of week. Neither plan has been received.",
-          "noReplyWarning": null,
-          "subTasks": [
-            "Senthil to submit written activation plan: priority cities, channel strategy, product readiness gaps, team structure",
-            "Ranjan to submit India B2C proposal (was due end of week Jun 13)",
-            "Rajkumar to come prepared with supplier contract status and product live status",
-            "Conduct alignment call between Senthil, Ranjan, Rajkumar, Vaibhav",
-            "Identify Maharashtra and North India priority cities",
-            "Define hiring plan for India B2C team"
-          ],
-          "sheetLinks": [],
-          "relatedSubjects": [
-            "India B2C Activation - Direction + Action Required | Maharashtra + North India",
-            "Re: India B2C Activation - Direction + Action Required | Maharashtra + North India"
-          ]
-        },
-        {
-          "id": "tourism-board-outreach-137-cities",
-          "title": "Tourism Board Outreach \u2014 All 137 Cities (Senthil + Deepak Co-Own)",
-          "statusLabel": "IN PROGRESS",
-          "color": "yellow",
-          "deadline": "First wave aligned this week (Jun 9 week)",
-          "deadlineUrgency": "urgent",
-          "emailDate": "Jun 07",
-          "lastReplyDate": "Jun 09",
-          "owners": [
-            "Senthil",
-            "Deepak"
-          ],
-          "progress": 20,
-          "progressLabel": "Senthil proposed first wave: top 20 cities by Rayna traffic; outreach template to be shared before alignment call with Deepak; Ranjan owns India city-level follow-ups",
-          "response": "Deepak acknowledged and confirmed co-ownership Jun 8. Senthil outlined framework Jun 9: first wave top 20 cities, Rayna leads senior conversations, Ranjan's team handles India city-level. Alignment call to be scheduled.",
-          "noReplyWarning": null,
-          "subTasks": [
-            "Senthil to share priority city list and outreach template with Deepak",
-            "Schedule 60-minute alignment call between Senthil and Deepak",
-            "Define top 20 cities by Rayna traffic and product readiness",
-            "Ranjan to own India city-specific follow-ups",
-            "Request from each board: content, co-marketing collateral, co-investment",
-            "Expand to all 137 cities in waves"
-          ],
-          "sheetLinks": [],
-          "relatedSubjects": [
-            "Tourism Board Outreach \u2014 All 137 Cities | Senthil + Deepak Co-Own"
-          ]
-        },
-        {
-          "id": "omnichannel-winback-strategy-segments",
-          "title": "Omnichannel Win-Back Strategy \u2014 14 Segments Build in Platform",
-          "statusLabel": "IN PROGRESS",
-          "color": "yellow",
-          "deadline": "TBD \u2014 linked to Block 3 WS1 go-live",
-          "deadlineUrgency": "urgent",
-          "emailDate": "Jun 09",
-          "lastReplyDate": "Jun 09",
-          "owners": [
-            "Vaibhav",
-            "Anket"
-          ],
-          "progress": 30,
-          "progressLabel": "Vaibhav submitted full 14-segment omnichannel strategy with 17 journeys; awaiting platform go-live (Block 3 WS1) to build segments",
-          "response": "Vaibhav submitted full strategy Jun 9: 14 segments, 17 journeys, service \u00d7 destination content branching, coupon rules, seasonal campaigns. Strategy ready; implementation depends on marketing platform go-live.",
-          "noReplyWarning": null,
-          "subTasks": [
-            "Build all 14 segments in marketing platform once live",
-            "Implement 17 win-back journeys across segments",
-            "Configure service \u00d7 destination content branching",
-            "Set up coupon rules per segment",
-            "Build seasonal campaign triggers",
-            "Coordinate with Block 3 WS1 team on platform readiness"
-          ],
-          "sheetLinks": [],
-          "relatedSubjects": [
-            "Rayna Tours \u2014 Omnichannel Win-Back Strategy: Segments to Create"
-          ]
-        },
-        {
-          "id": "schools-universities-edutainment-hiring",
-          "title": "Schools, Universities & Edutainment \u2014 Sales Manager Hiring (India + Saudi)",
-          "statusLabel": "IN PROGRESS",
-          "color": "yellow",
-          "deadline": "Hire by end of Jun (India); onboard Saudi Aug first week",
-          "deadlineUrgency": "urgent",
-          "emailDate": "Jun 08",
-          "lastReplyDate": "Jun 09",
-          "owners": [
-            "Rishi",
-            "Pari"
-          ],
           "progress": 40,
-          "progressLabel": "JDs shared with Pari for both India and Saudi Sales Manager roles. Rishi recommended Saudi onboarding in Aug first week (schools on summer break until end Aug).",
-          "response": "Rishi confirmed JDs shared with Pari. Flagged academic calendar difference: India schools reopen July (start BD immediately), Saudi schools reopen end of August (onboard Aug first week). Recommendation: hire Saudi resource by end of June but onboard training in August.",
+          "progressLabel": "Senthil committed to written activation plan by Jun 16. Ranjan replied Jun 11 that proposal will be submitted by end of that week. No final plan confirmed received by Manoj.",
+          "response": "Senthil replied Jun 9 with two-week plan. Ranjan replied Jun 11 committing to proposal by end of week.",
           "noReplyWarning": null,
           "subTasks": [
-            "Pari to source and shortlist India Sales Manager candidates",
-            "Pari to source Saudi Arabia Sales Manager candidates",
-            "Target hire by end of June for both roles",
-            "India Sales Manager to begin school visits immediately after joining (July)",
-            "Saudi Sales Manager: training and induction in August, school visits when term resumes",
-            "Rishi to define territory plans and targets for both markets"
+            "Senthil to deliver written activation plan by Jun 16: priority cities, channel strategy, product readiness gaps, team structure",
+            "Ranjan to submit India proposal (promised end of week Jun 13)",
+            "Rajkumar to come prepared with supplier contract and product live status for Maharashtra and North India",
+            "Vaibhav to be looped in for marketing piece",
+            "Identify product readiness gaps per Maharashtra and North India city",
+            "Define B2C channel strategy for direct consumer brand building in India"
           ],
           "sheetLinks": [],
           "relatedSubjects": [
-            "Schools, Universities & Edutainment \u2014 Complete Brief | Azhar + Rishi"
+            "Re: India B2C Activation - Direction + Action Required | Maharashtra + North India",
+            "RE: India B2C Activation - Direction + Action Required | Maharashtra + North India"
           ]
         }
       ]
@@ -1059,28 +1069,29 @@
       "title": "\ud83d\udce3 PR, Brand & Content",
       "items": [
         {
-          "id": "forbes-india-article-negotiation",
-          "title": "Forbes India \u2014 Standalone Article Negotiation (Barter Counter-Offer)",
+          "id": "forbes-india-article",
+          "title": "Forbes India \u2014 Standalone Feature Article Negotiation",
           "statusLabel": "IN PROGRESS",
           "color": "yellow",
-          "deadline": "Payment this week (from Jun 10)",
-          "deadlineUrgency": "urgent",
+          "deadline": "TBD",
+          "deadlineUrgency": "null",
           "emailDate": "Jun 08",
           "lastReplyDate": "Jun 14",
           "owners": [
             "Aparna",
             "Senthil"
           ],
-          "progress": 70,
-          "progressLabel": "Forbes India proposal approved by Senthil; Brandconnect Dedicated Online Article selected (\u20b92,00,000+GST); payment process to be completed; article live 10-15 days after payment",
-          "response": "Aparna shared Forbes India options Jun 9. Senthil directed: Brandconnect Online Article format, counter-propose hosted Dubai experience first. Aparna Jun 10 update: proposal approved by Senthil, payment process to be completed this week. Article goes live 10\u201315 days after payment.",
+          "progress": 50,
+          "progressLabel": "Senthil approved Javed's Brandconnect Online Article (\u20b92,00,000+GST). Counter-proposal sent: offer hosted Dubai experience to reduce/waive fee. Aparna confirmed payment process being completed that week (Jun 10). Article expected live 10\u201315 days after payment.",
+          "response": "Aparna confirmed payment process in progress week of Jun 10. Article live 10\u201315 days after payment. Senthil directed counter-proposal before any cash commitment.",
           "noReplyWarning": null,
           "subTasks": [
-            "Complete payment process for Forbes India Brandconnect Online Article",
-            "Confirm Javed's response to Dubai experience counter-offer",
-            "Share payment confirmation with Javed",
-            "Article to go live within 10\u201315 days of payment",
-            "Use article as key reference for Wikipedia notability push"
+            "Confirm counter-proposal result: did Javed reduce fee in exchange for hosted Dubai experience?",
+            "Manoj to review final counter-offer terms before any payment approval",
+            "Process payment for Brandconnect Dedicated Online Article (\u20b92,00,000+GST)",
+            "Monitor article draft and publication timeline (10\u201315 days post payment)",
+            "Use published article as anchor for Wikipedia notability submission",
+            "Ensure article is standalone feature (not listicle) aligned with Our Story page"
           ],
           "sheetLinks": [],
           "relatedSubjects": [
@@ -1090,71 +1101,44 @@
         },
         {
           "id": "wikipedia-wikidata-entity",
-          "title": "Wikipedia & Wikidata \u2014 Entity Build and Notability Strategy",
+          "title": "Wikipedia Notability Assessment + Wikidata Entity Fix",
           "statusLabel": "IN PROGRESS",
           "color": "yellow",
-          "deadline": "Ongoing \u2014 wait for Forbes India then hire Wikipedia editor",
-          "deadlineUrgency": "ok",
+          "deadline": "TBD",
+          "deadlineUrgency": "null",
           "emailDate": "Jun 08",
           "lastReplyDate": "Jun 19",
           "owners": [
             "Aparna"
           ],
-          "progress": 40,
-          "progressLabel": "Wikidata entity created and deleted \u2014 issue raised with administrator. Wikipedia strategy: wait for Forbes India to publish, then hire trusted editor (Route 3) + add to Requested Articles (Route 2)",
-          "response": "Aparna: Wikidata listing created Jun 9, later deleted. Query raised with admin. Wikipedia notability assessment completed Jun 10 (3 routes identified). Brand entity audit completed Jun 10. AEO/AI visibility 30-day roadmap shared Jun 19.",
+          "progress": 45,
+          "progressLabel": "Wikidata entity deleted after creation. Aparna raised query with administrator. Notability assessment shared Jun 10 \u2014 recommends wait for Forbes India publication, then hire trusted Wikipedia editor. Brand entity audit completed.",
+          "response": "Aparna provided updates Jun 9\u201319. Wikidata deleted and query raised. Wikipedia notability doc shared. Brand entity audit done. Waiting for Wikidata admin response and Forbes publication before Wikipedia submission.",
           "noReplyWarning": null,
           "subTasks": [
-            "Await Wikidata administrator response on deletion reason",
-            "Fix all Wikidata entry errors: instance-of, descriptions, missing properties (country, HQ, website, founding year)",
-            "Wait for Forbes India article to publish before hiring Wikipedia editor",
-            "Hire trusted Wikipedia editor disclosing paid relationship (WP:PAID)",
-            "Simultaneously add Rayna to Requested Articles list as free backup",
-            "Build 2\u20133 strong backlinks before retrying Wikipedia submission"
-          ],
-          "sheetLinks": [],
-          "relatedSubjects": [
-            "Re: Emergency Unpaid Leave Request",
-            "SEO & PR Action Items \u2013 Summary from Our Discussion"
-          ]
-        },
-        {
-          "id": "india-media-outreach-pr",
-          "title": "India Media Partnership Outreach \u2014 Phase 1",
-          "statusLabel": "IN PROGRESS",
-          "color": "yellow",
-          "deadline": "From Jun 15 (Aparna available full-time)",
-          "deadlineUrgency": "urgent",
-          "emailDate": "Jun 08",
-          "lastReplyDate": "Jun 14",
-          "owners": [
-            "Aparna"
-          ],
-          "progress": 35,
-          "progressLabel": "Aparna prepared outreach list and email template; outreach was to begin Jun 15 when she became available full-time; list shared for review",
-          "response": "Aparna Jun 14: outreach list prepared (Google Sheet shared), email template ready. Outreach to begin Jun 15. Full-time from Jun 17. Senthil approved proceeding with Forbes India.",
-          "noReplyWarning": null,
-          "subTasks": [
-            "Send Phase 1 media outreach emails using approved template",
-            "Share outreach list and response tracking with Vaibhav and Manish",
-            "Use Rayna's Our Story page as sole company profile reference in all outreach",
-            "Track journalist responses and follow up systematically",
-            "Report outcomes to Senthil and Manoj weekly"
+            "Await Wikidata admin response on deletion reason and appeal",
+            "Re-create Wikidata entity with correct classifications (travel agency/tour operator, not website)",
+            "Add all missing statements: country UAE, HQ Dubai, website, founded year, industry, logo",
+            "Wait for Forbes India article to publish before Wikipedia submission attempt",
+            "Hire experienced independent Wikipedia editor (WP:PAID disclosure route)",
+            "Add Rayna Tours to Wikipedia Requested Articles as backup route"
           ],
           "sheetLinks": [
-            "https://docs.google.com/spreadsheets/d/1TxIzF869p4Yu6RiTzWkTCBpx7vshaAPXkGXxhnK6xC0/edit"
+            "https://docs.google.com/document/d/1UkSftrVKQCzELAVt2y2iICEKHPxQG1YU2I3PZ-5J6ds/edit?tab=t.0"
           ],
           "relatedSubjects": [
             "Re: Emergency Unpaid Leave Request",
-            "Two India Items \u2014 Forbes India + Senior Travel Writer | Senthil"
+            "Re: Emergency Unpaid Leave Request",
+            "Re: Emergency Unpaid Leave Request",
+            "Re: Emergency Unpaid Leave Request"
           ]
         },
         {
-          "id": "use-our-story-page-company-profile",
-          "title": "Aparna + Manish \u2014 Use Our Story Page Only (Old Profile Banned)",
+          "id": "company-profile-our-story-page",
+          "title": "Company Profile \u2014 Replace Old Profile with Our Story Page Across All Outreach",
           "statusLabel": "IN PROGRESS",
           "color": "yellow",
-          "deadline": "Immediate \u2014 Jun 10",
+          "deadline": "Immediate",
           "deadlineUrgency": "urgent",
           "emailDate": "Jun 10",
           "lastReplyDate": "Jun 14",
@@ -1162,44 +1146,79 @@
             "Aparna",
             "Manish"
           ],
-          "progress": 60,
-          "progressLabel": "Aparna acknowledged and is incorporating Our Story page in outreach; no explicit confirmation from Manish",
-          "response": "Aparna's subsequent outreach activity references new positioning. No direct confirmation email from Manish on this directive.",
+          "progress": 50,
+          "progressLabel": "Directive issued Jun 10. Aparna acknowledged and stated she will complete all pending tasks by Jun 15. India media outreach phase 1 scheduled to begin Jun 15.",
+          "response": "Aparna replied Jun 14 confirming she will complete pending tasks by next day and start India media outreach from Jun 15, using updated company profile.",
           "noReplyWarning": null,
           "subTasks": [
-            "Aparna to confirm in writing she has read Our Story page and will use it only",
-            "Manish to confirm same in writing",
-            "Review all existing outreach materials and replace old company profile",
-            "Align all media pitches, press kits, and partnership proposals with Our Story page",
-            "Never use old company profile again"
+            "Aparna to read Our Story page in full and confirm in writing",
+            "Manish to read Our Story page in full and confirm in writing",
+            "Remove all uses of old company profile from active outreach materials",
+            "Rebuild all media pitch templates, partnership proposals and press kits from Our Story page",
+            "Audit all existing outreach sent \u2014 identify any that used old profile and follow up if needed",
+            "Brief Chetan and Rezmin on the requirement"
           ],
           "sheetLinks": [],
           "relatedSubjects": [
-            "Use Our Story Page as Company Profile \u2014 Old Profile No Longer Accepted | Aparna + Manish"
+            "Use Our Story Page as Company Profile \u2014 Old Profile No Longer Accepted | Aparna + Manish",
+            "Re: Emergency Unpaid Leave Request"
           ]
         },
         {
-          "id": "independent-awards-journalist-list",
-          "title": "Independent Awards Research + Journalist Contact List",
+          "id": "india-media-partnership-outreach",
+          "title": "India Media Partnership Outreach \u2014 Phase 1",
           "statusLabel": "IN PROGRESS",
           "color": "yellow",
-          "deadline": "Jun 12 (both due)",
+          "deadline": "Jun 15",
+          "deadlineUrgency": "urgent",
+          "emailDate": "Jun 10",
+          "lastReplyDate": "Jun 19",
+          "owners": [
+            "Aparna"
+          ],
+          "progress": 40,
+          "progressLabel": "Aparna confirmed outreach list and email template prepared. Phase 1 commenced Jun 15. AEO and AI Visibility 30-day strategy roadmap shared. Coordination with Sandstorm for AEO content template ongoing.",
+          "response": "Aparna replied Jun 14 and Jun 19 confirming outreach commenced and strategy shared.",
+          "noReplyWarning": null,
+          "subTasks": [
+            "Execute Phase 1 India media outreach using prepared journalist contact list",
+            "Use only Our Story page as company profile reference",
+            "Share outreach list and email template for Senthil/Vaibhav review",
+            "Track all outreach responses in journalist contact Google Sheet",
+            "Coordinate with Sandstorm for AEO content template",
+            "Implement 30-day AEO and AI Visibility roadmap"
+          ],
+          "sheetLinks": [
+            "https://docs.google.com/spreadsheets/d/1TxIzF869p4Yu6RiTzWkTCBpx7vshaAPXkGXxhnK6xC0/edit"
+          ],
+          "relatedSubjects": [
+            "Re: Emergency Unpaid Leave Request",
+            "Re: SEO & PR Action Items \u2013 Summary from Our Discussion"
+          ]
+        },
+        {
+          "id": "independent-awards-research",
+          "title": "Independent Awards Research + WTA 2026 Confirmation",
+          "statusLabel": "IN PROGRESS",
+          "color": "yellow",
+          "deadline": "Jun 12",
           "deadlineUrgency": "urgent",
           "emailDate": "Jun 08",
           "lastReplyDate": "Jun 19",
           "owners": [
             "Aparna"
           ],
-          "progress": 80,
-          "progressLabel": "Independent awards document completed and shared Jun 12; journalist contact list updated and shared Jun 12; WTA 2026 deadline already passed",
-          "response": "Awards research document completed Jun 12 (shared with sheet links). Journalist contact list updated and shared Jun 12. WTA 2026 entries: submission deadline already passed, no new entries for 2026.",
+          "progress": 70,
+          "progressLabel": "Independent Awards Research document completed and shared Jun 12. WTA 2026 submission deadline confirmed passed \u2014 no new entries for 2026. Awards tracker Google Sheet shared.",
+          "response": "Aparna confirmed awards research document shared Jun 12. WTA 2026 entries not possible (deadline passed). Document includes awards won to date and suggested future targets.",
           "noReplyWarning": null,
           "subTasks": [
-            "Review independent awards research document and provide feedback",
-            "Review journalist contact list and confirm priorities",
-            "Begin award application process for relevant 2026/2027 awards",
-            "Note WTA 2026 is closed \u2014 plan for WTA 2027 entries",
-            "Identify awards where Rayna has strongest chance and prioritize applications"
+            "Review and confirm independent awards research document",
+            "Identify which suggested awards to target for 2027 entries",
+            "Plan early entry strategy for next WTA cycle",
+            "Add awards calendar to PR planning sheet",
+            "Research additional awards beyond WTA for 2026/2027 submission",
+            "Share final prioritised awards target list with Senthil for approval"
           ],
           "sheetLinks": [
             "https://docs.google.com/spreadsheets/d/1TxIzF869p4Yu6RiTzWkTCBpx7vshaAPXkGXxhnK6xC0/edit"
@@ -1209,77 +1228,43 @@
           ]
         },
         {
-          "id": "senior-travel-writer-hiring",
-          "title": "Senior Travel Writer \u2014 JD Update and Post Immediately",
+          "id": "senior-travel-writer-jd-hire",
+          "title": "Senior Travel Writer \u2014 JD Update + Immediate Hire",
           "statusLabel": "IN PROGRESS",
           "color": "yellow",
-          "deadline": "Post immediately after JD update",
+          "deadline": "ASAP",
           "deadlineUrgency": "urgent",
           "emailDate": "Jun 08",
           "lastReplyDate": "Jun 10",
           "owners": [
             "Aparna",
-            "Senthil"
+            "Senthil",
+            "Pari"
           ],
-          "progress": 60,
-          "progressLabel": "Senthil directed 3 JD updates Jun 9; Aparna confirmed discussing role fit with Senthil Jun 10; JD not yet posted",
-          "response": "Senthil directed: confirm India location, revise salary to \u20b91.5L\u2013\u20b92L/month, add Student Travel Writing Competition to responsibilities. Aparna Jun 10: will discuss role strategy with Senthil to finalize.",
+          "progress": 40,
+          "progressLabel": "Senthil provided updated JD instructions: India location (Mumbai/Delhi), salary \u20b91.5\u20132L/month, add Student Travel Writing Competition responsibility. Aparna confirmed JD discussion with Senthil on Jun 10.",
+          "response": "Senthil replied Jun 9 with three specific JD updates. Aparna confirmed she would discuss role fit with Senthil Jun 10.",
           "noReplyWarning": null,
           "subTasks": [
-            "Confirm location as India (Mumbai or Delhi preferred)",
-            "Revise salary range to \u20b91.5 lakh \u2013 \u20b92 lakh per month",
-            "Add Student Travel Writing Competition oversight to JD responsibilities",
-            "Post updated JD immediately after Senthil approval",
-            "Begin sourcing candidates \u2014 needed urgently given AI content engine going live"
+            "Update JD: confirm location as India (Mumbai or Delhi preferred)",
+            "Update JD: revise salary to \u20b91.5L\u2013\u20b92L per month",
+            "Update JD: add Student Travel Writing Competition oversight to responsibilities",
+            "Post updated JD immediately through Pari",
+            "Source candidates urgently given AI content engine going live",
+            "Interview and hire as soon as possible"
           ],
           "sheetLinks": [],
           "relatedSubjects": [
             "Two India Items \u2014 Forbes India + Senior Travel Writer | Senthil",
             "Re: Two India Items \u2014 Forbes India + Senior Travel Writer | Senthil"
           ]
-        }
-      ]
-    },
-    {
-      "id": "operations-pricing",
-      "title": "\u2699\ufe0f Operations & Pricing",
-      "items": [
-        {
-          "id": "116-city-content-timeline-alok",
-          "title": "116/140 City Content Timeline \u2014 All Cities Status Report",
-          "statusLabel": "IN PROGRESS",
-          "color": "yellow",
-          "deadline": "Jun 10 (report), Aug 31 (go-live)",
-          "deadlineUrgency": "urgent",
-          "emailDate": "Jun 06",
-          "lastReplyDate": "Jun 10",
-          "owners": [
-            "Alok"
-          ],
-          "progress": 45,
-          "progressLabel": "London and Cairo complete (500+ products). 35 high-priority cities building. London live target third week of June (admin portal connection pending). Full report submitted Jun 10.",
-          "response": "Alok submitted full status Jun 10: 140 cities (35 high-priority), London and Cairo complete, scraping started on high-priority cities. London live target: third week of June pending admin portal connection from Anowar's team. Realistic dates to follow. Blog/destination guide timeline included.",
-          "noReplyWarning": null,
-          "subTasks": [
-            "Get admin portal connection from Anowar's team to push London live",
-            "Push London live \u2014 third week of June target",
-            "London publish proves pipeline; all other cities follow same path",
-            "Build high-priority 35 cities first, then medium, then rest",
-            "Connect with Anwar on GlobalTix API coverage for cities",
-            "Submit final blog and destination guide timeline"
-          ],
-          "sheetLinks": [],
-          "relatedSubjects": [
-            "RE: Two Action Items \u2014 Competition API Access + 116 City Content Deadline | Deepak + Alok",
-            "Re: Two Action Items \u2014 Competition API Access + 116 City Content Deadline | Deepak + Alok"
-          ]
         },
         {
-          "id": "employee-communication-policy",
-          "title": "Employee Communication Policy \u2014 No Email Unanswered",
+          "id": "employee-communication-policy-settlements",
+          "title": "Employee Communication Policy \u2014 No Email Unanswered + Settlement Cases",
           "statusLabel": "IN PROGRESS",
           "color": "yellow",
-          "deadline": "Jun 13 (Pari's status report)",
+          "deadline": "Jun 13",
           "deadlineUrgency": "urgent",
           "emailDate": "Jun 05",
           "lastReplyDate": "Jun 10",
@@ -1287,80 +1272,53 @@
             "Pari",
             "Vaibhav"
           ],
-          "progress": 40,
-          "progressLabel": "Pari requested until Friday Jun 13 to compile full status of pending employee complaints; awaiting India office details; status report not yet confirmed received",
-          "response": "Pari replied Jun 10: needs until Friday Jun 13 to compile complete status on pending employee complaints/settlements, awaiting India office details.",
+          "progress": 30,
+          "progressLabel": "Pari requested until Friday (Jun 12/13) to review all pending employee complaints and settlement cases. Awaiting details from India office for complete status report.",
+          "response": "Pari replied Jun 10 requesting until Friday for complete report, citing pending India office details.",
           "noReplyWarning": null,
           "subTasks": [
-            "Pari to compile full status of all pending employee complaints and settlement cases",
-            "Include Inder Thakral case and any others from India",
-            "Submit comprehensive update to Manoj by end of day Jun 13",
-            "Establish policy: all employee emails must receive written response",
-            "Create escalation process for unresolved cases before they reach labour authorities"
+            "Pari to compile complete status report of all pending employee complaints and settlement cases by Friday",
+            "Resolve Inder Thakral Full & Final settlement \u2014 communicate in writing exactly what was done wrong and outstanding amounts",
+            "Establish policy: no employee email to go unanswered",
+            "Set up process for acknowledging all employee communications within 24 hours",
+            "Vaibhav to ensure no internal coordination gaps on settlement cases",
+            "Check for other employees who may have unresolved settlement issues"
           ],
           "sheetLinks": [],
           "relatedSubjects": [
-            "Employee Communication Policy \u2014 No Email Should Go Unanswered"
-          ]
-        },
-        {
-          "id": "internal-comms-policy-no-cc",
-          "title": "Internal Communication Policy \u2014 Do Not CC Manoj on Internal Emails",
-          "statusLabel": "ACKNOWLEDGED",
-          "color": "orange",
-          "deadline": "Immediate",
-          "deadlineUrgency": "ok",
-          "emailDate": "Jun 10",
-          "lastReplyDate": "Jun 10",
-          "owners": [
-            "Senthil",
-            "Vaibhav"
-          ],
-          "progress": 50,
-          "progressLabel": "Policy communicated to all team members; Gaurav acknowledged and confirmed adopting it; compliance ongoing",
-          "response": "Gaurav acknowledged the Claude adoption email (same thread) and confirmed compliance. Policy now in effect.",
-          "noReplyWarning": null,
-          "subTasks": [
-            "All team members to stop CCing Manoj on internal coordination",
-            "Only email/CC Manoj when a decision, approval, or input is needed",
-            "Senthil and Vaibhav to enforce this in their respective teams",
-            "Monitor compliance and remind team if violations occur"
-          ],
-          "sheetLinks": [],
-          "relatedSubjects": [
-            "Important \u2014 Do Not CC Me on Internal Communications"
+            "RE: Employee Communication Policy \u2014 No Email Should Go Unanswered"
           ]
         }
       ]
     },
     {
-      "id": "acknowledged-closed",
-      "title": "\u2705 Acknowledged / HR / Recruitment",
+      "id": "operations-pricing",
+      "title": "\ud83c\udfd7\ufe0f Operations, Hiring & Governance",
       "items": [
         {
-          "id": "category-head-events-experiences-hiring",
-          "title": "Category Head Events & Experiences \u2014 Recruit Waleed Elghoul + Continue Sourcing",
+          "id": "category-head-events-experiences-hire",
+          "title": "Category Head, Events & Experiences \u2014 Recruitment in Progress",
           "statusLabel": "IN PROGRESS",
           "color": "yellow",
-          "deadline": "Interview Waleed next Tuesday (from Jun 12)",
+          "deadline": "ASAP",
           "deadlineUrgency": "urgent",
           "emailDate": "Jun 09",
-          "lastReplyDate": "Jun 22",
+          "lastReplyDate": "Jun 17",
           "owners": [
             "Pari",
             "Senthil"
           ],
-          "progress": 65,
-          "progressLabel": "Waleed Elghoul shortlisted. Senthil directed interview slot for next Tuesday Jun 17. Two rounds of additional CVs shortlisted (Jun 16 and Jun 17 \u2014 4+11 candidates). Search ongoing for more ticketing-platform profiles.",
-          "response": "Pari submitted first shortlist Jun 11 (6 candidates, Tier 1&2). Manoj directed: shortlist Waleed Elghoul, keep sourcing ticketing-platform profiles. Senthil requested interview slot for Waleed on Jun 17. Pari submitted second shortlist Jun 16 (4 candidates), third Jun 17 (11 candidates with top 3 highlighted).",
+          "progress": 55,
+          "progressLabel": "Two batches of CVs submitted (Jun 16: 4 CVs, Jun 17: 11 CVs). Manoj selected Waleed Elghoul for interview. Senthil asked Pari to schedule Waleed for Tuesday Jun 17. Manoj requested more ticketing-platform profiles.",
+          "response": "Pari submitted CVs Jun 11, 16, 17. Senthil requested interview slot for Waleed Jun 12. Manoj provided detailed feedback on profile preference (ticketing platform relationships with organizers).",
           "noReplyWarning": null,
           "subTasks": [
-            "Schedule and conduct interview with Waleed Elghoul",
-            "Verify Waleed's non-compete status from Platinumlist",
-            "Confirm whether organizer relationships are personal (Waleed's) or tied to Platinumlist brand",
-            "Continue sourcing: Platinumlist, Virgin Tickets, BookMyShow, Coca-Cola Arena profiles",
-            "Evaluate second and third shortlist candidates",
-            "Manoj to make final hiring decision"
+            "Confirm Waleed Elghoul interview slot (Senthil requested Tuesday Jun 17)",
+            "Verify Waleed's non-compete restriction from Platinumlist",
+            "Verify whether organiser relationships are Waleed's personally or tied to Platinumlist brand",
+            "Continue sourcing CVs from ticketing platform backgrounds: Platinumlist, Virgin Tickets, BookMyShow, Coca-Cola Arena",
+            "Shortlist additional candidates with event organiser relationships in UAE and KSA",
+            "Finalise hire as CVs come in (Manoj reviews each batch)"
           ],
           "sheetLinks": [],
           "relatedSubjects": [
@@ -1371,61 +1329,192 @@
           ]
         },
         {
-          "id": "claude-ai-daily-work-adoption",
-          "title": "Claude AI \u2014 All Team Adopt in Daily Work",
+          "id": "schools-universities-edutainment-hiring",
+          "title": "Schools, Universities & Edutainment \u2014 Sales Manager Hiring Saudi + India",
           "statusLabel": "IN PROGRESS",
           "color": "yellow",
-          "deadline": "Immediate \u2014 from Jun 07",
-          "deadlineUrgency": "ok",
-          "emailDate": "Jun 07",
-          "lastReplyDate": "Jun 10",
+          "deadline": "Jun 30",
+          "deadlineUrgency": "urgent",
+          "emailDate": "Jun 08",
+          "lastReplyDate": "Jun 09",
+          "owners": [
+            "Rishi",
+            "Pari"
+          ],
+          "progress": 35,
+          "progressLabel": "JDs shared with Pari for both Saudi Arabia and India Sales Manager roles. Rishi recommends onboarding Saudi hire in August (schools in summer break until end of Aug). India hire can start July.",
+          "response": "Rishi replied Jun 9 with JD submission confirmation and academic calendar advisory: Saudi schools reopen end of August, recommend Aug hire start for Saudi. India July is fine.",
+          "noReplyWarning": null,
+          "subTasks": [
+            "Pari to source Sales Manager candidates for India and Saudi Arabia",
+            "India Sales Manager hire by end of June \u2014 school visits can begin July",
+            "Saudi Arabia Sales Manager hire by end of June \u2014 onboard in August given summer break",
+            "Rishi to provide training and induction plan for both new hires",
+            "Confirm product readiness for school tour packages in both markets",
+            "Rishi to begin school visits in India from July and Saudi from late August"
+          ],
+          "sheetLinks": [],
+          "relatedSubjects": [
+            "RE: Schools, Universities & Edutainment \u2014 Complete Brief | Azhar + Rishi"
+          ]
+        },
+        {
+          "id": "ai-agents-governance-framework",
+          "title": "AI Agents \u2014 Governance Framework & Build Principles (Senthil)",
+          "statusLabel": "ONLY NOTED",
+          "color": "orange",
+          "deadline": "TBD",
+          "deadlineUrgency": "null",
+          "emailDate": "Jun 16",
+          "lastReplyDate": "Jun 16",
+          "owners": [
+            "Senthil",
+            "Vaibhav",
+            "Alok"
+          ],
+          "progress": 20,
+          "progressLabel": "Senthil shared comprehensive AI agent governance principles (Jun 16): automate 80%, agent only 20%, build learning loops, measure outcomes not agent count. Shared as advisory \u2014 no specific action items assigned yet.",
+          "response": "Senthil authored and sent the governance guidelines himself as advisory to team.",
+          "noReplyWarning": null,
+          "subTasks": [
+            "Apply governance principles: automate predictable 80%, agent only judgment-requiring 20%",
+            "Build private learning loop \u2014 encode Rayna institutional knowledge",
+            "Implement multi-LLM orchestration layer with swappable models",
+            "Prioritise orchestration (routing, state, approvals, escalation, audit trails) over model intelligence",
+            "Define ROI measurement framework: revenue generated, cost reduced per agent",
+            "Review all current agent builds against tokenomics (single agent 4x tokens, multi-agent 15x)"
+          ],
+          "sheetLinks": [],
+          "relatedSubjects": [
+            "AI Agents: Key considerations"
+          ]
+        },
+        {
+          "id": "deadline-ownership-policy",
+          "title": "Deadline Ownership Policy \u2014 Rajkumar, Alok, Ranjan",
+          "statusLabel": "ONLY NOTED",
+          "color": "orange",
+          "deadline": "Immediate",
+          "deadlineUrgency": "urgent",
+          "emailDate": "Jun 08",
+          "lastReplyDate": "Jun 09",
+          "owners": [
+            "Rajkumar",
+            "Alok",
+            "Ranjan"
+          ],
+          "progress": 50,
+          "progressLabel": "Manoj issued deadline ownership directive. Alok responded proactively Jun 8 with interim content update. Rajkumar and Ranjan response noted via India B2C thread.",
+          "response": "Alok replied Jun 8 with full interim status. Ranjan replied Jun 11 via India B2C thread.",
+          "noReplyWarning": null,
+          "subTasks": [
+            "All named owners to proactively request extensions before deadlines pass",
+            "Rajkumar to confirm receipt of deadline ownership policy",
+            "Alok to ensure all content deadlines are communicated proactively",
+            "Ranjan to submit India proposals on time without requiring follow-up",
+            "No deadline to move without prior communication and remark",
+            "Manoj should not need to chase any team member for status"
+          ],
+          "sheetLinks": [],
+          "relatedSubjects": [
+            "Deadline Ownership \u2014 Action Required Today | Rajkumar, Alok, Ranjan"
+          ]
+        },
+        {
+          "id": "internal-cc-policy",
+          "title": "Internal Communication Policy \u2014 No Unnecessary CC to Manoj",
+          "statusLabel": "ONLY NOTED",
+          "color": "orange",
+          "deadline": "Immediate",
+          "deadlineUrgency": "urgent",
+          "emailDate": "Jun 10",
+          "lastReplyDate": null,
           "owners": [
             "Senthil",
             "Vaibhav"
           ],
-          "progress": 60,
-          "progressLabel": "Gaurav confirmed full Claude integration \u2014 email, calendar, build planning, research. Team-wide adoption still in progress.",
-          "response": "Gaurav confirmed Jun 9: Claude fully integrated into daily work \u2014 email, calendar, app launch coordination, affiliate build plan, QA evaluation. Encouraged whole team to set it up this week.",
+          "progress": 10,
+          "progressLabel": "Directive issued to all team. Do not CC Manoj on internal coordination. Only email/CC when needing decision, approval or input. No confirmation reply found but directive is broadcast.",
+          "response": null,
+          "noReplyWarning": null,
+          "subTasks": [
+            "All team members to stop CCing Manoj on internal coordination emails immediately",
+            "Only email Manoj when a decision, approval or specific input is needed",
+            "Senthil and Vaibhav to enforce this policy within their teams",
+            "Remove Manoj from internal task updates, status replies and team-to-team comms",
+            "If unsure whether to include Manoj, default to not including",
+            "Acknowledge policy receipt in team communication"
+          ],
+          "sheetLinks": [],
+          "relatedSubjects": [
+            "Important \u2014 Do Not CC Me on Internal Communications"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "acknowledged-closed",
+      "title": "\u2705 Acknowledged / Closed",
+      "items": [
+        {
+          "id": "claude-ai-daily-work",
+          "title": "Claude AI Integration \u2014 All Team to Use in Daily Work",
+          "statusLabel": "ACKNOWLEDGED",
+          "color": "green",
+          "deadline": "Jun 10",
+          "deadlineUrgency": "ok",
+          "emailDate": "Jun 07",
+          "lastReplyDate": "Jun 09",
+          "owners": [
+            "Gaurav",
+            "Senthil",
+            "Vaibhav"
+          ],
+          "progress": 80,
+          "progressLabel": "Gaurav confirmed Claude fully integrated into daily work (email, calendar, build planning, research, document analysis). MoM on AI/Agentic infrastructure shared. Multi-LLM orchestration architecture decided.",
+          "response": "Gaurav confirmed Claude integrated Jun 9. Full AI Architecture MoM shared by Vaibhav Jun 11.",
           "noReplyWarning": null,
           "subTasks": [
             "All team members to connect Claude to email and calendar",
-            "Use Claude for email drafting, build planning, research, document analysis",
-            "Senthil and Vaibhav to confirm adoption across their teams",
-            "Track productivity improvement metrics"
+            "Use Claude for email drafting, build planning, timeline analysis, research",
+            "Apply multi-LLM orchestration: free/open-source for bulk tasks, premium only where intelligence required",
+            "Build agents with defined roles, escalation paths, model routing",
+            "Do not use LLM for calculations \u2014 build business logic in database layer first",
+            "Gaurav to encourage team adoption by end of week"
           ],
           "sheetLinks": [],
           "relatedSubjects": [
-            "Use Claude AI in Your Daily Work \u2014 Starting Today | All Team"
+            "Re: Use Claude AI in Your Daily Work \u2014 Starting Today | All Team",
+            "MoM \u2014 Rayna AI & Agentic Infrastructure Discussion"
           ]
         },
         {
-          "id": "email-template-liquid-bug-fix",
-          "title": "Email Template Bug \u2014 Liquid Template Variables Not Rendering",
-          "statusLabel": "AT RISK",
-          "color": "red",
-          "deadline": "ASAP \u2014 live campaign affected",
-          "deadlineUrgency": "urgent",
-          "emailDate": "Jun 22",
-          "lastReplyDate": "Jun 22",
+          "id": "rayna-ai-chatbot-research",
+          "title": "Rayna AI Chatbot \u2014 Research Findings + 6-Service Smart Workflows",
+          "statusLabel": "ACKNOWLEDGED",
+          "color": "green",
+          "deadline": "TBD",
+          "deadlineUrgency": "null",
+          "emailDate": "Jun 10",
+          "lastReplyDate": "Jun 10",
           "owners": [
-            "Vaibhav",
-            "Malik"
+            "Asad"
           ],
-          "progress": 10,
-          "progressLabel": "Vaibhav forwarded broken Pattaya email \u2014 Liquid template variables ({% case %}, {% if %}) not rendering, showing raw code to live recipients including Vaibhav himself",
-          "response": "Vaibhav forwarded the broken promotional email he received as 'Saurav' with unrendered Liquid template code. Flagged as evidence of broken email template system.",
+          "progress": 60,
+          "progressLabel": "Asad completed comprehensive AI chatbot research (Layla.ai, Mindtrip, Trip.com). Delivered full architecture with 6-service workflows and competitive analysis. Next step: build decision pending.",
+          "response": "Asad submitted full research report Jun 10 with chatbot concept, must-have features, and 6-service smart workflows.",
           "noReplyWarning": null,
           "subTasks": [
-            "Identify root cause of Liquid template variable rendering failure",
-            "Fix {% case %}, {% if %}, {% endif %} rendering in email system",
-            "Ensure personalization variables (name, recommendations) render correctly",
-            "Test fix across all active email campaign templates",
-            "Audit recent sends for similar issues and assess customer impact",
-            "Implement pre-send template validation to prevent recurrence"
+            "Review Asad's research findings and chatbot architecture",
+            "Make build vs buy decision on AI chatbot",
+            "Define MVP scope: which services to include in Phase 1",
+            "Align chatbot with existing reservation agent and booking flow work",
+            "Define integration points with 6 Rayna services",
+            "Agree timeline and assign build owner"
           ],
           "sheetLinks": [],
           "relatedSubjects": [
-            "Fwd: Still exploring Pattaya?"
+            "Rayna Tours AI Chatbot \u2014 Complete Research Findings & 6-Service Smart Workflows"
           ]
         }
       ]
@@ -1436,67 +1525,135 @@
       "name": "Vaibhav",
       "tasks": [
         {
-          "task": "Radio Partnerships \u2014 own both tracks (Radio + Trending Apps), make all decisions, design voucher system",
-          "assignedDate": "Jun 08",
+          "task": "Master Task Sheet co-owner \u2014 follow up with all named task owners and keep sheet updated",
+          "assignedDate": "Jun 12",
           "deadline": "Ongoing",
+          "deadlineUrgency": "null",
+          "color": "yellow"
+        },
+        {
+          "task": "Radio Partnerships \u2014 own all decisions on radio barter campaign activation (UAE, India, Saudi)",
+          "assignedDate": "Jun 08",
+          "deadline": "TBD",
+          "deadlineUrgency": "null",
+          "color": "yellow"
+        },
+        {
+          "task": "Trending App Partnerships \u2014 own outreach to Spotify, Careem, Zomato, Noon, CRED etc.",
+          "assignedDate": "Jun 08",
+          "deadline": "TBD",
+          "deadlineUrgency": "null",
+          "color": "red"
+        },
+        {
+          "task": "Giveaway Data Collection Engine \u2014 own backend development",
+          "assignedDate": "Jun 14",
+          "deadline": "TBD",
+          "deadlineUrgency": "null",
+          "color": "red"
+        },
+        {
+          "task": "Block 3 WS1/WS3 co-owner \u2014 email campaigns, WhatsApp/SMS, social automation go-live",
+          "assignedDate": "Jun 08",
+          "deadline": "Jun 30",
           "deadlineUrgency": "urgent",
           "color": "yellow"
         },
         {
-          "task": "Trending App Partnerships \u2014 Spotify, Careem, Zomato, Noon, CRED etc.",
-          "assignedDate": "Jun 08",
-          "deadline": "TBD",
-          "deadlineUrgency": "urgent",
-          "color": "red"
-        },
-        {
-          "task": "Block 3 WS1 Email Campaigns \u2014 co-own go-live Jun 26\u201327",
-          "assignedDate": "Jun 08",
-          "deadline": "Jun 26",
-          "deadlineUrgency": "urgent",
-          "color": "red"
-        },
-        {
-          "task": "Affiliate tech end-to-end ownership \u2014 support Nihad's Step 1 demo walkthrough",
+          "task": "Affiliate program tech demo with Nihad \u2014 verify end-to-end platform works",
           "assignedDate": "Jun 10",
           "deadline": "ASAP",
           "deadlineUrgency": "urgent",
           "color": "yellow"
         },
         {
-          "task": "Master Task Sheet co-owner \u2014 follow up with all named owners alongside Senthil",
-          "assignedDate": "Jun 12",
-          "deadline": "Ongoing",
-          "deadlineUrgency": "ok",
-          "color": "yellow"
-        },
-        {
-          "task": "Giveaway campaign development \u2014 back-end build",
-          "assignedDate": "Jun 14",
-          "deadline": "TBD",
-          "deadlineUrgency": "urgent",
-          "color": "red"
-        },
-        {
-          "task": "Bank CC BIN integrations \u2014 provide timeline to Azhar for all 6 pending items",
+          "task": "Bank CC BIN integrations \u2014 provide testing links to Azhar (Gaurav sharing this week)",
           "assignedDate": "Jun 16",
           "deadline": "ASAP",
           "deadlineUrgency": "urgent",
           "color": "red"
         },
         {
-          "task": "Omnichannel win-back strategy \u2014 14 segments build in platform",
+          "task": "Omnichannel win-back \u2014 14 segments and 17 journeys build co-owner",
           "assignedDate": "Jun 09",
           "deadline": "TBD",
-          "deadlineUrgency": "urgent",
+          "deadlineUrgency": "null",
           "color": "yellow"
         },
         {
-          "task": "Fix Liquid template rendering bug in promotional emails",
+          "task": "Fix automated email template rendering bug (Liquid/Jinja tags showing raw in live emails)",
           "assignedDate": "Jun 22",
           "deadline": "ASAP",
           "deadlineUrgency": "urgent",
           "color": "red"
+        }
+      ]
+    },
+    {
+      "name": "Senthil",
+      "tasks": [
+        {
+          "task": "Master Task Sheet owner \u2014 follow up with every named person and keep sheet live",
+          "assignedDate": "Jun 12",
+          "deadline": "Ongoing",
+          "deadlineUrgency": "null",
+          "color": "yellow"
+        },
+        {
+          "task": "Hotel Reservation AI Agent \u2014 oversee scope and Rumy's timeline delivery",
+          "assignedDate": "Jun 10",
+          "deadline": "TBD",
+          "deadlineUrgency": "null",
+          "color": "yellow"
+        },
+        {
+          "task": "Contract AI Agent \u2014 Supplier Master: oversee Manish exploration and results",
+          "assignedDate": "Jun 10",
+          "deadline": "TBD",
+          "deadlineUrgency": "null",
+          "color": "yellow"
+        },
+        {
+          "task": "Follow-up Agent \u2014 scope and build central company-wide task follow-up system",
+          "assignedDate": "Jun 14",
+          "deadline": "TBD",
+          "deadlineUrgency": "null",
+          "color": "red"
+        },
+        {
+          "task": "Tourism Board Outreach \u2014 co-own with Deepak, lead senior-level conversations for 137 cities",
+          "assignedDate": "Jun 07",
+          "deadline": "TBD",
+          "deadlineUrgency": "null",
+          "color": "yellow"
+        },
+        {
+          "task": "India B2C Activation \u2014 deliver written plan covering priority cities, channels, product gaps by Jun 16",
+          "assignedDate": "Jun 03",
+          "deadline": "Jun 16",
+          "deadlineUrgency": "urgent",
+          "color": "yellow"
+        },
+        {
+          "task": "Senior Travel Writer \u2014 confirm JD updates and post immediately through Pari",
+          "assignedDate": "Jun 08",
+          "deadline": "ASAP",
+          "deadlineUrgency": "urgent",
+          "color": "yellow"
+        },
+        {
+          "task": "Sign MSA and SOW for TestingXperts QA engagement",
+          "assignedDate": "Jun 19",
+          "deadline": "Jun 22",
+          "deadlineUrgency": "urgent",
+          "color": "yellow"
+        },
+        {
+          "task": "AI model selection cost discipline \u2014 enforce right model usage across all teams",
+          "assignedDate": "Jun 26",
+          "deadline": "ASAP",
+          "deadlineUrgency": "urgent",
+          "color": "yellow"
         }
       ]
     },
@@ -1504,68 +1661,101 @@
       "name": "Gaurav",
       "tasks": [
         {
-          "task": "App go-live \u2014 coordinate all launch blockers, PCI fix, visa selector, store readiness",
+          "task": "Mobile App UAE Go-Live \u2014 own launch coordination: QA, PCI fix, store submission",
           "assignedDate": "Jun 10",
-          "deadline": "Late Jul\u2013mid Aug",
-          "deadlineUrgency": "urgent",
-          "color": "red"
-        },
-        {
-          "task": "Share Tabby testing URL with Azhar this week",
-          "assignedDate": "Jun 22",
           "deadline": "Jun 26",
           "deadlineUrgency": "urgent",
           "color": "red"
         },
         {
-          "task": "Block 3 WS2 \u2014 Affiliate social auto-posting feature build",
+          "task": "Share Tabby testing URL with Azhar (CC BIN integration)",
+          "assignedDate": "Jun 22",
+          "deadline": "ASAP",
+          "deadlineUrgency": "urgent",
+          "color": "red"
+        },
+        {
+          "task": "Block 3 \u2014 Affiliate social auto-posting feature: AI content engine and production path",
           "assignedDate": "Jun 08",
           "deadline": "Aug 24",
           "deadlineUrgency": "ok",
           "color": "yellow"
         },
         {
-          "task": "Booking Flow A/B/D experiment \u2014 monitor traffic split convergence",
+          "task": "Booking Flow A/B/D experiment \u2014 monitor fix, allow data collection window, drive to product decision",
           "assignedDate": "Jun 09",
-          "deadline": "Ongoing",
-          "deadlineUrgency": "ok",
+          "deadline": "TBD",
+          "deadlineUrgency": "null",
+          "color": "yellow"
+        },
+        {
+          "task": "Clarify correct Figma design screen for New Design Changes ClickUp task (Asad's input needed)",
+          "assignedDate": "Jun 19",
+          "deadline": "ASAP",
+          "deadlineUrgency": "urgent",
           "color": "yellow"
         }
       ]
     },
     {
-      "name": "Azhar",
+      "name": "Anwar",
       "tasks": [
         {
-          "task": "Head of Partnerships \u2014 UAE, Saudi, India: corporate roadshows, rewards, affiliate",
-          "assignedDate": "Jun 07",
-          "deadline": "Ongoing",
-          "deadlineUrgency": "ok",
-          "color": "yellow"
-        },
-        {
-          "task": "ARN radio partnership \u2014 share contacts with Vaibhav, report outcome of Jun 16 meeting",
-          "assignedDate": "Jun 08",
-          "deadline": "ASAP",
+          "task": "Mobile App UAE Go-Live \u2014 co-present honest status assessment to Manoj in person",
+          "assignedDate": "Jun 10",
+          "deadline": "Jun 10",
           "deadlineUrgency": "urgent",
-          "color": "yellow"
+          "color": "red"
         },
         {
-          "task": "Bank CC BIN integrations \u2014 chase Vaibhav/Gaurav for all 6 pending delivery timelines",
-          "assignedDate": "Jun 16",
+          "task": "Reservation AI Platform \u2014 deliver independent CTO written assessment of build vs claims",
+          "assignedDate": "Jun 09",
+          "deadline": "Jun 12",
+          "deadlineUrgency": "urgent",
+          "color": "red"
+        },
+        {
+          "task": "Provide Admin Portal payload connection to Alok for 140-city content pipeline",
+          "assignedDate": "Jun 10",
+          "deadline": "Jun 14",
+          "deadlineUrgency": "urgent",
+          "color": "red"
+        }
+      ]
+    },
+    {
+      "name": "Asad",
+      "tasks": [
+        {
+          "task": "Complete Reservation Agent end-to-end UX flow (mobile + desktop, all services) by Monday Jun 16",
+          "assignedDate": "Jun 14",
+          "deadline": "Jun 16",
+          "deadlineUrgency": "urgent",
+          "color": "red"
+        },
+        {
+          "task": "Giveaway campaign \u2014 design front-end per approved UI/UX and brand guidelines",
+          "assignedDate": "Jun 14",
+          "deadline": "TBD",
+          "deadlineUrgency": "null",
+          "color": "red"
+        },
+        {
+          "task": "Design pendencies \u2014 resolve ClickUp-tagged items: Figma clarity, Driver Details, Holidays email, Google Pay compliance, Holidays & Cruises detail page",
+          "assignedDate": "Jun 19",
           "deadline": "ASAP",
           "deadlineUrgency": "urgent",
           "color": "red"
         },
         {
-          "task": "Rewards programme partnerships \u2014 daily/weekly tracker updates starting this week",
-          "assignedDate": "Jun 07",
-          "deadline": "Ongoing",
-          "deadlineUrgency": "ok",
-          "color": "yellow"
+          "task": "Deliver AI Chatbot architecture and 6-service smart workflows (completed \u2014 awaiting build decision)",
+          "assignedDate": "Jun 10",
+          "deadline": "TBD",
+          "deadlineUrgency": "null",
+          "color": "green"
         },
         {
-          "task": "Update pop-up stand materials with full Rayna product portfolio (with Ishra + Asad)",
+          "task": "Update pop-up stand materials with complete Rayna product portfolio (coordinate with Ishra)",
           "assignedDate": "Jun 15",
           "deadline": "ASAP",
           "deadlineUrgency": "urgent",
@@ -1577,105 +1767,122 @@
       "name": "Aparna",
       "tasks": [
         {
-          "task": "SEO technical tasks \u2014 title auto-update, 404 fixes, schema oversight, thin content, internal linking",
+          "task": "India Media Partnership Outreach Phase 1 \u2014 execute using journalist contact list",
+          "assignedDate": "Jun 10",
+          "deadline": "Jun 15",
+          "deadlineUrgency": "urgent",
+          "color": "yellow"
+        },
+        {
+          "task": "Forbes India \u2014 process payment and monitor article publication (10\u201315 days post payment)",
+          "assignedDate": "Jun 08",
+          "deadline": "ASAP",
+          "deadlineUrgency": "urgent",
+          "color": "yellow"
+        },
+        {
+          "task": "Wikipedia/Wikidata \u2014 fix entity, await admin response, implement notability plan post Forbes",
+          "assignedDate": "Jun 08",
+          "deadline": "TBD",
+          "deadlineUrgency": "null",
+          "color": "yellow"
+        },
+        {
+          "task": "SEO \u2014 build Title & Description auto-update Excel/Claude automation (target Jun 25)",
           "assignedDate": "Jun 19",
-          "deadline": "Ongoing",
+          "deadline": "Jun 25",
           "deadlineUrgency": "urgent",
           "color": "yellow"
         },
         {
-          "task": "Forbes India \u2014 complete payment process this week; article live 10\u201315 days after",
-          "assignedDate": "Jun 08",
-          "deadline": "Jun 26",
-          "deadlineUrgency": "urgent",
-          "color": "yellow"
-        },
-        {
-          "task": "India media outreach Phase 1 \u2014 begin sending, track responses",
-          "assignedDate": "Jun 08",
-          "deadline": "From Jun 15",
-          "deadlineUrgency": "urgent",
-          "color": "yellow"
-        },
-        {
-          "task": "Wikipedia/Wikidata \u2014 fix entity, build notability, hire Wikipedia editor after Forbes publishes",
-          "assignedDate": "Jun 08",
-          "deadline": "Ongoing",
-          "deadlineUrgency": "ok",
-          "color": "yellow"
-        },
-        {
-          "task": "Use Our Story page as only company profile \u2014 confirm in writing",
+          "task": "Use only Our Story page as company profile across all media and partner outreach",
           "assignedDate": "Jun 10",
           "deadline": "Immediate",
           "deadlineUrgency": "urgent",
           "color": "yellow"
         },
         {
-          "task": "Independent awards research + journalist contact list \u2014 both due Jun 12",
-          "assignedDate": "Jun 08",
-          "deadline": "Jun 12",
-          "deadlineUrgency": "urgent",
+          "task": "Fix 404s, image alt attributes, schema oversight, thin content, duplicate content, old .aspx redirects",
+          "assignedDate": "Jun 19",
+          "deadline": "TBD",
+          "deadlineUrgency": "null",
+          "color": "yellow"
+        }
+      ]
+    },
+    {
+      "name": "Manish",
+      "tasks": [
+        {
+          "task": "Contract AI Agent \u2014 explore new method of automating hotel contracting and return with results",
+          "assignedDate": "Jun 10",
+          "deadline": "TBD",
+          "deadlineUrgency": "null",
           "color": "yellow"
         },
         {
-          "task": "Old .aspx URL redirect list \u2014 share with tech team",
-          "assignedDate": "Jun 19",
-          "deadline": "ASAP",
+          "task": "Use only Our Story page as company profile across all media and partner outreach",
+          "assignedDate": "Jun 10",
+          "deadline": "Immediate",
           "deadlineUrgency": "urgent",
           "color": "yellow"
         }
       ]
     },
     {
-      "name": "Senthil",
+      "name": "Azhar",
       "tasks": [
         {
-          "task": "Master Task Sheet owner \u2014 follow up with all named owners, keep sheet updated",
-          "assignedDate": "Jun 12",
-          "deadline": "Ongoing",
-          "deadlineUrgency": "ok",
-          "color": "yellow"
-        },
-        {
-          "task": "Sign MSA & SOW with TestingXperts immediately",
-          "assignedDate": "Jun 19",
-          "deadline": "Jun 26",
-          "deadlineUrgency": "urgent",
-          "color": "red"
-        },
-        {
-          "task": "India B2C activation \u2014 submit written plan by Jun 16",
-          "assignedDate": "Jun 03",
-          "deadline": "Jun 16",
-          "deadlineUrgency": "urgent",
-          "color": "red"
-        },
-        {
-          "task": "Tourism board outreach \u2014 co-own with Deepak across 137 cities, lead senior conversations",
+          "task": "Head of Partnerships \u2014 build corporate roadshow and partnership pipeline across UAE, Saudi, India",
           "assignedDate": "Jun 07",
           "deadline": "Ongoing",
-          "deadlineUrgency": "ok",
+          "deadlineUrgency": "null",
           "color": "yellow"
         },
         {
-          "task": "Forbes India \u2014 finalize negotiation and payment process",
-          "assignedDate": "Jun 08",
-          "deadline": "Jun 26",
+          "task": "Rewards Programme Partnerships \u2014 meet partners, update Google Sheet tracker daily/weekly",
+          "assignedDate": "Jun 07",
+          "deadline": "Ongoing",
+          "deadlineUrgency": "null",
+          "color": "yellow"
+        },
+        {
+          "task": "Radio Partnerships \u2014 share all ARN contacts and details with Vaibhav",
+          "assignedDate": "Jun 09",
+          "deadline": "ASAP",
           "deadlineUrgency": "urgent",
           "color": "yellow"
         },
         {
-          "task": "Hotel Reservation AI Agent \u2014 own scoping and timeline from Rumy",
+          "task": "CC BIN integrations \u2014 continue chasing Vaibhav/Gaurav for Tabby, ADCB, Shukran, CC BIN status",
+          "assignedDate": "Jun 16",
+          "deadline": "ASAP",
+          "deadlineUrgency": "urgent",
+          "color": "red"
+        }
+      ]
+    },
+    {
+      "name": "Nihad",
+      "tasks": [
+        {
+          "task": "Affiliate Program \u2014 personally verify tech works end-to-end before any influencer outreach",
+          "assignedDate": "Jun 10",
+          "deadline": "ASAP",
+          "deadlineUrgency": "urgent",
+          "color": "yellow"
+        },
+        {
+          "task": "Create master affiliate explainer video and post to Rayna's followers first",
           "assignedDate": "Jun 10",
           "deadline": "TBD",
-          "deadlineUrgency": "urgent",
+          "deadlineUrgency": "null",
           "color": "yellow"
         },
         {
-          "task": "Senior Travel Writer JD \u2014 review and approve before posting",
+          "task": "Block 3 WS3 social media automation \u2014 team member support",
           "assignedDate": "Jun 08",
-          "deadline": "ASAP",
+          "deadline": "Jun 30",
           "deadlineUrgency": "urgent",
           "color": "yellow"
         }
@@ -1685,39 +1892,32 @@
       "name": "Malik",
       "tasks": [
         {
-          "task": "Block 3 WS1 Email Campaigns \u2014 go-live Jun 26\u201327",
+          "task": "Block 3 WS1 \u2014 Email Campaigns: complete AI capabilities layering, go live by Jun 26\u201327",
           "assignedDate": "Jun 08",
-          "deadline": "Jun 26",
+          "deadline": "Jun 27",
           "deadlineUrgency": "urgent",
           "color": "red"
         },
         {
-          "task": "Block 3 WS1 WhatsApp & SMS \u2014 go-live Jun 30",
+          "task": "Block 3 WS1 \u2014 WhatsApp & SMS: complete additional testing and go live by Jun 30",
           "assignedDate": "Jun 08",
           "deadline": "Jun 30",
           "deadlineUrgency": "urgent",
           "color": "yellow"
         },
         {
-          "task": "Block 3 WS3 Social Media Automation \u2014 go-live Jun 30",
+          "task": "Block 3 WS3 \u2014 Social Media Automation: stabilise, build templates, go live by Jun 30",
           "assignedDate": "Jun 08",
           "deadline": "Jun 30",
           "deadlineUrgency": "urgent",
           "color": "yellow"
         },
         {
-          "task": "Performance marketing automation \u2014 in-house build feasibility assessment and timeline",
+          "task": "Performance Marketing Automation \u2014 assess in-house build feasibility and timeline for September launch",
           "assignedDate": "Jun 09",
           "deadline": "End of week Jun 13",
           "deadlineUrgency": "urgent",
           "color": "yellow"
-        },
-        {
-          "task": "Fix Liquid template rendering bug in email campaigns",
-          "assignedDate": "Jun 22",
-          "deadline": "ASAP",
-          "deadlineUrgency": "urgent",
-          "color": "red"
         }
       ]
     },
@@ -1725,107 +1925,22 @@
       "name": "Anket",
       "tasks": [
         {
-          "task": "Performance marketing automation \u2014 test Claude AI for Meta and Google Ads automation",
+          "task": "Performance Marketing Automation \u2014 test Meta & Google Ads automation via Claude AI (priority)",
           "assignedDate": "Jun 09",
           "deadline": "End of week Jun 13",
           "deadlineUrgency": "urgent",
           "color": "yellow"
         },
         {
-          "task": "DeltaX vs Smartly.io detailed comparison \u2014 pricing, capabilities, go-live dates",
+          "task": "Compare DeltaX vs Smartly.io on pricing, capabilities, go-live dates as backup options",
           "assignedDate": "Jun 09",
           "deadline": "End of week Jun 13",
           "deadlineUrgency": "urgent",
           "color": "yellow"
         },
         {
-          "task": "PostForMe.dev configuration \u2014 help Gaurav on Block 3 WS2",
+          "task": "Block 3 WS3 \u2014 help Gaurav with PostForMe.dev configuration",
           "assignedDate": "Jun 11",
-          "deadline": "ASAP",
-          "deadlineUrgency": "urgent",
-          "color": "yellow"
-        }
-      ]
-    },
-    {
-      "name": "Nihad",
-      "tasks": [
-        {
-          "task": "Affiliate programme tech verification \u2014 personally verify registration, tracking, commission, payouts end-to-end",
-          "assignedDate": "Jun 10",
-          "deadline": "ASAP",
-          "deadlineUrgency": "urgent",
-          "color": "yellow"
-        },
-        {
-          "task": "Create master explainer video for affiliate programme \u2014 post to Rayna followers first",
-          "assignedDate": "Jun 10",
-          "deadline": "After tech verified",
-          "deadlineUrgency": "urgent",
-          "color": "yellow"
-        },
-        {
-          "task": "Affiliate acquisition \u2014 barter-only influencer outreach after Step 1 complete",
-          "assignedDate": "Jun 10",
-          "deadline": "After Step 1",
-          "deadlineUrgency": "ok",
-          "color": "yellow"
-        }
-      ]
-    },
-    {
-      "name": "Pari",
-      "tasks": [
-        {
-          "task": "Category Head Events & Experiences \u2014 continue sourcing ticketing-platform profiles, schedule Waleed interview",
-          "assignedDate": "Jun 09",
-          "deadline": "Interview Jun 17",
-          "deadlineUrgency": "urgent",
-          "color": "yellow"
-        },
-        {
-          "task": "Schools Sales Manager hiring \u2014 India and Saudi Arabia JDs received, source candidates",
-          "assignedDate": "Jun 08",
-          "deadline": "Hire by end of Jun",
-          "deadlineUrgency": "urgent",
-          "color": "yellow"
-        },
-        {
-          "task": "Employee complaints status report \u2014 compile all pending cases including Inder Thakral",
-          "assignedDate": "Jun 05",
-          "deadline": "Jun 13",
-          "deadlineUrgency": "urgent",
-          "color": "red"
-        },
-        {
-          "task": "Senior Travel Writer \u2014 post updated JD immediately after Senthil approval",
-          "assignedDate": "Jun 08",
-          "deadline": "ASAP",
-          "deadlineUrgency": "urgent",
-          "color": "yellow"
-        }
-      ]
-    },
-    {
-      "name": "Deepak",
-      "tasks": [
-        {
-          "task": "Share Headout contact details with Alok immediately for direct API outreach",
-          "assignedDate": "Jun 10",
-          "deadline": "ASAP",
-          "deadlineUrgency": "urgent",
-          "color": "yellow"
-        },
-        {
-          "task": "Tourism board outreach \u2014 co-own with Senthil across 137 cities, schedule alignment call",
-          "assignedDate": "Jun 07",
-          "deadline": "Ongoing",
-          "deadlineUrgency": "ok",
-          "color": "yellow"
-        },
-        {
-          "task": "Bokun API access \u2014 signed form Jun 10, await API key and explore data feeds",
-          "assignedDate": "Jun 10",
           "deadline": "ASAP",
           "deadlineUrgency": "urgent",
           "color": "yellow"
@@ -1836,38 +1951,50 @@
       "name": "Alok",
       "tasks": [
         {
-          "task": "116/140 city content timeline \u2014 full status report due Jun 10",
-          "assignedDate": "Jun 06",
-          "deadline": "Jun 10",
-          "deadlineUrgency": "urgent",
-          "color": "yellow"
-        },
-        {
-          "task": "London go-live \u2014 push to production third week of June once admin portal connection ready",
-          "assignedDate": "Jun 06",
-          "deadline": "Third week of Jun",
-          "deadlineUrgency": "urgent",
-          "color": "yellow"
-        },
-        {
-          "task": "Headout API outreach \u2014 contact using Deepak's reference once details shared",
+          "task": "Headout API \u2014 approach using Deepak's reference directly (not formal application)",
           "assignedDate": "Jun 10",
           "deadline": "ASAP",
           "deadlineUrgency": "urgent",
           "color": "yellow"
         },
         {
-          "task": "Bokun exploration \u2014 assess if it covers Headout, Viator, GetYourGuide, Klook data",
+          "task": "Bokun evaluation \u2014 determine if it provides pricing/catalog data from Headout, Viator, GetYourGuide, Klook",
           "assignedDate": "Jun 10",
           "deadline": "ASAP",
           "deadlineUrgency": "urgent",
           "color": "yellow"
         },
         {
-          "task": "FAQ automation \u2014 coordinate with Aparna on SEO FAQ implementation",
+          "task": "140-city product content \u2014 push London live (third week of June milestone), continue high-priority cities",
+          "assignedDate": "Jun 10",
+          "deadline": "Aug 31",
+          "deadlineUrgency": "ok",
+          "color": "yellow"
+        },
+        {
+          "task": "SEO FAQ automation \u2014 coordinate with Aparna on implementation",
           "assignedDate": "Jun 19",
           "deadline": "TBD",
-          "deadlineUrgency": "ok",
+          "deadlineUrgency": "null",
+          "color": "yellow"
+        }
+      ]
+    },
+    {
+      "name": "Deepak",
+      "tasks": [
+        {
+          "task": "Share Headout contact details with Alok immediately",
+          "assignedDate": "Jun 10",
+          "deadline": "ASAP",
+          "deadlineUrgency": "urgent",
+          "color": "yellow"
+        },
+        {
+          "task": "Tourism Board Outreach \u2014 co-own with Senthil across all 137 cities",
+          "assignedDate": "Jun 07",
+          "deadline": "TBD",
+          "deadlineUrgency": "null",
           "color": "yellow"
         }
       ]
@@ -1876,16 +2003,49 @@
       "name": "Rishi",
       "tasks": [
         {
-          "task": "Schools & Edutainment \u2014 JDs shared with Pari; recommend Saudi onboarding in August first week",
+          "task": "Schools & Universities \u2014 JDs shared with Pari; oversee Sales Manager hiring for Saudi and India",
           "assignedDate": "Jun 08",
-          "deadline": "Hire by end of Jun",
+          "deadline": "Jun 30",
           "deadlineUrgency": "urgent",
           "color": "yellow"
         },
         {
-          "task": "Define territory plans and school visit targets for India and Saudi Sales Managers",
+          "task": "Begin school visits in India from July; Saudi visits from end of August after schools reopen",
+          "assignedDate": "Jun 09",
+          "deadline": "Jul 01",
+          "deadlineUrgency": "ok",
+          "color": "yellow"
+        }
+      ]
+    },
+    {
+      "name": "Pari",
+      "tasks": [
+        {
+          "task": "Category Head Events & Experiences \u2014 continue sourcing ticketing-platform profile CVs; arrange Waleed Elghoul interview",
+          "assignedDate": "Jun 09",
+          "deadline": "ASAP",
+          "deadlineUrgency": "urgent",
+          "color": "yellow"
+        },
+        {
+          "task": "Post updated Senior Travel Writer JD immediately after Senthil's revisions are confirmed",
           "assignedDate": "Jun 08",
-          "deadline": "Before hire",
+          "deadline": "ASAP",
+          "deadlineUrgency": "urgent",
+          "color": "yellow"
+        },
+        {
+          "task": "Source Sales Manager candidates for India and Saudi Arabia (Schools & Universities brief)",
+          "assignedDate": "Jun 08",
+          "deadline": "Jun 30",
+          "deadlineUrgency": "urgent",
+          "color": "yellow"
+        },
+        {
+          "task": "Compile complete status report of all pending employee complaints and settlement cases",
+          "assignedDate": "Jun 10",
+          "deadline": "Jun 13",
           "deadlineUrgency": "urgent",
           "color": "yellow"
         }
@@ -1895,24 +2055,17 @@
       "name": "Ranjan",
       "tasks": [
         {
-          "task": "India B2C activation proposal \u2014 submit by end of week Jun 13",
-          "assignedDate": "Jun 03",
+          "task": "India B2C Activation \u2014 submit India proposal (committed end of week Jun 13)",
+          "assignedDate": "Jun 09",
           "deadline": "Jun 13",
           "deadlineUrgency": "urgent",
-          "color": "red"
+          "color": "yellow"
         },
         {
-          "task": "Inder Thakral F&F settlement \u2014 provide all required inputs to Pari immediately",
-          "assignedDate": "Jun 08",
-          "deadline": "ASAP",
-          "deadlineUrgency": "urgent",
-          "color": "red"
-        },
-        {
-          "task": "India city-specific tourism board follow-ups \u2014 under Senthil/Deepak coordination",
-          "assignedDate": "Jun 07",
-          "deadline": "Ongoing",
-          "deadlineUrgency": "ok",
+          "task": "Tourism Board Outreach \u2014 own India city-specific follow-ups under Senthil/Deepak coordination",
+          "assignedDate": "Jun 09",
+          "deadline": "TBD",
+          "deadlineUrgency": "null",
           "color": "yellow"
         }
       ]
@@ -1921,94 +2074,35 @@
       "name": "Rajkumar",
       "tasks": [
         {
-          "task": "Competitive pricing report \u2014 top 20 products across Dubai, UAE, Saudi, Global (was due Jun 8)",
-          "assignedDate": "Jun 03",
-          "deadline": "Jun 08",
-          "deadlineUrgency": "urgent",
-          "color": "red"
-        },
-        {
-          "task": "India B2C alignment call \u2014 come prepared with supplier contract and product live status",
+          "task": "India B2C Activation \u2014 come prepared with supplier contract and product live status for Maharashtra and North India cities",
           "assignedDate": "Jun 09",
-          "deadline": "This week",
-          "deadlineUrgency": "urgent",
-          "color": "red"
-        }
-      ]
-    },
-    {
-      "name": "Anwar",
-      "tasks": [
-        {
-          "task": "Independent CTO assessment of Reservation AI Platform delivery \u2014 6-point written response",
-          "assignedDate": "Jun 09",
-          "deadline": "Jun 12",
-          "deadlineUrgency": "urgent",
-          "color": "red"
-        },
-        {
-          "task": "App go-live \u2014 meet Manoj in person with honest account of blockers and realistic date",
-          "assignedDate": "Jun 10",
-          "deadline": "ASAP",
-          "deadlineUrgency": "urgent",
-          "color": "red"
-        },
-        {
-          "task": "Admin portal connection for London content push \u2014 provide to Alok this week",
-          "assignedDate": "Jun 10",
-          "deadline": "Third week Jun",
-          "deadlineUrgency": "urgent",
-          "color": "yellow"
-        }
-      ]
-    },
-    {
-      "name": "Asad",
-      "tasks": [
-        {
-          "task": "Reservation Agent UX flow \u2014 full mobile and desktop journey, due Monday Jun 16",
-          "assignedDate": "Jun 14",
-          "deadline": "Jun 16",
-          "deadlineUrgency": "urgent",
-          "color": "red"
-        },
-        {
-          "task": "Giveaway front-end design per approved UI/UX and brand guidelines",
-          "assignedDate": "Jun 14",
-          "deadline": "TBD",
-          "deadlineUrgency": "urgent",
-          "color": "red"
-        },
-        {
-          "task": "Design pendencies \u2014 clarify Figma for New Design Changes, share Driver Details screens, update Holidays email task",
-          "assignedDate": "Jun 19",
-          "deadline": "ASAP",
-          "deadlineUrgency": "urgent",
-          "color": "red"
-        },
-        {
-          "task": "Update pop-up stand materials with Ishra for roadshows",
-          "assignedDate": "Jun 15",
           "deadline": "ASAP",
           "deadlineUrgency": "urgent",
           "color": "yellow"
-        }
-      ]
-    },
-    {
-      "name": "Manish",
-      "tasks": [
-        {
-          "task": "Contract AI Agent \u2014 explore new method of automating hotel contracting, report results",
-          "assignedDate": "Jun 10",
-          "deadline": "TBD",
-          "deadlineUrgency": "urgent",
-          "color": "yellow"
         },
         {
-          "task": "Use Our Story page as only company profile \u2014 confirm in writing",
-          "assignedDate": "Jun 10",
+          "task": "Deadline Ownership Policy \u2014 acknowledge and comply with proactive extension request policy",
+          "assignedDate": "Jun 08",
           "deadline": "Immediate",
+          "deadlineUrgency": "urgent",
+          "color": "orange"
+        }
+      ]
+    },
+    {
+      "name": "Rumy",
+      "tasks": [
+        {
+          "task": "Hotel Reservation AI Agent \u2014 work with Adnan to automate hotel operations, provide formal build timeline",
+          "assignedDate": "Jun 11",
+          "deadline": "Mid Jun 19 week",
+          "deadlineUrgency": "urgent",
+          "color": "yellow"
+        },
+        {
+          "task": "Try latest Claude Fable model for hotel operations and report results to Manoj",
+          "assignedDate": "Jun 12",
+          "deadline": "ASAP",
           "deadlineUrgency": "urgent",
           "color": "yellow"
         }
@@ -2018,30 +2112,39 @@
       "name": "Adnan",
       "tasks": [
         {
-          "task": "Event Technology \u2014 Coca-Cola Arena and DTCM APIs fully tested and live within June",
+          "task": "Hotel Reservation AI Agent \u2014 work with Rumy to automate hotel operations via agents",
+          "assignedDate": "Jun 11",
+          "deadline": "TBD",
+          "deadlineUrgency": "null",
+          "color": "yellow"
+        },
+        {
+          "task": "Event Technology \u2014 Coca-Cola Arena and DTCM API fully tested and live by end of June",
           "assignedDate": "Jun 14",
           "deadline": "Jun 30",
           "deadlineUrgency": "urgent",
           "color": "red"
         },
         {
-          "task": "My Bookings tasks \u2014 provide decision on 5 on-hold tasks (resume or close)",
+          "task": "My Bookings on-hold tasks \u2014 provide decision or timeline to resume 5 blocked features",
           "assignedDate": "Jun 18",
           "deadline": "ASAP",
           "deadlineUrgency": "urgent",
           "color": "red"
-        },
-        {
-          "task": "Hotel operations automation \u2014 work with Rumy on AI agent build",
-          "assignedDate": "Jun 10",
-          "deadline": "TBD",
-          "deadlineUrgency": "urgent",
-          "color": "yellow"
         }
       ]
     }
   ],
   "emails": [
+    {
+      "type": "REPLY",
+      "subject": "Action Required: Selecting the Right AI Model for API Calls",
+      "date": "Fri, 26 Jun 2026 12:24:28 +0000",
+      "from": "Senthil Velan <senthil@raynatours.com>",
+      "to": "Anowar Hossain <ww_anowar@yahoo.com>, Alok Agrawal <alok@raynatours.com>,\r\n\t\"vaibhav  \" <vaibhav@raynatours.com>, Gaurav Verma\r\n\t<gaurav.verma@raynatours.com>, \"manish@technoheaven.net\"\r\n\t<manish@technoheaven.net>, Sowmya Chittedath <sowmya@raynatours.com>, Prateek\r\n\t<prateek@raynatours.com>, Adnan Zaheer <adnan@raynab2b.com>",
+      "cc": "Manoj Tulsani <manoj@raynatours.com>",
+      "body": "Team,\r\nAs we scale up the number of AI-powered features and workflows at Rayna, I want to draw your attention to an important engineering and cost discipline: choosing the right AI model for each API call.\r\nWith multiple projects now consuming LLM APIs, we are beginning to see significant variation in model selection across teams. In several cases, frontier models are being used for tasks that could be handled effectively \ufffd and at a fraction of the cost \ufffd by lighter, purpose-fit models. This is not sustainable as we grow.\r\nWhy This Matters\r\nOutput tokens are typically 5\ufffd10x more expensive than input tokens. High-volume tasks such as itinerary drafting, email template generation, document summarisation, or data extraction do not require frontier-level intelligence. Routing these to an appropriate model can reduce API costs by 60\ufffd80% per task without any loss in output quality.\r\nModel Pricing Reference\r\nPlease refer to the table below when making model selection decisions. Pricing is per million tokens as of June 2026:\r\nModel\r\nInput ($/1M tokens)\r\nOutput ($/1M tokens)\r\nTier\r\nBest For\r\nClaude Haiku 4.5\r\n$1.00\r\n$5.00\r\nFast / Light\r\nTemplates, classification, routing\r\nGLM-5.2 (Zhipu AI)\r\n$1.40\r\n$4.40\r\nMid\r\nLong docs, structured reasoning\r\nGPT-4.1 (OpenAI)\r\n$2.00\r\n$8.00\r\nMid-High\r\nGeneral purpose, production APIs\r\nGPT-4o (OpenAI)\r\n$2.50\r\n$10.00\r\nMid-High\r\nMultimodal, legacy integrations\r\nClaude Sonnet 4.6\r\n$3.00\r\n$15.00\r\nHigh\r\nComplex reasoning, agentic tasks\r\nClaude Opus 4.8\r\n$5.00\r\n$25.00\r\nFrontier\r\nHighest complexity, creative, strategic\r\n\r\nRecommended Routing Guidelines\r\n\r\nRoutine / high-volume tasks (classification, extraction, template generation): Use Claude Haiku 4.5 or GLM-5.2. GLM-5.2 is particularly cost-effective for output-heavy tasks given its lower output token rate. Mid-complexity tasks (multi-step reasoning, long document analysis, structured agent workflows): Use GPT-4.1 or Claude Sonnet 4.6. Frontier tasks only (customer-facing creative responses, strategic content, high-stakes decisions): Use Claude Opus 4.8 or GPT-4o. Additionally, both Anthropic and OpenAI offer 50% cost reductions for batch processing. If your workload is not latency-sensitive, please explore batch API mode. Next Steps Please review your current API integrations and identify any instances where a lighter model would suffice. If you are unsure about the right model for a specific use case, feel free to reach out \ufffd I am happy to review and advise. We will revisit model usage and costs in our next AI review meeting. Going forward, model selection should be a conscious, documented decision in every AI feature design.\r\n\r\nRegards, Senthil\r\n\r\n\r\n"
+    },
     {
       "type": "REPLY",
       "subject": "Fwd: Still exploring Pattaya?",
